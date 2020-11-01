@@ -7,9 +7,16 @@ package clash;
 
 /**
  *
- * @author Mauricio
+ * @author Jean Paul
  */
 public class Guerrero {
+    String name;
+    int damage;
+    int life;
+    int level;
+    int space;
+    int apLevel;
+    int cost;
     
     
 }
