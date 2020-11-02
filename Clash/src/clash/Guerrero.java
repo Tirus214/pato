@@ -5,18 +5,37 @@
  */
 package clash;
 
+
 /**
  *
  * @author Jean Paul
  */
-public class Guerrero {
-    String name;
+public abstract class Guerrero extends Personaje{
     int damage;
-    int life;
+    int health;
     int level;
     int space;
-    int apLevel;
-    int cost;
+
+
+    //Constructor
+    public Guerrero(String name, int damage, int health, int level, int space, int apLevel) {
+        super(name, apLevel);
+        this.damage = damage;
+        this.health = health;
+        this.level = level;
+        this.space = space;
+    }
+    
+    //Procedimientos
+    int Atack(){
+        return damage;
+    }
+    
+    void lostHealth(int _damage){
+        this.health -= _damage;
+    }
+    
+    
     
     
 }

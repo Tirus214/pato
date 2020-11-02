@@ -9,13 +9,10 @@ package clash;
  *
  * @author Jean Paul
  */
-public class Clash {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+public class GuerreroMedianoAlcance extends Guerrero{
+    
+    public GuerreroMedianoAlcance(String name, int damage, int life, int level, int space, int apLevel) {
+        super(name, damage, life, level, space, apLevel);
     }
     
 }
