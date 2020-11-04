@@ -18,7 +18,7 @@ public abstract class Personaje {
     int apLevel;
     boolean movility;
     Point location;
-
+    
     //Constructor
     public Personaje(String name, int apLevel) {
         this.name = name;
