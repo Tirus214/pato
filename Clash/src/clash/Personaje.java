@@ -13,28 +13,16 @@ import java.util.Random;
  *
  * @author Jean Paul
  */
-public abstract class Personaje {
+public abstract class Personaje extends Thread{
     String name;
     int apLevel;
     boolean movility;
-    Point location;
+    boolean running = true;
     
     //Constructor
     public Personaje(String name, int apLevel) {
         this.name = name;
         this.apLevel = apLevel;
-    }
-    
-    
-    
-    void randomAppear(ArrayList matriz[]){
-        this.location.x = generateRandom();
-        this.location.y = generateRandom();
-    }
-    
-    int generateRandom(){
-        Random r = new Random();
-        return r.nextInt(20-0)+0;
     }
     
 }
