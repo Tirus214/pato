@@ -12,12 +12,11 @@ import java.awt.Point;
  */
 public class Defensa extends Personaje {
    int damage;
-    int health;
-    Point position;
+   int health;
+   Point position;
     
-    public Defensa(String name, int apLevel, int damage, int health, Point position){
-        super(name, apLevel);
-        this.damage = damage;
+   public Defensa(String name, int apLevel, int damage, int health, Point position){
+        super(name, apLevel, damage);
         this.health = 100;
-    }
+   }
 }
