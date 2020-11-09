@@ -19,4 +19,36 @@ public class Defensa extends Personaje {
         super(name, apLevel, damage);
         this.health = 100;
    }
+   @Override
+   public String toString(){
+       return ("Corriendo "+ this.health);
+   }
+   @Override
+    public void run(){
+        while (running){
+            try {
+                if (health == 0){
+                    System.out.println("Mori");
+                    break;}
+                System.out.println(toString());
+                sleep(1000);
+                
+                health -= 10;
+                
+            } catch (InterruptedException ex) {
+                
+            }
+            
+            //
+            while(super.pause){
+                try {
+                    sleep(100);
+                } catch (InterruptedException ex) {
+                    
+                }
+            }
+            
+        }    
+    }
+       
 }

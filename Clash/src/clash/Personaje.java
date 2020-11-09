@@ -14,13 +14,13 @@ import java.util.Random;
  * @author Jean Paul
  */
 public abstract class Personaje extends Thread{
-    String name;
-    int damage;
-    int apLevel;
-    boolean movility;
-    boolean running = true;
-    private boolean pause = false;
-    int health;
+    protected String name;
+    protected int damage;
+    protected int apLevel;
+    protected boolean movility;
+    protected boolean running = true;
+    protected boolean pause = false;
+    protected int health;
     
     //Constructor
     public Personaje(String name, int apLevel, int damage) {
