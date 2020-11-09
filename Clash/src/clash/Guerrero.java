@@ -11,7 +11,7 @@ package clash;
  * @author Jean Paul
  */
 public abstract class Guerrero extends Personaje{
-    int health;
+
     int level;
     int space;
 
