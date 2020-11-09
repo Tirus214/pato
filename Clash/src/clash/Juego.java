@@ -14,16 +14,27 @@ import java.util.ArrayList;
  */
 public class Juego {
     private ArrayList<Guerrero> ejercito;
-    private ArrayList<Defensa> defensas;
+    private ArrayList<Defensa> defensa;
     private ArrayList<Guerrero> enemigo;
     private int nivel;
     private int cantTropas;
     private int cantDefensas;
 
-    public Juego() {
+    public Juego(){
+        ejercito = new ArrayList<Guerrero>();
+        defensa = new ArrayList<Defensa>();
+        enemigo = new ArrayList<Guerrero>();
+        nivel = 1;
+        cantTropas = 5;
+        cantDefensas = 3;
     }
     
     public void start(){
         
+    }
+    
+    private void putCantidad(){
+        this.cantTropas = nivel * 3 + 5;
+        this.cantDefensas = nivel * 3 + 3;
     }
 }

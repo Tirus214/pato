@@ -6,7 +6,9 @@
 package GUI;
 
 import clash.Juego;
+import java.awt.Color;
 import java.util.ArrayList;
+import java.util.Random;
 import javax.swing.JLabel;
 
 /**
@@ -16,9 +18,7 @@ import javax.swing.JLabel;
 public class PantallaPartida extends javax.swing.JFrame {
 
     Juego juego;
-    ArrayList<JLabel> labelsEjercito;
-    ArrayList<JLabel> labelsEnemigo;
-    ArrayList<JLabel> labelsDefensa;
+    ArrayList<JLabel> arregloLabels;
     
     /**
      * Creates new form PantallaPartida
@@ -26,20 +26,70 @@ public class PantallaPartida extends javax.swing.JFrame {
     
     private PantallaPartida() {
         this.juego = new Juego();
-        labelsEjercito = new ArrayList<JLabel>();
-        labelsEnemigo = new ArrayList<JLabel>();
-        labelsDefensa = new ArrayList<JLabel>();
+        arregloLabels = new ArrayList<JLabel>();
         initComponents();
     }
     
     public PantallaPartida(Juego juego) {
         this.juego = juego;
-        labelsEjercito = new ArrayList<JLabel>();
-        labelsEnemigo = new ArrayList<JLabel>();
-        labelsDefensa = new ArrayList<JLabel>();
+        arregloLabels = new ArrayList<JLabel>();
         initComponents();
     }
 
+    
+    public JLabel generateLabel(int numeroThread){
+        JLabel newLabel = new JLabel("#" + numeroThread);
+        newLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        newLabel.setForeground(new java.awt.Color(255, 255, 255));
+        newLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        newLabel.setSize(140, 40);
+        jPanel1.add(newLabel);
+        newLabel.setBackground(Color.red);
+        newLabel.setOpaque(true);
+        
+        int x = ((new Random()).nextInt(1000)/40) * 40;
+        int y = ((new Random()).nextInt(600) / 40)* 40;
+        newLabel.setLocation(x , y);
+        arregloLabels.add(newLabel);
+        
+        return newLabel;
+    }
+    
+    public void moveLabel (int labelIndex){
+        
+        JLabel refLabel = arregloLabels.get(labelIndex);
+        
+        int direccion = (new Random()).nextInt(4);
+        int x = refLabel.getLocation().x;
+        int y = refLabel.getLocation().y;
+        
+        //sumo A x O y
+            if (direccion == 0 && y-40 >= 0) //arriba
+                y = y-40;
+            else if (direccion == 1 && y+40 <= 560)
+                y = y+40;
+            else if (direccion == 2 && x+40 <= 800)
+                x = x+40;
+            else if (direccion == 3 && x-40 >= 0)
+                x = x-40;
+            
+        
+        int ocupadoPor = isAvailablePostion(x, y, refLabel);
+        if (ocupadoPor == -1)
+            refLabel.setLocation(x, y);
+        else
+            System.out.println("Esta ocupada " + x + "," + y + " por " + arregloLabels.get(ocupadoPor).getText());
+    }
+    
+    public int isAvailablePostion(int x, int y, JLabel refLabel){      
+        for (int i = 0; i < arregloLabels.size(); i++) {
+            if(arregloLabels.get(i).getLocation().x == x && 
+                    arregloLabels.get(i).getLocation().y == y
+                        && !arregloLabels.get(i).equals(refLabel))
+                return i;
+        }
+        return -1;
+    }
 
 
     /**

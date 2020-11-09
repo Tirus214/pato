@@ -5,6 +5,8 @@
  */
 package clash;
 
+import GUI.PantallaInicial;
+
 /**
  *
  * @author Jean Paul
@@ -12,7 +14,6 @@ package clash;
 public class main {
     public static void main(String[] args) {
         
-        Juego partida = new Juego();
-        
+        PantallaInicial pantalla = new PantallaInicial();
     }
 }
