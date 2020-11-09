@@ -15,5 +15,6 @@ public class main {
     public static void main(String[] args) {
         
         PantallaInicial pantalla = new PantallaInicial();
+        pantalla.setVisible(true);
     }
 }

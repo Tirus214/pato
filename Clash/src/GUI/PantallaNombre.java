@@ -10,12 +10,16 @@ package GUI;
  * @author Jean Paul
  */
 public class PantallaNombre extends javax.swing.JFrame {
-
+    public boolean buscar;
     /**
      * Creates new form PantallaNombre
      */
     public PantallaNombre() {
         initComponents();
+    }
+    
+    public void doBuscar(boolean valor){
+        this.buscar = valor;
     }
 
     /**
@@ -39,6 +43,11 @@ public class PantallaNombre extends javax.swing.JFrame {
         lblNombre.setText("Nombre del jugador");
 
         btnAceptar.setText("Aceptar");
+        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -86,6 +95,10 @@ public class PantallaNombre extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+        
+    }//GEN-LAST:event_btnAceptarActionPerformed
 
     /**
      * @param args the command line arguments
