@@ -13,6 +13,7 @@ import java.util.ArrayList;
  * @author Jean Paul
  */
 public class Juego {
+    public String name;
     private ArrayList<Guerrero> ejercito;
     private ArrayList<Defensa> defensa;
     private ArrayList<Guerrero> enemigo;
@@ -37,4 +38,66 @@ public class Juego {
         this.cantTropas = nivel * 3 + 5;
         this.cantDefensas = nivel * 3 + 3;
     }
+    
+    
+    //GETTER AND SETTER
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public ArrayList<Guerrero> getEjercito() {
+        return ejercito;
+    }
+
+    public void setEjercito(ArrayList<Guerrero> ejercito) {
+        this.ejercito = ejercito;
+    }
+
+    public ArrayList<Defensa> getDefensa() {
+        return defensa;
+    }
+
+    public void setDefensa(ArrayList<Defensa> defensa) {
+        this.defensa = defensa;
+    }
+
+    public ArrayList<Guerrero> getEnemigo() {
+        return enemigo;
+    }
+
+    public void setEnemigo(ArrayList<Guerrero> enemigo) {
+        this.enemigo = enemigo;
+    }
+
+    public int getNivel() {
+        return nivel;
+    }
+
+    public void setNivel(int nivel) {
+        this.nivel = nivel;
+    }
+
+    public int getCantTropas() {
+        return cantTropas;
+    }
+
+    public void setCantTropas(int cantTropas) {
+        this.cantTropas = cantTropas;
+    }
+
+    public int getCantDefensas() {
+        return cantDefensas;
+    }
+
+    public void setCantDefensas(int cantDefensas) {
+        this.cantDefensas = cantDefensas;
+    }
+    
+    //////////////
+    
+    
 }

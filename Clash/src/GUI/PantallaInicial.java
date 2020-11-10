@@ -33,7 +33,7 @@ public class PantallaInicial extends javax.swing.JFrame {
         lblFoto = new javax.swing.JLabel();
         btnNueva = new javax.swing.JButton();
         btnContinuar = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        txfNombre = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -41,7 +41,6 @@ public class PantallaInicial extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(0, 204, 255));
 
         lblFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesGenerales/PantallaInicial.jpg"))); // NOI18N
-        lblFoto.setPreferredSize(new java.awt.Dimension(602, 373));
         lblFoto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblFotoMouseClicked(evt);
@@ -62,9 +61,9 @@ public class PantallaInicial extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txfNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txfNombreActionPerformed(evt);
             }
         });
 
@@ -78,7 +77,7 @@ public class PantallaInicial extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblFoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblFoto))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -90,7 +89,7 @@ public class PantallaInicial extends javax.swing.JFrame {
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)))
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                                 .addGap(55, 55, 55)
                                 .addComponent(btnContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -101,10 +100,10 @@ public class PantallaInicial extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addComponent(lblFoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblFoto)
                 .addGap(31, 31, 31)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -130,24 +129,27 @@ public class PantallaInicial extends javax.swing.JFrame {
     private void btnNuevaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevaActionPerformed
         setVisible(false);
         Juego juego = new Juego();
-        PantallaMenu pantalla = new PantallaMenu(juego);
-        pantalla.setVisible(true);
+        String nombre = txfNombre.getText();
+        juego.setName(nombre);
+        //PantallaMenu.juego = juego;
+        //pantalla.setVisible(true);
     }//GEN-LAST:event_btnNuevaActionPerformed
 
     private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
         setVisible(false);
-        Juego juego = (Juego)FileManager.readObject("filemanager.Files");
-        PantallaMenu pantalla = new PantallaMenu(juego);
-        pantalla.setVisible(true);
+        String nombre = txfNombre.getText();
+        Juego juego = (Juego)FileManager.readObject("filemanager.Files\\" + nombre + ".dat");
+        //PantallaMenu pantalla = new PantallaMenu(juego);
+        //pantalla.setVisible(true);
     }//GEN-LAST:event_btnContinuarActionPerformed
 
     private void lblFotoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblFotoMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_lblFotoMouseClicked
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txfNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txfNombreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txfNombreActionPerformed
 
     /**
      * @param args the command line arguments
@@ -189,7 +191,7 @@ public class PantallaInicial extends javax.swing.JFrame {
     private javax.swing.JButton btnNueva;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblFoto;
+    private javax.swing.JTextField txfNombre;
     // End of variables declaration//GEN-END:variables
 }
