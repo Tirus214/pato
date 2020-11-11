@@ -131,16 +131,18 @@ public class PantallaInicial extends javax.swing.JFrame {
         Juego juego = new Juego();
         String nombre = txfNombre.getText();
         juego.setName(nombre);
-        //PantallaMenu.juego = juego;
-        //pantalla.setVisible(true);
+        PantallaMenu pantalla = new PantallaMenu();
+        pantalla.putJuego(juego);
+        pantalla.setVisible(true);
     }//GEN-LAST:event_btnNuevaActionPerformed
 
     private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
         setVisible(false);
         String nombre = txfNombre.getText();
         Juego juego = (Juego)FileManager.readObject("filemanager.Files\\" + nombre + ".dat");
-        //PantallaMenu pantalla = new PantallaMenu(juego);
-        //pantalla.setVisible(true);
+        PantallaMenu pantalla = new PantallaMenu();
+        pantalla.putJuego(juego);
+        pantalla.setVisible(true);
     }//GEN-LAST:event_btnContinuarActionPerformed
 
     private void lblFotoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblFotoMouseClicked
