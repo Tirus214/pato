@@ -16,6 +16,7 @@ import java.util.Random;
 public abstract class Personaje extends Thread{
     protected String name;
     protected int damage;
+    protected int level;
     protected int apLevel;
     protected int range;
     protected boolean movility;
@@ -24,10 +25,11 @@ public abstract class Personaje extends Thread{
     protected int health;
     
     //Constructor
-    public Personaje(String name, int apLevel, int damage, int range) {
+    public Personaje(String name, int apLevel, int level,int damage, int range) {
         this.name = name;
         this.apLevel = apLevel;
         this.damage = damage;
+        this.level = level;
     }
     
     public void move(Point p){
@@ -75,4 +77,6 @@ public abstract class Personaje extends Thread{
     public void attack(Personaje p){
       p.decrementarVida(damage);
   }
+   
+    
 }

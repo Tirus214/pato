@@ -6,6 +6,7 @@
 package clash;
 
 
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Random;
 /**
@@ -17,6 +18,7 @@ public class Juego {
     private ArrayList<Guerrero> ejercito;
     private ArrayList<Defensa> defensa;
     private ArrayList<Guerrero> enemigo;
+    private ArrayList<Defensa> defensasDisponibles;
     private int nivel;
     private int cantTropas;
     private int cantDefensas;
@@ -25,9 +27,11 @@ public class Juego {
         ejercito = new ArrayList<Guerrero>();
         defensa = new ArrayList<Defensa>();
         enemigo = new ArrayList<Guerrero>();
+        defensasDisponibles = new ArrayList<Defensa>();
         nivel = 1;
         cantTropas = 5;
         cantDefensas = 3;
+        createDefensas();
     }
     
     public void start(){
@@ -44,17 +48,32 @@ public class Juego {
         Random rand = new Random();
         int at = rand.nextInt(enemigo.size());
         //attacker.move(enemigo.get(at));
-        }
+    }
+    
+    
+    private void createDefensas(){
+        defensasDisponibles.add(new Defensa("Canon", 1, 1, 10, 3, true, false));
+        defensasDisponibles.add(new Defensa("Torre de Arqueras", 1, 1, 8, 3, true, true));
+        defensasDisponibles.add(new Defensa("Muro", 1, 1, 0, 0, false, false));
+        defensasDisponibles.add(new Defensa("Mortero", 10, 1, 10, 10, true, false));
+        defensasDisponibles.add(new Defensa("Cohetes", 5, 1, 10, 10, false, true));
+        defensasDisponibles.add(new Defensa("Bomba", 1, 1, 10, 1, false, true));
+    }
+    
+    private void randomDefensas(){
+        for (int i = 0; i < cantDefensas; i++) {
+            int random = (int) Math.random()*5;
+            while(defensasDisponibles.get(random).apLevel != this.nivel){
+                random = (int) Math.random()*5;
+            }
+            defensa.add(defensasDisponibles.get(random));
+    }
+    
+    
+    
     
     
     //GETTER AND SETTER
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public ArrayList<Guerrero> getEjercito() {
         return ejercito;

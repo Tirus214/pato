@@ -11,16 +11,13 @@ package clash;
  * @author Jean Paul
  */
 public abstract class Guerrero extends Personaje{
-
-    int level;
     int space;
 
 
     //Constructor
     public Guerrero(String name, int damage, int health, int level, int range, int space, int apLevel) {
-        super(name, apLevel, damage, range);
+        super(name, apLevel, level, damage, range);
         this.health = health;
-        this.level = level;
         this.space = space;
     }
     
