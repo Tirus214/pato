@@ -11,8 +11,8 @@ package clash;
  */
 public class GuerreroMedianoAlcance extends Guerrero{
     
-    public GuerreroMedianoAlcance(String name, int damage, int life, int level, int space, int apLevel) {
-        super(name, damage, life, level, space, apLevel);
+    public GuerreroMedianoAlcance(String name, int damage, int life, int level,int range, int space, int apLevel) {
+        super(name, damage, life, level, range, space, apLevel);
     }
     
 }

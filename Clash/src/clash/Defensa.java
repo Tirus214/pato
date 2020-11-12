@@ -14,11 +14,14 @@ public class Defensa extends Personaje {
    int damage;
    int health;
    Point position;
+   int range;
     
-   public Defensa(String name, int apLevel, int damage, int health, Point position){
-        super(name, apLevel, damage);
+   public Defensa(String name, int apLevel, int damage, int health, int range, Point position){
+        super(name, apLevel, damage, range);
         this.health = 100;
    }
+   
+   
    @Override
    public String toString(){
        return ("Corriendo "+ this.health);

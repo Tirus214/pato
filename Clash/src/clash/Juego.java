@@ -7,7 +7,7 @@ package clash;
 
 
 import java.util.ArrayList;
-
+import java.util.Random;
 /**
  *
  * @author Jean Paul
@@ -38,6 +38,13 @@ public class Juego {
         this.cantTropas = nivel * 3 + 5;
         this.cantDefensas = nivel * 3 + 3;
     }
+    
+    
+    public void searchAttackEnemy(Personaje attacker){// se va a atacar al azar
+        Random rand = new Random();
+        int at = rand.nextInt(enemigo.size());
+        //attacker.move(enemigo.get(at));
+        }
     
     
     //GETTER AND SETTER

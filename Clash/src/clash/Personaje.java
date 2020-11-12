@@ -17,16 +17,21 @@ public abstract class Personaje extends Thread{
     protected String name;
     protected int damage;
     protected int apLevel;
+    protected int range;
     protected boolean movility;
     protected boolean running = true;
     protected boolean pause = false;
     protected int health;
     
     //Constructor
-    public Personaje(String name, int apLevel, int damage) {
+    public Personaje(String name, int apLevel, int damage, int range) {
         this.name = name;
         this.apLevel = apLevel;
         this.damage = damage;
+    }
+    
+    public void move(Point p){
+        
     }
         @Override
     public void run(){
@@ -67,4 +72,7 @@ public abstract class Personaje extends Thread{
     void decrementarVida(int golpePower){
         this.health -= golpePower; 
     }
+    public void attack(Personaje p){
+      p.decrementarVida(damage);
+  }
 }
