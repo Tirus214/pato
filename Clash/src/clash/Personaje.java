@@ -5,15 +5,18 @@
  */
 package clash;
 
+import GUI.PantallaPartida;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Random;
+import javax.swing.JLabel;
 
 /**
  *
  * @author Jean Paul
  */
 public abstract class Personaje extends Thread{
+    public PantallaPartida refPantalla;
     protected String name;
     protected int damage;
     protected int level;
@@ -23,6 +26,8 @@ public abstract class Personaje extends Thread{
     protected boolean running = true;
     protected boolean pause = false;
     protected int health;
+    public JLabel refLabel;
+    public int id = -1;
     
     //Constructor
     public Personaje(String name, int apLevel, int level,int damage, int range) {
@@ -30,6 +35,7 @@ public abstract class Personaje extends Thread{
         this.apLevel = apLevel;
         this.damage = damage;
         this.level = level;
+        this.id++;
     }
     
     public void move(Point p){

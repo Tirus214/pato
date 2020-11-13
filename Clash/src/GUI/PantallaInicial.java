@@ -130,7 +130,7 @@ public class PantallaInicial extends javax.swing.JFrame {
         setVisible(false);
         Juego juego = new Juego();
         String nombre = txfNombre.getText();
-        juego.setName(nombre);
+        juego.name = nombre;
         PantallaMenu pantalla = new PantallaMenu();
         pantalla.putJuego(juego);
         pantalla.setVisible(true);

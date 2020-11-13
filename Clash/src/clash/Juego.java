@@ -6,6 +6,7 @@
 package clash;
 
 
+import GUI.PantallaPartida;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Random;
@@ -14,6 +15,7 @@ import java.util.Random;
  * @author Jean Paul
  */
 public class Juego {
+    public PantallaPartida refPantalla;
     public String name;
     private ArrayList<Guerrero> ejercito;
     private ArrayList<Defensa> defensa;
@@ -67,6 +69,7 @@ public class Juego {
                 random = (int) Math.random()*5;
             }
             defensa.add(defensasDisponibles.get(random));
+        }
     }
     
     
