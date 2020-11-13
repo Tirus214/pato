@@ -14,7 +14,7 @@ import java.util.Random;
  *
  * @author Jean Paul
  */
-public class Juego {
+public class Juego extends Thread{
     public PantallaPartida refPantalla;
     public String name;
     private ArrayList<Guerrero> ejercito;
@@ -24,6 +24,7 @@ public class Juego {
     private int nivel;
     private int cantTropas;
     private int cantDefensas;
+    private boolean running;
 
     public Juego(){
         ejercito = new ArrayList<Guerrero>();
@@ -34,11 +35,19 @@ public class Juego {
         cantTropas = 5;
         cantDefensas = 3;
         createDefensas();
+        running = true;
     }
-    
-    public void start(){
-        
-    }
+    /*
+    @Override
+    public void run(){
+        randomDefensas();
+        while(running){
+            for (int   = 0;   < ejercito.size();  ++) {
+                Guerrero get = ejercito.get( );
+                
+            }
+        }
+    }*/
     
     private void putCantidad(){
         this.cantTropas = nivel * 3 + 5;

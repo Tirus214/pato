@@ -27,7 +27,8 @@ public abstract class Personaje extends Thread{
     protected boolean pause = false;
     protected int health;
     public JLabel refLabel;
-    public int id = -1;
+    private int id = -1;
+    private Point posicion;
     
     //Constructor
     public Personaje(String name, int apLevel, int level,int damage, int range) {
@@ -40,36 +41,6 @@ public abstract class Personaje extends Thread{
         
     }
     
-    public void move(Point p){
-        
-    }
-        @Override
-    public void run(){
-        int repeticiones = 100;
-        while (running){
-            
-            try {
-                if (repeticiones == 0) break;
-                sleep(1000);
-                
-                repeticiones--;
-                
-            } catch (InterruptedException ex) {
-                
-            }
-            
-            
-            //
-            while(pause){
-                try {
-                    sleep(100);
-                } catch (InterruptedException ex) {
-                    
-                }
-            }
-            
-        }    
-    }
     
     public void stopThread(){
         this.running = false;
