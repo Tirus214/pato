@@ -36,6 +36,8 @@ public abstract class Personaje extends Thread{
         this.damage = damage;
         this.level = level;
         this.id++;
+        this.refLabel = refPantalla.generateLabel(id);
+        
     }
     
     public void move(Point p){
