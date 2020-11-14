@@ -14,6 +14,7 @@ public class Defensa extends Personaje {
    private int range;
    private boolean ataqueAereo;
    private boolean ataqueTerrestre;
+   
     
    public Defensa(String name, int apLevel, int level, int damage, int range, boolean ataqueTerrestre, boolean ataqueAereo){
         super(name, apLevel, level, damage, range);

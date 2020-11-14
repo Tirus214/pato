@@ -5,17 +5,20 @@
  */
 package GUI;
 
+import javax.swing.JPanel;
+
 /**
  *
  * @author Jean Paul
  */
 public class PantallaAdmin extends javax.swing.JFrame {
-
+    public PantallaMenu pantalla;
     /**
      * Creates new form PantallaAdmin
      */
     public PantallaAdmin() {
         initComponents();
+        pantalla = new PantallaMenu();
     }
 
     /**
@@ -44,6 +47,11 @@ public class PantallaAdmin extends javax.swing.JFrame {
         jLabel3.setText("Contraseña:");
 
         btnAceptar.setText("Aceptar");
+        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -94,6 +102,15 @@ public class PantallaAdmin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+        String nombre = txfContrasena.getText();
+        String contra = txfUsuario.getText();
+        if(nombre == "admin" && contra == "admin"){
+            setVisible(false);
+            JPanel jPanel2 = new javax.swing.JPanel();
+        }
+    }//GEN-LAST:event_btnAceptarActionPerformed
 
     /**
      * @param args the command line arguments

@@ -9,6 +9,10 @@ package clash;
  *
  * @author Jean Paul
  */
-public class GuerreroAereo {
+public class GuerreroAereo extends Guerrero{
     
+    public GuerreroAereo(String name, int damage, int life, int level, int range, int space, int apLevel) {
+        super(name, damage, life, level, range, space, apLevel);
+        this.movility = false;
+    }
 }

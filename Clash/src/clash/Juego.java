@@ -27,6 +27,8 @@ public class Juego extends Thread{
     private int cantDefensas;
     private boolean running;
 
+    
+    
     public Juego(){
         ejercito = new ArrayList<Guerrero>();
         defensa = new ArrayList<Defensa>();
@@ -62,7 +64,7 @@ public class Juego extends Thread{
         //attacker.move(enemigo.get(at));
     }
     
-    
+    //crea la plantilla de defensas para elegir
     private void createDefensas(){
         defensasDisponibles.add(new Defensa("Canon", 1, 1, 10, 3, true, false));
         defensasDisponibles.add(new Defensa("Torre de Arqueras", 1, 1, 8, 3, true, true));
@@ -72,6 +74,7 @@ public class Juego extends Thread{
         defensasDisponibles.add(new Defensa("Bomba", 1, 1, 10, 1, false, true));
     }
     
+    //crea defensas aleatoriamente segun su nivel
     private void randomDefensas(){
         for (int i = 0; i < cantDefensas; i++) {
             int random = (int) Math.random()*5;
@@ -83,9 +86,22 @@ public class Juego extends Thread{
     }
     
     
-    public void generarGuerreros(int cantidad){
-        randomDefensas();
-        
+    public void generarGuerrero(String tipoGuerrero, String name, int damage, int life, int level, int range, int space, int apLevel){
+        if(tipoGuerrero == "GuerreroDeContacto"){
+            guerrerosDisponibles.add(new GuerreroDeContacto(name, damage, life, level, range, space, apLevel));
+        }
+        else if(tipoGuerrero == "GuerreroMedianoAlcance"){
+            guerrerosDisponibles.add(new GuerreroMedianoAlcance(name, damage, life, level, range, space, apLevel));
+        }
+        else if(tipoGuerrero == "GuerreroAereo"){
+            guerrerosDisponibles.add(new GuerreroAereo(name, damage, life, level, range, space, apLevel));
+        }
+        else if(tipoGuerrero == "GuerreroBestia"){
+            guerrerosDisponibles.add(new GuerreroBestia(name, damage, life, level, range, space, apLevel));
+        }
+        else if(tipoGuerrero == "GuerreroHeroe"){
+            guerrerosDisponibles.add(new GuerreroHeroe(name, damage, life, level, range, space, apLevel));
+        }
     }
     
     
