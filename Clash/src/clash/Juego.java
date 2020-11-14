@@ -37,7 +37,7 @@ public class Juego extends Thread{
         nivel = 1;
         cantTropas = 5;
         cantDefensas = 3;
-        createDefensas();
+        // createDefensas(); fix
         running = true;
     }
     /*
