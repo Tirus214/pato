@@ -17,6 +17,7 @@ import java.util.Random;
 public class Juego extends Thread{
     public PantallaPartida refPantalla;
     public String name;
+    public ArrayList<Guerrero> guerrerosDisponibles;
     private ArrayList<Guerrero> ejercito;
     private ArrayList<Defensa> defensa;
     private ArrayList<Guerrero> enemigo;
@@ -81,6 +82,42 @@ public class Juego extends Thread{
         }
     }
     
+    
+    public void generarGuerreros(int cantidad){
+        randomDefensas();
+        
+    }
+    
+    
+    public void startGuerreros(){
+        for (int i = 0; i < ejercito.size(); i++) {
+            ejercito.get(i).start();
+            enemigo.get(i).start();
+        }
+        for (int j = 0; j < defensa.size(); j++) {
+            defensa.get(j).stopThread();
+        }
+    }
+    
+    public void stopGuerreros(){
+        for (int i = 0; i < ejercito.size(); i++) {
+            ejercito.get(i).stopThread();
+            enemigo.get(i).stopThread();
+        }
+        for (int j = 0; j < defensa.size(); j++) {
+            defensa.get(j).stopThread();
+        }
+    }
+    
+    public void pauseGuerreros(){
+        for (int i = 0; i < ejercito.size(); i++) {
+            ejercito.get(i).setPause();
+            enemigo.get(i).setPause();
+        }
+        for (int j = 0; j < defensa.size(); j++) {
+            defensa.get(j).setPause();
+        }
+    }
     
     
     

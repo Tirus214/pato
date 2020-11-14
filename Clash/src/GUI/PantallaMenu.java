@@ -72,6 +72,11 @@ public class PantallaMenu extends javax.swing.JFrame {
         lblNivel.setBorder(new javax.swing.border.MatteBorder(null));
 
         btnConfiguracion.setText("Configuracion");
+        btnConfiguracion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfiguracionActionPerformed(evt);
+            }
+        });
 
         btnGuardar.setText("Guardar");
 
@@ -216,6 +221,10 @@ public class PantallaMenu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfiguracionActionPerformed
+        
+    }//GEN-LAST:event_btnConfiguracionActionPerformed
 
     /**
      * @param args the command line arguments
