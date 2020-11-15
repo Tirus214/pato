@@ -19,6 +19,7 @@ import javax.swing.JComboBox;
 public class PantallaMenu extends javax.swing.JFrame {
     Juego juego;
     private ArrayList<String> nombreGuerreros;
+    private ArrayList<Integer> numeroGuerreros;
     int cantTropas;
     PantallaAdmin pantalla;
     private String seleccion;
@@ -29,22 +30,30 @@ public class PantallaMenu extends javax.swing.JFrame {
     
     public PantallaMenu() {  
         initComponents();
-        cmbGuerreros.addItem("Buenas");
-        cmbGuerreros.addItem("Hola");
-        cmbGuerreros.addItem("Caca");
     }
     
     
     public void putJuego(Juego juego){
         this.juego = juego;
         nombreGuerreros = new ArrayList<String>();
+        numeroGuerreros = new ArrayList<Integer>();
         putComponentes();
     }
     
     public void putComponentes(){
         lblNivel.setText("Nivel actual: " + juego.getNivel() + "");
         cantTropas = juego.getCantTropas();
-        lblEjercitoFaltante.setText("Campos de ejercito disponibles:" + cantTropas);
+        lblEjercitoFaltante.setText("Campos de ejercito disponibles: " + cantTropas);
+        txfTropasSeleccionadas.setText("");
+        cmbGuerreros.addItem("hola");
+        cmbGuerreros.addItem("buenas");
+        cmbGuerreros.addItem("que tal");
+        nombreGuerreros.add("hola");
+        nombreGuerreros.add("buenas");
+        nombreGuerreros.add("que tal");
+        numeroGuerreros.add(0);
+        numeroGuerreros.add(0);
+        numeroGuerreros.add(0);
         addItems();
        
     }
@@ -53,8 +62,10 @@ public class PantallaMenu extends javax.swing.JFrame {
         for (int i = 0; i < juego.guerrerosDisponibles.size(); i++) {
             //nombreGuerreros.add(juego.guerrerosDisponibles.get(i).getName());
             cmbGuerreros.addItem(nombreGuerreros.get(i));
+            numeroGuerreros.add(0);
         }
     }
+    
     
     private void showPropeties(){
         for (int i = 0; i < juego.guerrerosDisponibles.size(); i++) {
@@ -85,6 +96,23 @@ public class PantallaMenu extends javax.swing.JFrame {
             }
         }
     }
+    
+    private int buscarNombre(){
+        for (int i = 0; i < nombreGuerreros.size(); i++) {
+            if(seleccion == nombreGuerreros.get(i)){
+                return i;
+            }
+        }
+        return -1;
+    }
+    
+    private void printGuerreros(){
+        for (int i = 0; i < numeroGuerreros.size(); i++) {
+            if(numeroGuerreros.get(i) > 0){
+                txfTropasSeleccionadas.append("\n" + nombreGuerreros.get(i) + " x" + numeroGuerreros.get(i));
+            }
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -101,8 +129,6 @@ public class PantallaMenu extends javax.swing.JFrame {
         btnGuardar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         lblEjercitoFaltante = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         lblTropas = new javax.swing.JLabel();
         lblSMStropa = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -112,15 +138,20 @@ public class PantallaMenu extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         lblEspecificaciones = new javax.swing.JLabel();
         cmbGuerreros = new javax.swing.JComboBox<>();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txfTropasSeleccionadas = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(153, 255, 153));
+        jPanel1.setLayout(null);
 
         lblNivel.setBackground(new java.awt.Color(102, 153, 0));
         lblNivel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lblNivel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNivel.setBorder(new javax.swing.border.MatteBorder(null));
+        jPanel1.add(lblNivel);
+        lblNivel.setBounds(20, 10, 257, 93);
 
         btnConfiguracion.setText("Configuracion");
         btnConfiguracion.addActionListener(new java.awt.event.ActionListener() {
@@ -128,28 +159,41 @@ public class PantallaMenu extends javax.swing.JFrame {
                 btnConfiguracionActionPerformed(evt);
             }
         });
+        jPanel1.add(btnConfiguracion);
+        btnConfiguracion.setBounds(60, 640, 130, 25);
 
         btnGuardar.setText("Guardar");
+        jPanel1.add(btnGuardar);
+        btnGuardar.setBounds(60, 680, 130, 25);
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(300, 850, 0, 0);
 
         lblEjercitoFaltante.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblEjercitoFaltante.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblEjercitoFaltante.setBorder(new javax.swing.border.MatteBorder(null));
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        jPanel1.add(lblEjercitoFaltante);
+        lblEjercitoFaltante.setBounds(340, 120, 340, 34);
 
         lblTropas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTropas.setText("Guerreros Seleccionados");
+        jPanel1.add(lblTropas);
+        lblTropas.setBounds(760, 40, 156, 35);
 
         lblSMStropa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSMStropa.setText("Seleccione una tropa:");
+        jPanel1.add(lblSMStropa);
+        lblSMStropa.setBounds(240, 200, 125, 16);
 
         txfEspecificaciones.setColumns(20);
         txfEspecificaciones.setRows(5);
         jScrollPane2.setViewportView(txfEspecificaciones);
 
+        jPanel1.add(jScrollPane2);
+        jScrollPane2.setBounds(340, 280, 328, 234);
+
         lblImagenTropa.setBorder(new javax.swing.border.MatteBorder(null));
+        jPanel1.add(lblImagenTropa);
+        lblImagenTropa.setBounds(20, 310, 238, 169);
 
         btnIncluir.setText("Incluir Guerrero");
         btnIncluir.addActionListener(new java.awt.event.ActionListener() {
@@ -157,13 +201,19 @@ public class PantallaMenu extends javax.swing.JFrame {
                 btnIncluirActionPerformed(evt);
             }
         });
+        jPanel1.add(btnIncluir);
+        btnIncluir.setBounds(410, 540, 205, 38);
 
         jButton2.setBackground(new java.awt.Color(255, 51, 51));
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton2.setText("Iniciar Batalla");
+        jPanel1.add(jButton2);
+        jButton2.setBounds(710, 650, 230, 57);
 
         lblEspecificaciones.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblEspecificaciones.setText("Especificaciones");
+        lblEspecificaciones.setText("Especificaciones del guerrero");
+        jPanel1.add(lblEspecificaciones);
+        lblEspecificaciones.setBounds(390, 250, 230, 16);
 
         cmbGuerreros.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -175,114 +225,25 @@ public class PantallaMenu extends javax.swing.JFrame {
                 cmbGuerrerosMouseExited(evt);
             }
         });
+        jPanel1.add(cmbGuerreros);
+        cmbGuerreros.setBounds(380, 190, 257, 30);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(300, 300, 300)
-                                .addComponent(jLabel1))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(37, 37, 37)
-                                .addComponent(lblNivel, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 193, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblImagenTropa, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(46, 46, 46)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(83, 83, 83))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnIncluir, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(319, 319, 319))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(lblSMStropa)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(cmbGuerreros, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(lblEjercitoFaltante, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(245, 245, 245))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblEspecificaciones)
-                                .addGap(201, 201, 201)))))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblTropas, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(79, 79, 79))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(202, 202, 202))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnConfiguracion)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblNivel, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTropas, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(75, 75, 75)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblSMStropa)
-                            .addComponent(cmbGuerreros, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(29, 29, 29)
-                        .addComponent(lblEspecificaciones)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(29, 29, 29)
-                                .addComponent(btnIncluir, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(34, 34, 34)
-                                .addComponent(lblImagenTropa, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addComponent(btnConfiguracion)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnGuardar)
-                .addGap(79, 79, 79))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(112, 112, 112)
-                .addComponent(lblEjercitoFaltante, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(jLabel1)
-                .addContainerGap())
-        );
+        txfTropasSeleccionadas.setColumns(20);
+        txfTropasSeleccionadas.setRows(5);
+        jScrollPane3.setViewportView(txfTropasSeleccionadas);
+
+        jPanel1.add(jScrollPane3);
+        jScrollPane3.setBounds(730, 90, 231, 500);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1008, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 755, Short.MAX_VALUE)
         );
 
         pack();
@@ -300,7 +261,17 @@ public class PantallaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbGuerrerosMouseExited
 
     private void btnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIncluirActionPerformed
-
+        txfTropasSeleccionadas.setText("");
+        int indice = buscarNombre();
+        if (indice != -1){
+            int valor = numeroGuerreros.get(indice);
+            valor++;
+            numeroGuerreros.add(indice, valor);
+            numeroGuerreros.set(indice, valor);
+        }
+        printGuerreros();
+        cantTropas--;
+        lblEjercitoFaltante.setText("Campos de ejercito disponibles: " + cantTropas);
     }//GEN-LAST:event_btnIncluirActionPerformed
 
     private void cmbGuerrerosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbGuerrerosItemStateChanged
@@ -351,9 +322,8 @@ public class PantallaMenu extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblEjercitoFaltante;
     private javax.swing.JLabel lblEspecificaciones;
     private javax.swing.JLabel lblImagenTropa;
@@ -361,5 +331,6 @@ public class PantallaMenu extends javax.swing.JFrame {
     private javax.swing.JLabel lblSMStropa;
     private javax.swing.JLabel lblTropas;
     private javax.swing.JTextArea txfEspecificaciones;
+    private javax.swing.JTextArea txfTropasSeleccionadas;
     // End of variables declaration//GEN-END:variables
 }
