@@ -13,12 +13,27 @@ import javax.swing.JPanel;
  */
 public class PantallaAdmin extends javax.swing.JFrame {
     public PantallaMenu pantalla;
+    public PantallaAdd pantalla2;
     /**
      * Creates new form PantallaAdmin
      */
     public PantallaAdmin() {
         initComponents();
         pantalla = new PantallaMenu();
+    }
+    
+    public void putPantalla(PantallaMenu pantalla){
+        this.pantalla = pantalla;
+    }
+    
+    public void devolverse(){
+        setVisible(false);
+        pantalla.setVisible(true);
+    }
+    
+    public void avanzar(){
+        setVisible(false);
+        pantalla2.setVisible(true);
     }
 
     /**
@@ -37,6 +52,7 @@ public class PantallaAdmin extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         btnAceptar = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,6 +66,13 @@ public class PantallaAdmin extends javax.swing.JFrame {
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAceptarActionPerformed(evt);
+            }
+        });
+
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
             }
         });
 
@@ -70,6 +93,10 @@ public class PantallaAdmin extends javax.swing.JFrame {
                         .addComponent(txfContrasena, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
                         .addComponent(txfUsuario, javax.swing.GroupLayout.Alignment.LEADING)))
                 .addContainerGap(317, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(81, 81, 81))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -86,7 +113,9 @@ public class PantallaAdmin extends javax.swing.JFrame {
                     .addComponent(jLabel3))
                 .addGap(52, 52, 52)
                 .addComponent(btnAceptar)
-                .addContainerGap(179, Short.MAX_VALUE))
+                .addGap(77, 77, 77)
+                .addComponent(btnSalir)
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -107,10 +136,14 @@ public class PantallaAdmin extends javax.swing.JFrame {
         String nombre = txfContrasena.getText();
         String contra = txfUsuario.getText();
         if(nombre == "admin" && contra == "admin"){
-            setVisible(false);
-            JPanel jPanel2 = new javax.swing.JPanel();
+            pantalla2.putPantalla(this);
+            avanzar();
         }
     }//GEN-LAST:event_btnAceptarActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        devolverse();
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -149,6 +182,7 @@ public class PantallaAdmin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
+    private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -16,18 +16,12 @@ public class Defensa extends Personaje {
    private boolean ataqueTerrestre;
    
     
-   public Defensa(String name, int apLevel, int level, int damage, int range, boolean ataqueTerrestre, boolean ataqueAereo){
-        super(name, apLevel, level, damage, range);
+   public Defensa(String name, int apLevel, int level, int damage, int range, boolean ataqueTerrestre, boolean ataqueAereo, String img1, String img2){
+        super(name, apLevel, level, damage, range, img1, img2);
         this.ataqueTerrestre = ataqueTerrestre;
         this.ataqueAereo = ataqueAereo;
    }
-   
-   
-   @Override
-   public String toString(){
-       return ("Corriendo "+ this.health);
-   }
-   
+   /*
    @Override
     public void run(){
         while (running){
@@ -54,7 +48,7 @@ public class Defensa extends Personaje {
             }
             
         }    
-    }
+    }*/
 
     public int getApLevel() {
         return apLevel;

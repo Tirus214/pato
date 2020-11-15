@@ -33,6 +33,7 @@ public class Juego extends Thread{
         defensa = new ArrayList<Defensa>();
         enemigo = new ArrayList<Guerrero>();
         defensasDisponibles = new ArrayList<Defensa>();
+        guerrerosDisponibles = new ArrayList<Guerrero>();
         nivel = 1;
         cantTropas = 5;
         cantDefensas = 3;
@@ -67,12 +68,12 @@ public class Juego extends Thread{
     
     //crea la plantilla de defensas para elegir
     private void createDefensas(){
-        defensasDisponibles.add(new Defensa("Canon", 1, 1, 10, 3, true, false));
-        defensasDisponibles.add(new Defensa("Torre de Arqueras", 1, 1, 8, 3, true, true));
-        defensasDisponibles.add(new Defensa("Muro", 1, 1, 0, 0, false, false));
-        defensasDisponibles.add(new Defensa("Mortero", 10, 1, 10, 10, true, false));
-        defensasDisponibles.add(new Defensa("Cohetes", 5, 1, 10, 10, false, true));
-        defensasDisponibles.add(new Defensa("Bomba", 1, 1, 10, 1, false, true));
+        defensasDisponibles.add(new Defensa("Canon", 1, 1, 10, 3, true, false, "", ""));
+        defensasDisponibles.add(new Defensa("TorreArqueras", 1, 1, 8, 3, true, true, "", ""));
+        defensasDisponibles.add(new Defensa("Muro", 1, 1, 0, 0, false, false, "", ""));
+        defensasDisponibles.add(new Defensa("Mortero", 10, 1, 10, 10, true, false, "", ""));
+        defensasDisponibles.add(new Defensa("Cohetes", 5, 1, 10, 10, false, true, "", ""));
+        defensasDisponibles.add(new Defensa("Bomba", 1, 1, 10, 1, false, true, "", ""));
     }
     
     //crea defensas aleatoriamente segun su nivel
@@ -87,21 +88,21 @@ public class Juego extends Thread{
     }
     
     
-    public void generarGuerrero(String tipoGuerrero, String name, int damage, int life, int level, int range, int space, int apLevel){
+    public void generarGuerrero(String tipoGuerrero, String name, int damage, int life, int level, int range, int space, int apLevel, String img1, String img2){
         if(tipoGuerrero == "GuerreroDeContacto"){
-            guerrerosDisponibles.add(new GuerreroDeContacto(name, damage, life, level, range, space, apLevel));
+            guerrerosDisponibles.add(new GuerreroDeContacto(name, damage, life, level, range, space, apLevel, img1, img2));
         }
         else if(tipoGuerrero == "GuerreroMedianoAlcance"){
-            guerrerosDisponibles.add(new GuerreroMedianoAlcance(name, damage, life, level, range, space, apLevel));
+            guerrerosDisponibles.add(new GuerreroMedianoAlcance(name, damage, life, level, range, space, apLevel, img1, img2));
         }
         else if(tipoGuerrero == "GuerreroAereo"){
-            guerrerosDisponibles.add(new GuerreroAereo(name, damage, life, level, range, space, apLevel));
+            guerrerosDisponibles.add(new GuerreroAereo(name, damage, life, level, range, space, apLevel, img1, img2));
         }
         else if(tipoGuerrero == "GuerreroBestia"){
-            guerrerosDisponibles.add(new GuerreroBestia(name, damage, life, level, range, space, apLevel));
+            guerrerosDisponibles.add(new GuerreroBestia(name, damage, life, level, range, space, apLevel, img1, img2));
         }
         else if(tipoGuerrero == "GuerreroHeroe"){
-            guerrerosDisponibles.add(new GuerreroHeroe(name, damage, life, level, range, space, apLevel));
+            guerrerosDisponibles.add(new GuerreroHeroe(name, damage, life, level, range, space, apLevel, img1, img2));
         }
     }
     

@@ -23,22 +23,24 @@ public abstract class Personaje extends Thread{
     protected int apLevel;
     protected int range;
     protected boolean movility;
+    protected String img1;
+    protected String img2;
     protected boolean running = true;
     protected boolean pause = false;
-    protected int health;
     public JLabel refLabel;
     private int id = -1;
     private Point posicion;
     
     //Constructor
-    public Personaje(String name, int apLevel, int level,int damage, int range) {
+    public Personaje(String name, int apLevel, int level,int damage, int range, String img1, String img2) {
         this.name = name;
         this.apLevel = apLevel;
         this.damage = damage;
         this.level = level;
         this.id++;
         this.refLabel = refPantalla.generateLabel(id);
-        
+        this.img1 = img1;
+        this.img2 = img2;
     }
     
     
@@ -50,11 +52,8 @@ public abstract class Personaje extends Thread{
         this.pause = !this.pause;
     }
     
-    void decrementarVida(int golpePower){
-        this.health -= golpePower; 
-    }
     public void attack(Personaje p){
-      p.decrementarVida(damage);
+      //p.decrementarVida(damage);
   }
    
     

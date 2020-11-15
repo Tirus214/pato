@@ -7,6 +7,7 @@ package GUI;
 
 import clash.Juego;
 import java.util.ArrayList;
+import javax.swing.JComboBox;
 
 /**
  *
@@ -16,6 +17,7 @@ public class PantallaMenu extends javax.swing.JFrame {
     Juego juego;
     private ArrayList<String> nombreGuerreros;
     int cantTropas;
+    PantallaAdmin pantalla;
     
     /**
      * Creates new form PantallaMenu
@@ -25,16 +27,26 @@ public class PantallaMenu extends javax.swing.JFrame {
         initComponents();
     }
     
+    
     public void putJuego(Juego juego){
         this.juego = juego;
-        lblNivel.setText("Nivel actual: " + juego.getNivel() + "");
-        cantTropas = juego.getCantTropas();
+        nombreGuerreros = new ArrayList<String>();
         putComponentes();
-        cmbGuerreros.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
     }
     
     public void putComponentes(){
+        lblNivel.setText("Nivel actual: " + juego.getNivel() + "");
+        cantTropas = juego.getCantTropas();
         lblEjercitoFaltante.setText("Campos de ejercito disponibles:" + cantTropas);
+        addItems();
+        
+    }
+    
+    private void addItems(){
+        for (int i = 0; i < juego.guerrerosDisponibles.size(); i++) {
+            //nombreGuerreros.add(juego.guerrerosDisponibles.get(i).getName());
+            cmbGuerreros.addItem(nombreGuerreros.get(i));
+        }
     }
 
     /**
@@ -110,8 +122,6 @@ public class PantallaMenu extends javax.swing.JFrame {
 
         lblEspecificaciones.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblEspecificaciones.setText("Especificaciones");
-
-        cmbGuerreros.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -226,7 +236,10 @@ public class PantallaMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfiguracionActionPerformed
-        
+        pantalla = new PantallaAdmin();
+        pantalla.putPantalla(this);
+        setVisible(false);
+        pantalla.setVisible(true);
     }//GEN-LAST:event_btnConfiguracionActionPerformed
 
     /**
