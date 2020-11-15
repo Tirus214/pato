@@ -13,7 +13,7 @@ import GUI.PantallaInicial;
  */
 public class main {
     public static void main(String[] args) {
-        
+        Defensa a1 = new Defensa("Canon", 1, 1, 10, 3, true, false);
         PantallaInicial pantalla = new PantallaInicial();
         pantalla.setVisible(true);
     }

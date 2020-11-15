@@ -28,7 +28,6 @@ public class Juego extends Thread{
     private boolean running;
 
     
-    
     public Juego(){
         ejercito = new ArrayList<Guerrero>();
         defensa = new ArrayList<Defensa>();
@@ -38,6 +37,8 @@ public class Juego extends Thread{
         cantTropas = 5;
         cantDefensas = 3;
         // createDefensas(); fix
+        Defensa a1 = new Defensa("Canon", 1, 1, 10, 3, true, false);
+        
         running = true;
     }
     /*
