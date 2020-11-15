@@ -55,6 +55,117 @@ public abstract class Personaje extends Thread{
     public void attack(Personaje p){
       //p.decrementarVida(damage);
   }
+
+    public PantallaPartida getRefPantalla() {
+        return refPantalla;
+    }
+
+    public void setRefPantalla(PantallaPartida refPantalla) {
+        this.refPantalla = refPantalla;
+    }
+
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public void setDamage(int damage) {
+        this.damage = damage;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public int getApLevel() {
+        return apLevel;
+    }
+
+    public void setApLevel(int apLevel) {
+        this.apLevel = apLevel;
+    }
+
+    public int getRange() {
+        return range;
+    }
+
+    public void setRange(int range) {
+        this.range = range;
+    }
+
+    public boolean isMovility() {
+        return movility;
+    }
+
+    public void setMovility(boolean movility) {
+        this.movility = movility;
+    }
+
+    public String getImg1() {
+        return img1;
+    }
+
+    public void setImg1(String img1) {
+        this.img1 = img1;
+    }
+
+    public String getImg2() {
+        return img2;
+    }
+
+    public void setImg2(String img2) {
+        this.img2 = img2;
+    }
+
+    public boolean isRunning() {
+        return running;
+    }
+
+    public void setRunning(boolean running) {
+        this.running = running;
+    }
+
+    public boolean isPause() {
+        return pause;
+    }
+
+    public void setPause(boolean pause) {
+        this.pause = pause;
+    }
+
+    public JLabel getRefLabel() {
+        return refLabel;
+    }
+
+    public void setRefLabel(JLabel refLabel) {
+        this.refLabel = refLabel;
+    }
+
+    public int getIde() {
+        return id;
+    }
+
+    public void setIde(int id) {
+        this.id = id;
+    }
+
+    public Point getPosicion() {
+        return posicion;
+    }
+
+    public void setPosicion(Point posicion) {
+        this.posicion = posicion;
+    }
    
+    
+    
+    
+    
+    
+    
     
 }

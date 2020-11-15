@@ -6,7 +6,10 @@
 package GUI;
 
 import clash.Juego;
+import java.awt.Component;
+import java.awt.Graphics;
 import java.util.ArrayList;
+import javax.swing.Icon;
 import javax.swing.JComboBox;
 
 /**
@@ -18,6 +21,7 @@ public class PantallaMenu extends javax.swing.JFrame {
     private ArrayList<String> nombreGuerreros;
     int cantTropas;
     PantallaAdmin pantalla;
+    private String seleccion;
     
     /**
      * Creates new form PantallaMenu
@@ -25,6 +29,9 @@ public class PantallaMenu extends javax.swing.JFrame {
     
     public PantallaMenu() {  
         initComponents();
+        cmbGuerreros.addItem("Buenas");
+        cmbGuerreros.addItem("Hola");
+        cmbGuerreros.addItem("Caca");
     }
     
     
@@ -39,13 +46,43 @@ public class PantallaMenu extends javax.swing.JFrame {
         cantTropas = juego.getCantTropas();
         lblEjercitoFaltante.setText("Campos de ejercito disponibles:" + cantTropas);
         addItems();
-        
+       
     }
     
     private void addItems(){
         for (int i = 0; i < juego.guerrerosDisponibles.size(); i++) {
             //nombreGuerreros.add(juego.guerrerosDisponibles.get(i).getName());
             cmbGuerreros.addItem(nombreGuerreros.get(i));
+        }
+    }
+    
+    private void showPropeties(){
+        for (int i = 0; i < juego.guerrerosDisponibles.size(); i++) {
+            if(juego.guerrerosDisponibles.get(i).getName() == seleccion){
+                txfEspecificaciones.setText("Nombre: " + juego.guerrerosDisponibles.get(i).getName());
+                txfEspecificaciones.append("\nDaño: " + juego.guerrerosDisponibles.get(i).getDamage() + "golpes por segundo");
+                txfEspecificaciones.append("\nVida: " + juego.guerrerosDisponibles.get(i).getHealth() + "golpes");
+                txfEspecificaciones.append("\nNivel: " + juego.guerrerosDisponibles.get(i).getLevel());
+                txfEspecificaciones.append("\nRango: " + juego.guerrerosDisponibles.get(i).getRange());
+                txfEspecificaciones.append("\nEspacio en ejercito: " + juego.guerrerosDisponibles.get(i).getDamage() + "unidades");
+                txfEspecificaciones.append("\nNivel de aparicion: " + juego.guerrerosDisponibles.get(i).getApLevel());
+                Icon icono = new Icon() {
+                    @Override
+                    public void paintIcon(Component cmpnt, Graphics grphcs, int i, int i1) {
+                        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                    }
+
+                    @Override
+                    public int getIconWidth() {
+                        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                    }
+
+                    @Override
+                    public int getIconHeight() {
+                        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                    }
+                };
+            }
         }
     }
 
@@ -71,7 +108,7 @@ public class PantallaMenu extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         txfEspecificaciones = new javax.swing.JTextArea();
         lblImagenTropa = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnIncluir = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         lblEspecificaciones = new javax.swing.JLabel();
         cmbGuerreros = new javax.swing.JComboBox<>();
@@ -114,7 +151,12 @@ public class PantallaMenu extends javax.swing.JFrame {
 
         lblImagenTropa.setBorder(new javax.swing.border.MatteBorder(null));
 
-        jButton1.setText("Incluir Guerrero");
+        btnIncluir.setText("Incluir Guerrero");
+        btnIncluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIncluirActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(255, 51, 51));
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -122,6 +164,17 @@ public class PantallaMenu extends javax.swing.JFrame {
 
         lblEspecificaciones.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblEspecificaciones.setText("Especificaciones");
+
+        cmbGuerreros.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbGuerrerosItemStateChanged(evt);
+            }
+        });
+        cmbGuerreros.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                cmbGuerrerosMouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -147,7 +200,7 @@ public class PantallaMenu extends javax.swing.JFrame {
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(83, 83, 83))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnIncluir, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(319, 319, 319))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -196,7 +249,7 @@ public class PantallaMenu extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(29, 29, 29)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnIncluir, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(34, 34, 34)
                                 .addComponent(lblImagenTropa, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -242,6 +295,19 @@ public class PantallaMenu extends javax.swing.JFrame {
         pantalla.setVisible(true);
     }//GEN-LAST:event_btnConfiguracionActionPerformed
 
+    private void cmbGuerrerosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmbGuerrerosMouseExited
+        
+    }//GEN-LAST:event_cmbGuerrerosMouseExited
+
+    private void btnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIncluirActionPerformed
+
+    }//GEN-LAST:event_btnIncluirActionPerformed
+
+    private void cmbGuerrerosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbGuerrerosItemStateChanged
+        this.seleccion = (String) cmbGuerreros.getSelectedItem();
+        showPropeties();
+    }//GEN-LAST:event_cmbGuerrerosItemStateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -280,8 +346,8 @@ public class PantallaMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConfiguracion;
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnIncluir;
     private javax.swing.JComboBox<String> cmbGuerreros;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

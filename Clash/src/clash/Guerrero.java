@@ -60,6 +60,24 @@ public abstract class Guerrero extends Personaje{
             
         }    
     }
+
+    public int getSpace() {
+        return space;
+    }
+
+    public void setSpace(int space) {
+        this.space = space;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+    
+    
     
     
 }
