@@ -38,7 +38,7 @@ public abstract class Personaje extends Thread{
         this.damage = damage;
         this.level = level;
         this.id++;
-        this.refLabel = refPantalla.generateLabel(id);
+        //this.refLabel = refPantalla.generateLabel(id);
         this.img1 = img1;
         this.img2 = img2;
     }

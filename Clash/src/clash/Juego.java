@@ -22,10 +22,12 @@ public class Juego extends Thread{
     private ArrayList<Defensa> defensa;
     private ArrayList<Guerrero> enemigo;
     private ArrayList<Defensa> defensasDisponibles;
-    private int nivel;
+    private int nivelPartida;
     private int cantTropas;
     private int cantDefensas;
     private boolean running;
+    public ArrayList<String> nombreGuerreros;
+    public ArrayList<Integer> numeroGuerreros;
 
     
     public Juego(){
@@ -34,7 +36,9 @@ public class Juego extends Thread{
         enemigo = new ArrayList<Guerrero>();
         defensasDisponibles = new ArrayList<Defensa>();
         guerrerosDisponibles = new ArrayList<Guerrero>();
-        nivel = 1;
+        nombreGuerreros = new ArrayList<String>();
+        numeroGuerreros = new ArrayList<Integer>();
+        nivelPartida = 1;
         cantTropas = 5;
         cantDefensas = 3;
         // createDefensas(); fix
@@ -55,8 +59,10 @@ public class Juego extends Thread{
     }*/
     
     private void putCantidad(){
-        this.cantTropas = nivel * 3 + 5;
-        this.cantDefensas = nivel * 3 + 3;
+        if(nivelPartida < 6){
+            this.cantTropas = nivelPartida * 3 + 5;
+            this.cantDefensas = nivelPartida * 3 + 3;
+        }
     }
     
     
@@ -80,7 +86,7 @@ public class Juego extends Thread{
     private void randomDefensas(){
         for (int i = 0; i < cantDefensas; i++) {
             int random = (int) Math.random()*5;
-            while(defensasDisponibles.get(random).apLevel != this.nivel){
+            while(defensasDisponibles.get(random).apLevel != this.nivelPartida){
                 random = (int) Math.random()*5;
             }
             defensa.add(defensasDisponibles.get(random));
@@ -103,6 +109,34 @@ public class Juego extends Thread{
         }
         else if(tipoGuerrero == "GuerreroHeroe"){
             guerrerosDisponibles.add(new GuerreroHeroe(name, damage, life, level, range, space, apLevel, img1, img2));
+        }
+    }
+    
+    public void addGuerrero(String name){
+        for (int i = 0; i < guerrerosDisponibles.size(); i++) {
+            if(guerrerosDisponibles.get(i).name == name){
+                Guerrero tmp = guerrerosDisponibles.get(i);
+                if(GuerreroDeContacto.class == guerrerosDisponibles.get(i).getClass()) {
+                    ejercito.add(new GuerreroDeContacto(name, tmp.damage, tmp.health, tmp.level, tmp.range, tmp.space, tmp.apLevel, tmp.getImg1(), tmp.getImg2()));
+                    return;
+                }
+                else if(GuerreroMedianoAlcance.class == guerrerosDisponibles.get(i).getClass()) {
+                    ejercito.add(new GuerreroMedianoAlcance(name, tmp.damage, tmp.health, tmp.level, tmp.range, tmp.space, tmp.apLevel, tmp.getImg1(), tmp.getImg2()));
+                    return;
+                }
+                else if(GuerreroAereo.class == guerrerosDisponibles.get(i).getClass()) {
+                    ejercito.add(new GuerreroAereo(name, tmp.damage, tmp.health, tmp.level, tmp.range, tmp.space, tmp.apLevel, tmp.getImg1(), tmp.getImg2()));
+                    return;
+                }
+                else if(GuerreroBestia.class == guerrerosDisponibles.get(i).getClass()) {
+                    ejercito.add(new GuerreroBestia(name, tmp.damage, tmp.health, tmp.level, tmp.range, tmp.space, tmp.apLevel, tmp.getImg1(), tmp.getImg2()));
+                    return;
+                }
+                else if(GuerreroHeroe.class == guerrerosDisponibles.get(i).getClass()) {
+                    ejercito.add(new GuerreroHeroe(name, tmp.damage, tmp.health, tmp.level, tmp.range, tmp.space, tmp.apLevel, tmp.getImg1(), tmp.getImg2()));
+                    return;
+                }
+            }
         }
     }
     
@@ -167,11 +201,11 @@ public class Juego extends Thread{
     }
 
     public int getNivel() {
-        return nivel;
+        return nivelPartida;
     }
 
     public void setNivel(int nivel) {
-        this.nivel = nivel;
+        this.nivelPartida = nivel;
     }
 
     public int getCantTropas() {

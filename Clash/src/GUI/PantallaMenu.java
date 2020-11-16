@@ -6,6 +6,7 @@
 package GUI;
 
 import clash.Juego;
+import filemanager.FileManager;
 import java.awt.Component;
 import java.awt.Graphics;
 import java.util.ArrayList;
@@ -35,8 +36,8 @@ public class PantallaMenu extends javax.swing.JFrame {
     
     public void putJuego(Juego juego){
         this.juego = juego;
-        nombreGuerreros = new ArrayList<String>();
-        numeroGuerreros = new ArrayList<Integer>();
+        nombreGuerreros = juego.nombreGuerreros;
+        numeroGuerreros = juego.numeroGuerreros;
         putComponentes();
     }
     
@@ -97,13 +98,20 @@ public class PantallaMenu extends javax.swing.JFrame {
         }
     }
     
-    private int buscarNombre(){
+    private void buscarNombre(){
+        boolean find = false;
         for (int i = 0; i < nombreGuerreros.size(); i++) {
-            if(seleccion == nombreGuerreros.get(i)){
-                return i;
+            if(this.seleccion == nombreGuerreros.get(i)){
+                int valor = numeroGuerreros.get(i);
+                valor++;
+                numeroGuerreros.set(i, valor);
+                find = !find;
             }
         }
-        return -1;
+        if(!find){
+            nombreGuerreros.add(seleccion);
+            numeroGuerreros.add(1);
+        }
     }
     
     private void printGuerreros(){
@@ -113,6 +121,7 @@ public class PantallaMenu extends javax.swing.JFrame {
             }
         }
     }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -163,6 +172,11 @@ public class PantallaMenu extends javax.swing.JFrame {
         btnConfiguracion.setBounds(60, 640, 130, 25);
 
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnGuardar);
         btnGuardar.setBounds(60, 680, 130, 25);
         jPanel1.add(jLabel1);
@@ -262,14 +276,9 @@ public class PantallaMenu extends javax.swing.JFrame {
 
     private void btnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIncluirActionPerformed
         txfTropasSeleccionadas.setText("");
-        int indice = buscarNombre();
-        if (indice != -1){
-            int valor = numeroGuerreros.get(indice);
-            valor++;
-            numeroGuerreros.add(indice, valor);
-            numeroGuerreros.set(indice, valor);
-        }
+        buscarNombre();
         printGuerreros();
+        juego.addGuerrero(seleccion);
         cantTropas--;
         lblEjercitoFaltante.setText("Campos de ejercito disponibles: " + cantTropas);
     }//GEN-LAST:event_btnIncluirActionPerformed
@@ -278,6 +287,10 @@ public class PantallaMenu extends javax.swing.JFrame {
         this.seleccion = (String) cmbGuerreros.getSelectedItem();
         showPropeties();
     }//GEN-LAST:event_cmbGuerrerosItemStateChanged
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        FileManager.writeObject(juego, "src\\filemanager\\Files\\" + juego.name + ".dat");
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
     /**
      * @param args the command line arguments
