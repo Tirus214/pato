@@ -24,16 +24,13 @@ public class PantallaPartida extends javax.swing.JFrame {
      * Creates new form PantallaPartida
      */
     
-    private PantallaPartida() {
-        this.juego = new Juego();
+    public PantallaPartida() {
         arregloLabels = new ArrayList<JLabel>();
         initComponents();
     }
     
-    public PantallaPartida(Juego juego) {
+    public void putJuego(Juego juego){
         this.juego = juego;
-        arregloLabels = new ArrayList<JLabel>();
-        initComponents();
     }
 
     

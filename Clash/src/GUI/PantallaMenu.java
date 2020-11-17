@@ -144,7 +144,7 @@ public class PantallaMenu extends javax.swing.JFrame {
         txfEspecificaciones = new javax.swing.JTextArea();
         lblImagenTropa = new javax.swing.JLabel();
         btnIncluir = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnIniciar = new javax.swing.JButton();
         lblEspecificaciones = new javax.swing.JLabel();
         cmbGuerreros = new javax.swing.JComboBox<>();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -218,11 +218,16 @@ public class PantallaMenu extends javax.swing.JFrame {
         jPanel1.add(btnIncluir);
         btnIncluir.setBounds(410, 540, 205, 38);
 
-        jButton2.setBackground(new java.awt.Color(255, 51, 51));
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton2.setText("Iniciar Batalla");
-        jPanel1.add(jButton2);
-        jButton2.setBounds(710, 650, 230, 57);
+        btnIniciar.setBackground(new java.awt.Color(255, 51, 51));
+        btnIniciar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnIniciar.setText("Iniciar Batalla");
+        btnIniciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIniciarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnIniciar);
+        btnIniciar.setBounds(710, 650, 230, 57);
 
         lblEspecificaciones.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblEspecificaciones.setText("Especificaciones del guerrero");
@@ -275,12 +280,14 @@ public class PantallaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbGuerrerosMouseExited
 
     private void btnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIncluirActionPerformed
-        txfTropasSeleccionadas.setText("");
-        buscarNombre();
-        printGuerreros();
-        juego.addGuerrero(seleccion);
-        cantTropas--;
-        lblEjercitoFaltante.setText("Campos de ejercito disponibles: " + cantTropas);
+        if(cantTropas > 0){
+            txfTropasSeleccionadas.setText("");
+            buscarNombre();
+            printGuerreros();
+            int valor = juego.addGuerrero(seleccion, cantTropas);
+            if(valor != -1) cantTropas -= valor;
+            lblEjercitoFaltante.setText("Campos de ejercito disponibles: " + cantTropas);
+        }
     }//GEN-LAST:event_btnIncluirActionPerformed
 
     private void cmbGuerrerosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbGuerrerosItemStateChanged
@@ -291,6 +298,15 @@ public class PantallaMenu extends javax.swing.JFrame {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         FileManager.writeObject(juego, "src\\filemanager\\Files\\" + juego.name + ".dat");
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
+        if(!juego.getEjercito().isEmpty()){
+            PantallaPartida pantalla2 = new PantallaPartida();
+            setVisible(false);
+            pantalla2.putJuego(juego);
+            pantalla.setVisible(true);
+        }
+    }//GEN-LAST:event_btnIniciarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -331,8 +347,8 @@ public class PantallaMenu extends javax.swing.JFrame {
     private javax.swing.JButton btnConfiguracion;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnIncluir;
+    private javax.swing.JButton btnIniciar;
     private javax.swing.JComboBox<String> cmbGuerreros;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
