@@ -8,6 +8,7 @@ package GUI;
 import clash.Juego;
 import clash.Personaje;
 import java.awt.Color;
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.JLabel;
@@ -55,21 +56,31 @@ public class PantallaPartida extends javax.swing.JFrame {
         jPanel1.add(newLabel);
         newLabel.setBackground(Color.red);
         newLabel.setOpaque(true);
-        switch(p.getName()){
-            case "Barbaro" : newLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesGenerales/Barbarian9.png")));
-            
-            case "Pekka" : newLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesGenerales/PEKKA1.png")));
-            
-            case "magician" : newLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesGenerales/magician.png")));
-            
-            case "Maradona" : newLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesGenerales/maladroga.png")));
-        }
+        newLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource(p.getImg1())));
         int x = ((new Random()).nextInt(1000)/40) * 40;
         int y = ((new Random()).nextInt(600) / 40)* 40;
         newLabel.setLocation(x , y);
+        Point punto = new Point(x,y);
+        p.setPosicion(punto);
         arregloLabels.add(newLabel);
-        
         return newLabel;
+    }
+    
+    public boolean compararPoint(Point p){ //True si la casilla esta descoupada
+        int num = 2;
+        for (int i = 0; i < this.juego.getDefensa().size(); i++) {
+            if(this.juego.getDefensa().get(i).getPosicion() == p) 
+                return false;
+        }
+        for (int i = 0; i < this.juego.getEjercito().size(); i++) {
+            if(this.juego.getEjercito().get(i).getPosicion() == p) 
+                return false;
+        }
+        for (int i = 0; i < this.juego.getEnemigo().size(); i++) {
+            if(this.juego.getEnemigo().get(i).getPosicion() == p) 
+                return false;
+        }
+        return true;
     }
     
     public void moveLabel (int labelIndex){
@@ -79,17 +90,18 @@ public class PantallaPartida extends javax.swing.JFrame {
         int direccion = (new Random()).nextInt(4);
         int x = refLabel.getLocation().x;
         int y = refLabel.getLocation().y;
-        
+        Point prueba = new Point(x,y);
         //sumo A x O y
+        do{
             if (direccion == 0 && y-40 >= 0) //arriba
-                y = y-40;
+                prueba.y = y-40;
             else if (direccion == 1 && y+40 <= 560)
-                y = y+40;
+                prueba.y = y+40;
             else if (direccion == 2 && x+40 <= 800)
-                x = x+40;
+                prueba.x = x+40;
             else if (direccion == 3 && x-40 >= 0)
-                x = x-40;
-            
+                prueba.x = x-40;
+        } while(!compararPoint(prueba));
         
         int ocupadoPor = isAvailablePostion(x, y, refLabel);
         if (ocupadoPor == -1)
