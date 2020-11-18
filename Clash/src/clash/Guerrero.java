@@ -14,14 +14,18 @@ public abstract class Guerrero extends Personaje{
     protected int space;
     protected int health;
     String img2;
+    boolean movility;
+    Guerrero objetivo;
 
 
     //Constructor
-    public Guerrero(String name, int damage, int health, int level, int range, int space, int apLevel, String img1, String img2){
+    public Guerrero(String name, int damage, int health, int level, int range, int space, int apLevel, boolean movility,String img1, String img2){
         super(name, apLevel, level, damage, range, img1, img2);
         this.health = health;
         this.space = space;
         this.img2 = img2;
+        this.movility = movility;
+        this.objetivo = null;
     }
     
     //Procedimientos
@@ -36,17 +40,12 @@ public abstract class Guerrero extends Personaje{
     @Override
     public void run(){
         while (running){
-            try {
-                if (health == 0){
-                    System.out.println("Mori");
-                    break;}
-                System.out.println(toString());
-                sleep(1000);
-                
-                health -= 10;
-                
-            } catch (InterruptedException ex){
-                
+            if(objetivo != null) {
+                objetivo.health -= this.damage;
+            } else {
+            }
+            if (health <= 0){
+                running = false;
             }
             
             //
@@ -54,7 +53,7 @@ public abstract class Guerrero extends Personaje{
                 try {
                     sleep(100);
                 } catch (InterruptedException ex) {
-                    
+                   
                 }
             }
             

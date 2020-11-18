@@ -48,13 +48,11 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="txfVida" min="-2" pref="118" max="-2" attributes="0"/>
-                                      <Component id="txfTipo" min="-2" pref="118" max="-2" attributes="0"/>
-                                      <Component id="txfNombre" min="-2" pref="118" max="-2" attributes="0"/>
-                                      <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txfDano" alignment="0" min="-2" pref="118" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="txfVida" min="-2" pref="118" max="-2" attributes="0"/>
+                                  <Component id="txfTipo" min="-2" pref="118" max="-2" attributes="0"/>
+                                  <Component id="txfNombre" min="-2" pref="118" max="-2" attributes="0"/>
+                                  <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txfDano" alignment="0" min="-2" pref="118" max="-2" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="txfRango" alignment="0" min="-2" pref="118" max="-2" attributes="0"/>
