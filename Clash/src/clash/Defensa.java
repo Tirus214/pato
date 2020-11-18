@@ -15,40 +15,35 @@ public class Defensa extends Personaje {
    private boolean ataqueAereo;
    private boolean ataqueTerrestre;
    
+   
     
    public Defensa(String name, int apLevel, int level, int damage, int range, boolean ataqueTerrestre, boolean ataqueAereo, String img1, String img2){
         super(name, apLevel, level, damage, range, img1, img2);
         this.ataqueTerrestre = ataqueTerrestre;
         this.ataqueAereo = ataqueAereo;
    }
-   /*
+   
    @Override
     public void run(){
         while (running){
-            try {
-                if (health == 0){
-                    System.out.println("Mori");
-                    break;}
-                System.out.println(toString());
-                sleep(1000);
-                
-                health -= 10;
-                
-            } catch (InterruptedException ex) {
-                
-            }
+            if(objetivo != null) {
+                if(objetivo.health > 0){
+                    objetivo.health -= this.damage;
+                }
+                else objetivo = null;
+            } 
             
             //
             while(super.pause){
                 try {
-                    sleep(100);
+                    sleep(1000);
                 } catch (InterruptedException ex) {
-                    
+                   
                 }
             }
             
         }    
-    }*/
+    }
 
     public int getApLevel() {
         return apLevel;

@@ -30,6 +30,7 @@ public abstract class Personaje extends Thread{
     public JLabel refLabel;
     private int id = -1;
     private Point posicion;
+    Guerrero objetivo;
     
     //Constructor
     public Personaje(String name, int apLevel, int level,int damage, int range, String img1, String img2) {
@@ -41,6 +42,7 @@ public abstract class Personaje extends Thread{
         //this.refLabel = refPantalla.generateLabel(id);
         this.img1 = img1;
         this.img2 = img2;
+        this.objetivo = null;
     }
     
     

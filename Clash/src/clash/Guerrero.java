@@ -15,7 +15,6 @@ public abstract class Guerrero extends Personaje{
     protected int health;
     String img2;
     boolean movility;
-    Guerrero objetivo;
 
 
     //Constructor
@@ -25,7 +24,6 @@ public abstract class Guerrero extends Personaje{
         this.space = space;
         this.img2 = img2;
         this.movility = movility;
-        this.objetivo = null;
     }
     
     //Procedimientos
@@ -41,8 +39,10 @@ public abstract class Guerrero extends Personaje{
     public void run(){
         while (running){
             if(objetivo != null) {
-                objetivo.health -= this.damage;
-            } else {
+                if(objetivo.health > 0){
+                    objetivo.health -= this.damage;
+                }
+                else objetivo = null;
             }
             if (health <= 0){
                 running = false;
@@ -51,7 +51,7 @@ public abstract class Guerrero extends Personaje{
             //
             while(super.pause){
                 try {
-                    sleep(100);
+                    sleep(1000);
                 } catch (InterruptedException ex) {
                    
                 }
