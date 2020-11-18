@@ -32,7 +32,7 @@ public abstract class Personaje extends Thread{
     public JLabel refLabel;
     private int num;
     private Point posicion;
-    Guerrero objetivo;
+    Personaje objetivo;
     public boolean inRange;
     
     //Constructor
