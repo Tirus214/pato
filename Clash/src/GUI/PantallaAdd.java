@@ -5,20 +5,27 @@
  */
 package GUI;
 
+import clash.Juego;
+
 /**
  *
  * @author Jean Paul
  */
 public class PantallaAdd extends javax.swing.JFrame {
-    PantallaAdmin pantalla;
+    PantallaMenu pantalla;
+    Juego juego;
     /**
      * Creates new form PantallaAdd
      */
     public PantallaAdd() {
         initComponents();
     }
+
+    public void putJuego(Juego juego) {
+        this.juego = juego;
+    }
     
-    public void putPantalla(PantallaAdmin pantalla){
+    public void putPantalla(PantallaMenu pantalla){
         this.pantalla = pantalla;
     }
 
@@ -250,7 +257,7 @@ public class PantallaAdd extends javax.swing.JFrame {
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         String nombre = txfNombre.getText();
         String tipo = txfTipo.getText();
-        String dano = txfDano.getText();
+        int dano = (int) Integer.parseInt(txfDano.getText());
         int vida = (int) Integer.parseInt(txfVida.getText());
         int nivel = (int) Integer.parseInt(txfNivel.getText());
         int rango = (int) Integer.parseInt(txfRango.getText());
@@ -260,10 +267,10 @@ public class PantallaAdd extends javax.swing.JFrame {
         String img2 = txfImagen2.getText();
         
         if(tipo == "GuerreroAereo"){
-            pantalla.pantalla.juego.generarGuerrero(tipo, dano, rango, nivel, nivel, rango, espacio, nivel, false, img1, img2);
+            juego.generarGuerrero(tipo, nombre, dano, vida, nivel, rango, espacio, nivelAp, false, img1, img2);
         }
         else{
-            pantalla.pantalla.juego.generarGuerrero(tipo, dano, rango, nivel, nivel, rango, espacio, nivel, true, img1, img2);
+            juego.generarGuerrero(tipo, nombre, dano, vida, nivel, rango, espacio, nivelAp, true, img1, img2);
         }
         
         
@@ -271,6 +278,7 @@ public class PantallaAdd extends javax.swing.JFrame {
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         setVisible(false);
+        pantalla.putJuego(juego);
         pantalla.setVisible(true);
     }//GEN-LAST:event_btnSalirActionPerformed
 

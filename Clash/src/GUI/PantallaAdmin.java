@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import clash.Juego;
 import javax.swing.JPanel;
 
 /**
@@ -14,12 +15,19 @@ import javax.swing.JPanel;
 public class PantallaAdmin extends javax.swing.JFrame {
     public PantallaMenu pantalla;
     public PantallaAdd pantalla2;
+    Juego juego;
     /**
      * Creates new form PantallaAdmin
      */
     public PantallaAdmin() {
         initComponents();
         pantalla = new PantallaMenu();
+        pantalla2 = new PantallaAdd();
+        juego = new Juego();
+    }
+    
+    public void putJuego(Juego juego){
+        this.juego = juego;
     }
     
     public void putPantalla(PantallaMenu pantalla){
@@ -135,8 +143,9 @@ public class PantallaAdmin extends javax.swing.JFrame {
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         String nombre = txfContrasena.getText();
         String contra = txfUsuario.getText();
-        if(nombre == "admin" && contra == "admin"){
-            pantalla2.putPantalla(this);
+        if("admin".equals(nombre) & "admin".equals(contra)){
+            pantalla2.putPantalla(pantalla);
+            
             avanzar();
         }
     }//GEN-LAST:event_btnAceptarActionPerformed

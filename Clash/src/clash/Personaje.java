@@ -26,12 +26,14 @@ public abstract class Personaje extends Thread{
     protected boolean movility;
     protected String img1;
     protected String img2;
-    protected boolean running = true;
-    protected boolean pause = false;
+    
+    protected boolean running;
+    protected boolean pause;
     public JLabel refLabel;
-    private int id = -1;
+    private int num;
     private Point posicion;
     Guerrero objetivo;
+    public boolean inRange;
     
     //Constructor
     public Personaje(String name, int apLevel, int level,int damage, int range, String img1, String img2) {
@@ -39,13 +41,20 @@ public abstract class Personaje extends Thread{
         this.apLevel = apLevel;
         this.damage = damage;
         this.level = level;
-        this.id++;
-        //this.refLabel = refPantalla.generateLabel(id);
+        this.refLabel = new JLabel();
         this.img1 = img1;
         this.img2 = img2;
         this.objetivo = null;
+        this.posicion = new Point();
+        this.running = true;
+        this.pause = false;
+        this.num = 0;
+        this.inRange = false;
     }
     
+    public void setNum(int num){
+        this.num = num;
+    }
     
     public void stopThread(){
         this.running = false;
@@ -158,11 +167,11 @@ public abstract class Personaje extends Thread{
     }
 
     public int getIde() {
-        return id;
+        return num;
     }
 
     public void setIde(int id) {
-        this.id = id;
+        this.num = id;
     }
 
     public Point getPosicion() {

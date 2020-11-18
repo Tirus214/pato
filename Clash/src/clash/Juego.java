@@ -28,9 +28,74 @@ public class Juego extends Thread{
     private boolean running;
     public ArrayList<String> nombreGuerreros;
     public ArrayList<Integer> numeroGuerreros;
+    public boolean win;
+    public boolean finish;
 
     
     public Juego(){
+        nivelPartida = 1;
+        inicializar();
+        putCantidad();
+    }
+    
+    @Override
+    public void run(){
+        putCantidad();
+        randomDefensas();
+        while(running){
+            int ejercitoMuerto = 0;
+            for (int i = 0; i < ejercito.size(); i++) {
+                if(ejercito.get(i).health > 0){
+                    if(ejercito.get(i).objetivo != null || ejercito.get(i).objetivo.health > 0){
+                        ejercito.get(i).start();
+                    }
+                    else{
+                        searchAttackEnemy(ejercito.get(i), enemigo); 
+                    }
+                }
+                else ejercitoMuerto++;
+            }
+            if(ejercitoMuerto == ejercito.size()){
+                win = false;
+                running = false;
+                finish = true;
+                break;
+            }
+            
+            int enemigosMuertos = 0;
+            for (int i = 0; i < enemigo.size(); i++) {
+                if(ejercito.get(i).health > 0){
+                    if(enemigo.get(i).objetivo != null || enemigo.get(i).objetivo.health > 0){
+                        enemigo.get(i).start();
+                    }
+                    else{
+                        searchAttackEnemy(enemigo.get(i), ejercito); 
+                    }
+                }
+                else enemigosMuertos++;
+            }
+            if(enemigosMuertos == enemigo.size()){
+                win = true;
+                running = false;
+                finish = true;
+            }
+        }
+        if(win){
+            nextLevel();
+        }
+        else{
+            inicializar();
+        }
+    }
+    
+    private void nextLevel(){
+        nivelPartida++;
+        inicializar();
+        putCantidad();
+    }
+    
+    
+    private void inicializar(){
         ejercito = new ArrayList<Guerrero>();
         defensa = new ArrayList<Defensa>();
         enemigo = new ArrayList<Guerrero>();
@@ -38,25 +103,10 @@ public class Juego extends Thread{
         guerrerosDisponibles = new ArrayList<Guerrero>();
         nombreGuerreros = new ArrayList<String>();
         numeroGuerreros = new ArrayList<Integer>();
-        nivelPartida = 1;
-        cantTropas = 5;
-        cantDefensas = 3;
-        // createDefensas(); fix
-        //Defensa a1 = new Defensa("Canon", 1, 1, 10, 3, true, false);
-        
         running = true;
+        finish = false;
+        createDefensas();
     }
-    /*
-    @Override
-    public void run(){
-        randomDefensas();
-        while(running){
-            for (int   = 0;   < ejercito.size();  ++) {
-                Guerrero get = ejercito.get( );
-                
-            }
-        }
-    }*/
     
     private void putCantidad(){
         if(nivelPartida < 6){
@@ -82,11 +132,12 @@ public class Juego extends Thread{
         }
     }
     
-    public void searchAttackEnemy(Personaje attacker){// se va a atacar al azar
+    public void searchAttackEnemy(Personaje attacker, ArrayList<Guerrero> array){// se va a atacar al azar
         Random rand = new Random();
-        int at = rand.nextInt(enemigo.size());
-        //attacker.move(enemigo.get(at));
+        int at = rand.nextInt(array.size()-1);
+        attacker.objetivo = array.get(at);
     }
+    
     
     //crea la plantilla de defensas para elegir
     private void createDefensas(){

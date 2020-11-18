@@ -38,11 +38,17 @@ public abstract class Guerrero extends Personaje{
     @Override
     public void run(){
         while (running){
-            if(objetivo != null) {
-                if(objetivo.health > 0){
-                    objetivo.health -= this.damage;
+            if(inRange){
+                if(objetivo != null) {
+                    if(objetivo.health > 0){
+                        objetivo.health -= this.damage;
+                    }
+                    else {
+                        objetivo = null;
+                        inRange = false;
+                    }
+                    
                 }
-                else objetivo = null;
             }
             if (health <= 0){
                 running = false;

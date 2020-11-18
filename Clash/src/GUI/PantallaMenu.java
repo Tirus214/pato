@@ -46,15 +46,6 @@ public class PantallaMenu extends javax.swing.JFrame {
         cantTropas = juego.getCantTropas();
         lblEjercitoFaltante.setText("Campos de ejercito disponibles: " + cantTropas);
         txfTropasSeleccionadas.setText("");
-        cmbGuerreros.addItem("hola");
-        cmbGuerreros.addItem("buenas");
-        cmbGuerreros.addItem("que tal");
-        nombreGuerreros.add("hola");
-        nombreGuerreros.add("buenas");
-        nombreGuerreros.add("que tal");
-        numeroGuerreros.add(0);
-        numeroGuerreros.add(0);
-        numeroGuerreros.add(0);
         addItems();
        
     }
@@ -271,6 +262,7 @@ public class PantallaMenu extends javax.swing.JFrame {
     private void btnConfiguracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfiguracionActionPerformed
         pantalla = new PantallaAdmin();
         pantalla.putPantalla(this);
+        pantalla.putJuego(juego);
         setVisible(false);
         pantalla.setVisible(true);
     }//GEN-LAST:event_btnConfiguracionActionPerformed
