@@ -22,6 +22,7 @@ public abstract class Personaje extends Thread{
     protected int level;
     protected int apLevel;
     protected int range;
+    protected int health;
     protected boolean movility;
     protected String img1;
     protected String img2;
@@ -30,6 +31,7 @@ public abstract class Personaje extends Thread{
     public JLabel refLabel;
     private int id = -1;
     private Point posicion;
+    Personaje objetivo;
     
     //Constructor
     public Personaje(String name, int apLevel, int level,int damage, int range, String img1, String img2) {
@@ -41,6 +43,7 @@ public abstract class Personaje extends Thread{
         //this.refLabel = refPantalla.generateLabel(id);
         this.img1 = img1;
         this.img2 = img2;
+        this.objetivo = null;
     }
     
     
@@ -60,6 +63,15 @@ public abstract class Personaje extends Thread{
         return refPantalla;
     }
 
+    public Personaje getObjetivo() {
+        return objetivo;
+    }
+
+    public void setObjetivo(Personaje objetivo) {
+        this.objetivo = objetivo;
+    }
+
+    
     public void setRefPantalla(PantallaPartida refPantalla) {
         this.refPantalla = refPantalla;
     }

@@ -65,6 +65,22 @@ public class Juego extends Thread{
         }
     }
     
+    public void fijarObjetivo(){ // fija los objetivos de enemigos y aliados
+        Random ran = new Random();
+        
+        for (int i = 0; i < this.ejercito.size() ; i++) {
+            ejercito.get(i).setObjetivo(enemigo.get(ran.nextInt(enemigo.size())));
+        }
+        for (int i = 0; i < this.enemigo.size() ; i++) {
+            enemigo.get(i).setObjetivo(ejercito.get(ran.nextInt(ejercito.size())));
+        }
+        for (int i = 0; i < this.defensa.size() ; i++) {
+            defensa.get(i).setObjetivo(enemigo.get(ran.nextInt(enemigo.size())));
+        }
+        for (int i = 0; i < this.defensa.size()/2 ; i++) {
+            defensa.get(i).setObjetivo(ejercito.get(ran.nextInt(ejercito.size())));
+        }
+    }
     
     public void searchAttackEnemy(Personaje attacker){// se va a atacar al azar
         Random rand = new Random();

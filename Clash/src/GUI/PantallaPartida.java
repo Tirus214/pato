@@ -83,7 +83,7 @@ public class PantallaPartida extends javax.swing.JFrame {
         return true;
     }
     
-    public void moveLabel (int labelIndex){
+    public void moveLabeltoObjective (int labelIndex){
         
         JLabel refLabel = arregloLabels.get(labelIndex);
         
@@ -102,12 +102,8 @@ public class PantallaPartida extends javax.swing.JFrame {
             else if (direccion == 3 && x-40 >= 0)
                 prueba.x = x-40;
         } while(!compararPoint(prueba));
-        
+        refLabel.setLocation(x, y);
         int ocupadoPor = isAvailablePostion(x, y, refLabel);
-        if (ocupadoPor == -1)
-            refLabel.setLocation(x, y);
-        else
-            System.out.println("Esta ocupada " + x + "," + y + " por " + arregloLabels.get(ocupadoPor).getText());
     }
     
     public int isAvailablePostion(int x, int y, JLabel refLabel){      
