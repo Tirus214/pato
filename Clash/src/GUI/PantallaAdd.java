@@ -259,7 +259,12 @@ public class PantallaAdd extends javax.swing.JFrame {
         String img1 = txfImagen1.getText();
         String img2 = txfImagen2.getText();
         
-        pantalla.pantalla.juego.generarGuerrero(tipo, dano, rango, nivel, nivel, rango, espacio, nivel, img1, img2);
+        if(tipo == "GuerreroAereo"){
+            pantalla.pantalla.juego.generarGuerrero(tipo, dano, rango, nivel, nivel, rango, espacio, nivel, false, img1, img2);
+        }
+        else{
+            pantalla.pantalla.juego.generarGuerrero(tipo, dano, rango, nivel, nivel, rango, espacio, nivel, true, img1, img2);
+        }
         
         
     }//GEN-LAST:event_btnAgregarActionPerformed

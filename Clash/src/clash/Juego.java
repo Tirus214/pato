@@ -94,21 +94,21 @@ public class Juego extends Thread{
     }
     
     
-    public void generarGuerrero(String tipoGuerrero, String name, int damage, int life, int level, int range, int space, int apLevel, String img1, String img2){
+    public void generarGuerrero(String tipoGuerrero, String name, int damage, int life, int level, int range, int space, int apLevel, boolean movility, String img1, String img2){
         if(tipoGuerrero == "GuerreroDeContacto"){
-            guerrerosDisponibles.add(new GuerreroDeContacto(name, damage, life, level, range, space, apLevel, img1, img2));
+            guerrerosDisponibles.add(new GuerreroDeContacto(name, damage, life, level, range, space, apLevel, movility, img1, img2));
         }
         else if(tipoGuerrero == "GuerreroMedianoAlcance"){
-            guerrerosDisponibles.add(new GuerreroMedianoAlcance(name, damage, life, level, range, space, apLevel, img1, img2));
+            guerrerosDisponibles.add(new GuerreroMedianoAlcance(name, damage, life, level, range, space, apLevel, movility, img1, img2));
         }
         else if(tipoGuerrero == "GuerreroAereo"){
-            guerrerosDisponibles.add(new GuerreroAereo(name, damage, life, level, range, space, apLevel, img1, img2));
+            guerrerosDisponibles.add(new GuerreroAereo(name, damage, life, level, range, space, apLevel, movility, img1, img2));
         }
         else if(tipoGuerrero == "GuerreroBestia"){
-            guerrerosDisponibles.add(new GuerreroBestia(name, damage, life, level, range, space, apLevel, img1, img2));
+            guerrerosDisponibles.add(new GuerreroBestia(name, damage, life, level, range, space, apLevel, movility, img1, img2));
         }
         else if(tipoGuerrero == "GuerreroHeroe"){
-            guerrerosDisponibles.add(new GuerreroHeroe(name, damage, life, level, range, space, apLevel, img1, img2));
+            guerrerosDisponibles.add(new GuerreroHeroe(name, damage, life, level, range, space, apLevel, movility, img1, img2));
         }
     }
     
@@ -117,23 +117,23 @@ public class Juego extends Thread{
             if(guerrerosDisponibles.get(i).name == name){
                 Guerrero tmp = guerrerosDisponibles.get(i);
                 if(GuerreroDeContacto.class == tmp.getClass() && cantTropas >= tmp.space) {
-                    ejercito.add(new GuerreroDeContacto(name, tmp.damage, tmp.health, tmp.level, tmp.range, tmp.space, tmp.apLevel, tmp.getImg1(), tmp.getImg2()));
+                    ejercito.add(new GuerreroDeContacto(name, tmp.damage, tmp.health, tmp.level, tmp.range, tmp.space, tmp.apLevel, tmp.movility, tmp.getImg1(), tmp.getImg2()));
                     return tmp.space;
                 }
                 else if(GuerreroMedianoAlcance.class == tmp.getClass() && cantTropas >= tmp.space) {
-                    ejercito.add(new GuerreroMedianoAlcance(name, tmp.damage, tmp.health, tmp.level, tmp.range, tmp.space, tmp.apLevel, tmp.getImg1(), tmp.getImg2()));
+                    ejercito.add(new GuerreroMedianoAlcance(name, tmp.damage, tmp.health, tmp.level, tmp.range, tmp.space, tmp.apLevel, tmp.movility, tmp.getImg1(), tmp.getImg2()));
                     return tmp.space;
                 }
                 else if(GuerreroAereo.class == tmp.getClass() && cantTropas >= tmp.space) {
-                    ejercito.add(new GuerreroAereo(name, tmp.damage, tmp.health, tmp.level, tmp.range, tmp.space, tmp.apLevel, tmp.getImg1(), tmp.getImg2()));
+                    ejercito.add(new GuerreroAereo(name, tmp.damage, tmp.health, tmp.level, tmp.range, tmp.space, tmp.apLevel, tmp.movility, tmp.getImg1(), tmp.getImg2()));
                     return tmp.space;
                 }
                 else if(GuerreroBestia.class == tmp.getClass() && cantTropas >= tmp.space) {
-                    ejercito.add(new GuerreroBestia(name, tmp.damage, tmp.health, tmp.level, tmp.range, tmp.space, tmp.apLevel, tmp.getImg1(), tmp.getImg2()));
+                    ejercito.add(new GuerreroBestia(name, tmp.damage, tmp.health, tmp.level, tmp.range, tmp.space, tmp.apLevel, tmp.movility, tmp.getImg1(), tmp.getImg2()));
                     return tmp.space;
                 }
                 else if(GuerreroHeroe.class == tmp.getClass() && cantTropas >= tmp.space) {
-                    ejercito.add(new GuerreroHeroe(name, tmp.damage, tmp.health, tmp.level, tmp.range, tmp.space, tmp.apLevel, tmp.getImg1(), tmp.getImg2()));
+                    ejercito.add(new GuerreroHeroe(name, tmp.damage, tmp.health, tmp.level, tmp.range, tmp.space, tmp.apLevel, tmp.movility, tmp.getImg1(), tmp.getImg2()));
                     return tmp.space;
                 }
             }
