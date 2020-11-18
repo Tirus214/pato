@@ -150,7 +150,6 @@ public class PantallaInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNuevaActionPerformed
 
     private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
-
         String nombre = txfNombre.getText();
         Juego juego = (Juego) FileManager.readObject("src\\filemanager\\Files\\" + nombre + ".dat");
         if (juego == null) 

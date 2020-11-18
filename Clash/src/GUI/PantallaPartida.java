@@ -6,6 +6,7 @@
 package GUI;
 
 import clash.Juego;
+import clash.Personaje;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Random;
@@ -33,9 +34,20 @@ public class PantallaPartida extends javax.swing.JFrame {
         this.juego = juego;
     }
 
+    public void leePersonajes(Juego j){
+        for (int i = 0; i < j.getEjercito().size(); i++) {
+            generateLabel(j.getEjercito().get(i));
+        }
+        for (int i = 0; i < j.getEnemigo().size(); i++) {
+            generateLabel(j.getEnemigo().get(i));
+        }
+        for (int i = 0; i < j.getDefensa().size(); i++) {
+            generateLabel(j.getDefensa().get(i));
+        }
+    }
     
-    public JLabel generateLabel(int numeroThread){
-        JLabel newLabel = new JLabel("#" + numeroThread);
+    public JLabel generateLabel(Personaje p){
+        JLabel newLabel = new JLabel(p.getName());
         newLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         newLabel.setForeground(new java.awt.Color(255, 255, 255));
         newLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -43,7 +55,15 @@ public class PantallaPartida extends javax.swing.JFrame {
         jPanel1.add(newLabel);
         newLabel.setBackground(Color.red);
         newLabel.setOpaque(true);
-        
+        switch(p.getName()){
+            case "Barbaro" : newLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesGenerales/Barbarian9.png")));
+            
+            case "Pekka" : newLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesGenerales/PEKKA1.png")));
+            
+            case "magician" : newLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesGenerales/magician.png")));
+            
+            case "Maradona" : newLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ImagenesGenerales/maladroga.png")));
+        }
         int x = ((new Random()).nextInt(1000)/40) * 40;
         int y = ((new Random()).nextInt(600) / 40)* 40;
         newLabel.setLocation(x , y);
