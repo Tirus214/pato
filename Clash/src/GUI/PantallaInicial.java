@@ -7,6 +7,7 @@ package GUI;
 
 import clash.Juego;
 import filemanager.FileManager;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -149,12 +150,16 @@ public class PantallaInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNuevaActionPerformed
 
     private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
-        setVisible(false);
         String nombre = txfNombre.getText();
         Juego juego = (Juego) FileManager.readObject("src\\filemanager\\Files\\" + nombre + ".dat");
-        PantallaMenu pantalla = new PantallaMenu();
-        pantalla.putJuego(juego);
-        pantalla.setVisible(true);
+        if (juego == null) 
+            JOptionPane.showMessageDialog(jPanel3, "No existe el archivo de " + nombre + '!');
+        else{
+            setVisible(false);
+            PantallaMenu pantalla = new PantallaMenu();
+            pantalla.putJuego(juego);
+            pantalla.setVisible(true);
+        }
     }//GEN-LAST:event_btnContinuarActionPerformed
 
     private void lblFotoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblFotoMouseClicked
