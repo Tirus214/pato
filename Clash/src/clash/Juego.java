@@ -48,6 +48,7 @@ public class Juego extends Thread{
                 if(ejercito.get(i).health > 0){
                     if(ejercito.get(i).objetivo != null && ejercito.get(i).objetivo.health > 0){
                         if(ejercito.get(i).inRange) ejercito.get(i).start();
+                        
                     }
                     else searchAttackEnemy(ejercito.get(i), enemigo); 
                 }
