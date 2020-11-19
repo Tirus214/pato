@@ -87,7 +87,6 @@ public class PantallaPartida extends javax.swing.JFrame {
     
     public boolean moveLabeltoObjective (Guerrero g){ //retorna true cuando esta en rango
         
-        
         if ((abs(g.getPosicion().x - g.getObjetivo().getPosicion().x)) <= 40 * g.getRange() || abs(g.getPosicion().y - g.getObjetivo().getPosicion().y) <= 40 * g.getRange()){
             g.inRange = true;
             return true;

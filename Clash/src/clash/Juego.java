@@ -48,7 +48,7 @@ public class Juego extends Thread{
                 if(ejercito.get(i).health > 0){
                     if(ejercito.get(i).objetivo != null && ejercito.get(i).objetivo.health > 0){
                         if(ejercito.get(i).inRange) ejercito.get(i).start();
-                        
+                        else refPantalla.moveLabeltoObjective(ejercito.get(i));
                     }
                     else searchAttackEnemy(ejercito.get(i), enemigo); 
                 }
@@ -66,6 +66,7 @@ public class Juego extends Thread{
                 if(ejercito.get(i).health > 0){
                     if(enemigo.get(i).objetivo != null && enemigo.get(i).objetivo.health > 0){
                         if(enemigo.get(i).inRange) enemigo.get(i).start();
+                        else refPantalla.moveLabeltoObjective(enemigo.get(i));
                     }
                     else searchAttackEnemy(enemigo.get(i), ejercito); 
                 }
