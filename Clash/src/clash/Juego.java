@@ -40,18 +40,16 @@ public class Juego extends Thread{
     
     @Override
     public void run(){
-        putCantidad();
+        generarEnemigos();
         randomDefensas();
         while(running){
             int ejercitoMuerto = 0;
             for (int i = 0; i < ejercito.size(); i++) {
                 if(ejercito.get(i).health > 0){
-                    if(ejercito.get(i).objetivo != null || ejercito.get(i).objetivo.health > 0){
-                        ejercito.get(i).start();
+                    if(ejercito.get(i).objetivo != null && ejercito.get(i).objetivo.health > 0){
+                        if(ejercito.get(i).inRange) ejercito.get(i).start();
                     }
-                    else{
-                        searchAttackEnemy(ejercito.get(i), enemigo); 
-                    }
+                    else searchAttackEnemy(ejercito.get(i), enemigo); 
                 }
                 else ejercitoMuerto++;
             }
@@ -65,12 +63,10 @@ public class Juego extends Thread{
             int enemigosMuertos = 0;
             for (int i = 0; i < enemigo.size(); i++) {
                 if(ejercito.get(i).health > 0){
-                    if(enemigo.get(i).objetivo != null || enemigo.get(i).objetivo.health > 0){
-                        enemigo.get(i).start();
+                    if(enemigo.get(i).objetivo != null && enemigo.get(i).objetivo.health > 0){
+                        if(enemigo.get(i).inRange) enemigo.get(i).start();
                     }
-                    else{
-                        searchAttackEnemy(enemigo.get(i), ejercito); 
-                    }
+                    else searchAttackEnemy(enemigo.get(i), ejercito); 
                 }
                 else enemigosMuertos++;
             }
@@ -139,6 +135,17 @@ public class Juego extends Thread{
     }
     
     
+    public void generarEnemigos(){
+        Random rand = new Random();
+        int tropas2 = cantTropas;
+        while (tropas2 > 0) {
+            int at = rand.nextInt(guerrerosDisponibles.size()-1);
+            Guerrero g = guerrerosDisponibles.get(at);
+            tropas2 -= insertarGuerrero(tropas2, g, enemigo);
+        }
+    }
+    
+    
     //crea la plantilla de defensas para elegir
     private void createDefensas(){
         defensasDisponibles.add(new Defensa("Canon", 1, 1, 10, 3, true, false, "", ""));
@@ -183,6 +190,13 @@ public class Juego extends Thread{
         for (int i = 0; i < guerrerosDisponibles.size(); i++) {
             if(guerrerosDisponibles.get(i).name == name){
                 Guerrero tmp = guerrerosDisponibles.get(i);
+                return insertarGuerrero(cantropas, tmp, ejercito);
+            }
+        }
+        return -1;
+    }
+    
+    public int insertarGuerrero(int tropas, Guerrero tmp, ArrayList<Guerrero> array){
                 if(GuerreroDeContacto.class == tmp.getClass() && cantTropas >= tmp.space) {
                     ejercito.add(new GuerreroDeContacto(name, tmp.damage, tmp.health, tmp.level, tmp.range, tmp.space, tmp.apLevel, tmp.movility, tmp.getImg1(), tmp.getImg2()));
                     return tmp.space;
@@ -203,9 +217,8 @@ public class Juego extends Thread{
                     ejercito.add(new GuerreroHeroe(name, tmp.damage, tmp.health, tmp.level, tmp.range, tmp.space, tmp.apLevel, tmp.movility, tmp.getImg1(), tmp.getImg2()));
                     return tmp.space;
                 }
-            }
-        }
-        return -1;
+                return -1;
+                
     }
     
     
