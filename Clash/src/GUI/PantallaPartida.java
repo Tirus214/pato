@@ -5,10 +5,12 @@
  */
 package GUI;
 
+import clash.Guerrero;
 import clash.Juego;
 import clash.Personaje;
 import java.awt.Color;
 import java.awt.Point;
+import static java.lang.Math.abs;
 import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.JLabel;
@@ -83,28 +85,54 @@ public class PantallaPartida extends javax.swing.JFrame {
         return true;
     }
     
-    public void moveLabeltoObjective (int labelIndex){
+    public boolean moveLabeltoObjective (Guerrero g){ //retorna true cuando esta en rango
         
-        JLabel refLabel = arregloLabels.get(labelIndex);
         
-        int direccion = (new Random()).nextInt(4);
-        int x = refLabel.getLocation().x;
-        int y = refLabel.getLocation().y;
-        Point prueba = new Point(x,y);
-        //sumo A x O y
-        do{
-            if (direccion == 0 && y-40 >= 0) //arriba
-                prueba.y = y-40;
-            else if (direccion == 1 && y+40 <= 560)
-                prueba.y = y+40;
-            else if (direccion == 2 && x+40 <= 800)
-                prueba.x = x+40;
-            else if (direccion == 3 && x-40 >= 0)
-                prueba.x = x-40;
-        } while(!compararPoint(prueba));
-        refLabel.setLocation(x, y);
-        int ocupadoPor = isAvailablePostion(x, y, refLabel);
+        if ((abs(g.getPosicion().x - g.getObjetivo().getPosicion().x)) <= 40 * g.getRange() || abs(g.getPosicion().y - g.getObjetivo().getPosicion().y) <= 40 * g.getRange()){
+            g.inRange = true;
+            return true;
+        }
+        else if ((abs(g.getPosicion().x - g.getObjetivo().getPosicion().x)) >= (abs(g.getPosicion().y - g.getObjetivo().getPosicion().y))){
+            if ((g.getPosicion().x - g.getObjetivo().getPosicion().x) < 0){
+                movLabel(g, 'i');
+                return false;
+            }
+            else{
+                movLabel(g, 'd');
+                return false;
+            }
+        }
+        else{
+            if ((g.getPosicion().y - g.getObjetivo().getPosicion().y) < 0){
+                movLabel(g, 'b');
+                return false;
+            }
+            else{
+                movLabel(g, 'a');
+                return false;
+            }
+        }
     }
+    
+   public void movLabel (Guerrero g, char direccion){
+       switch(direccion){
+           case 'a': 
+               g.refLabel.getLocation().y += 40;
+               g.getPosicion().y += 40;
+           case 'b': 
+               g.refLabel.getLocation().y -= 40;
+               g.getPosicion().y -= 40;
+           case 'd': 
+               g.refLabel.getLocation().x += 40;
+               g.getPosicion().x += 40;
+           case 'i': 
+               g.getPosicion().x -= 40;
+               g.refLabel.getLocation().x -= 40;
+       }    
+       
+   }
+    
+    
     
     public int isAvailablePostion(int x, int y, JLabel refLabel){      
         for (int i = 0; i < arregloLabels.size(); i++) {
