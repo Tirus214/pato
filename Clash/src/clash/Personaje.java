@@ -34,12 +34,12 @@ public abstract class Personaje extends Thread{
     private Point posicion;
     Personaje objetivo;
     public boolean inRange;
+    public int nivelPartida;
     
     //Constructor
     public Personaje(String name, int apLevel, int level,int damage, int range, String img1, String img2) {
         this.name = name;
         this.apLevel = apLevel;
-        this.damage = damage;
         this.level = level;
         this.refLabel = new JLabel();
         this.img1 = img1;
@@ -50,7 +50,21 @@ public abstract class Personaje extends Thread{
         this.pause = false;
         this.num = 0;
         this.inRange = false;
+        this.damage = damage;
+                
     }
+
+    public String getNombre() {
+        return name;
+    }
+
+    public void setNombre(String name) {
+        this.name = name;
+    }
+    
+    
+    
+    
     
     public void setNum(int num){
         this.num = num;

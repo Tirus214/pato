@@ -34,8 +34,12 @@ public class Juego extends Thread{
     
     public Juego(){
         nivelPartida = 1;
+        defensasDisponibles = new ArrayList<Defensa>();
+        guerrerosDisponibles = new ArrayList<Guerrero>();
         inicializar();
         putCantidad();
+        guerrerosDisponibles.add(new GuerreroDeContacto("Barbaro", 3, 20, 1, 1, 1, 1, true, "src\\Imagenes\\ImagenesGuerreros\\Barbarian9.png", "src\\Imagenes\\ImagenesGuerreros\\Barbarian9.png"));
+        guerrerosDisponibles.add(new GuerreroDeContacto("Barbaro", 3, 20, 1, 1, 1, 1, true, "src\\Imagenes\\ImagenesGuerreros\\Barbarian9.png", "src\\Imagenes\\ImagenesGuerreros\\Barbarian9.png"));
     }
     
     @Override
@@ -44,7 +48,7 @@ public class Juego extends Thread{
         randomDefensas();
         while(running){
             int ejercitoMuerto = 0;
-            for (int i = 0; i < ejercito.size(); i++) {
+            for (int i = 0; i < ejercito.size(); i++){
                 if(ejercito.get(i).health > 0){
                     if(ejercito.get(i).objetivo != null && ejercito.get(i).objetivo.health > 0){
                         if(ejercito.get(i).inRange) ejercito.get(i).start();
@@ -88,8 +92,10 @@ public class Juego extends Thread{
     
     private void nextLevel(){
         nivelPartida++;
+        //crecerGuerreros();
         inicializar();
         putCantidad();
+        increaseNivel();
     }
     
     
@@ -97,8 +103,6 @@ public class Juego extends Thread{
         ejercito = new ArrayList<Guerrero>();
         defensa = new ArrayList<Defensa>();
         enemigo = new ArrayList<Guerrero>();
-        defensasDisponibles = new ArrayList<Defensa>();
-        guerrerosDisponibles = new ArrayList<Guerrero>();
         nombreGuerreros = new ArrayList<String>();
         numeroGuerreros = new ArrayList<Integer>();
         running = true;
@@ -110,6 +114,40 @@ public class Juego extends Thread{
         if(nivelPartida < 6){
             this.cantTropas = nivelPartida * 3 + 5;
             this.cantDefensas = nivelPartida * 3 + 3;
+        }
+    }
+    /*
+    public void crecerGuerreros(){
+        for (int i = 0; i < guerrerosDisponibles.size(); i++) {
+            try{
+                GuerreroBestia g = (GuerreroBestia) guerrerosDisponibles.get(i);
+                continue;
+                try {
+                    GuerreroHeroe h = (GuerreroHeroe) guerrerosDisponibles.get(i);
+                    continue;
+                }
+                catch()
+            }
+            catch (InterruptedException e){
+                guerrerosDisponibles.get(i).crecer();
+            }
+        }
+    }
+*/
+    public void increaseNivel(){
+        for (int i = 0; i < guerrerosDisponibles.size(); i++) {
+            guerrerosDisponibles.get(i).nivelPartida = nivelPartida;
+            try{
+                GuerreroBestia b = (GuerreroBestia) guerrerosDisponibles.get(i);
+                continue;
+            } catch(Exception e){
+                try{
+                    GuerreroHeroe h = (GuerreroHeroe) guerrerosDisponibles.get(i);
+                    continue;
+                } catch(Exception f){
+                    guerrerosDisponibles.get(i).crecer();
+                }
+            }
         }
     }
     
@@ -255,8 +293,6 @@ public class Juego extends Thread{
     }
     
     
-    
-    
     //GETTER AND SETTER
 
     public ArrayList<Guerrero> getEjercito() {
@@ -307,7 +343,15 @@ public class Juego extends Thread{
         this.cantDefensas = cantDefensas;
     }
     
-    //////////////
-    
+    /////////////
+    /*
+
+    private static class GuerreroDeContacto extends Guerrero {
+
+        public GuerreroDeContacto(String name, int damage, int health, int level, int range, int space, int apLevel, boolean movility, String img1, String img2) {
+            super(name, damage, health, level, range, space, apLevel, movility, img1, img2);
+        }
+    }
+    */
     
 }

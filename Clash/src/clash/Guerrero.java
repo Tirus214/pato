@@ -20,10 +20,15 @@ public abstract class Guerrero extends Personaje{
     //Constructor
     public Guerrero(String name, int damage, int health, int level, int range, int space, int apLevel, boolean movility,String img1, String img2){
         super(name, apLevel, level, damage, range, img1, img2);
-        this.health = health;
         this.space = space;
         this.img2 = img2;
         this.movility = movility;
+        this.health = health;
+    }
+    
+    public void crecer(){
+        this.damage = nivelPartida*5 + damage;
+        this.health = nivelPartida*5 + health;
     }
     
     //Procedimientos
@@ -31,7 +36,7 @@ public abstract class Guerrero extends Personaje{
         return damage;
     }
     
-    void lostHealth(int _damage){
+    public void lostHealth(int _damage){
         this.health -= _damage;
     }
     

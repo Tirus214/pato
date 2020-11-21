@@ -132,7 +132,6 @@ public class PantallaPartida extends javax.swing.JFrame {
    }
     
     
-    
     public int isAvailablePostion(int x, int y, JLabel refLabel){      
         for (int i = 0; i < arregloLabels.size(); i++) {
             if(arregloLabels.get(i).getLocation().x == x && 

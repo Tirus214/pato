@@ -52,7 +52,7 @@ public class PantallaMenu extends javax.swing.JFrame {
     
     private void addItems(){
         for (int i = 0; i < juego.guerrerosDisponibles.size(); i++) {
-            //nombreGuerreros.add(juego.guerrerosDisponibles.get(i).getName());
+            nombreGuerreros.add(juego.guerrerosDisponibles.get(i).getName());
             cmbGuerreros.addItem(nombreGuerreros.get(i));
             numeroGuerreros.add(0);
         }
@@ -62,12 +62,12 @@ public class PantallaMenu extends javax.swing.JFrame {
     private void showPropeties(){
         for (int i = 0; i < juego.guerrerosDisponibles.size(); i++) {
             if(juego.guerrerosDisponibles.get(i).getName() == seleccion){
-                txfEspecificaciones.setText("Nombre: " + juego.guerrerosDisponibles.get(i).getName());
-                txfEspecificaciones.append("\nDaño: " + juego.guerrerosDisponibles.get(i).getDamage() + "golpes por segundo");
-                txfEspecificaciones.append("\nVida: " + juego.guerrerosDisponibles.get(i).getHealth() + "golpes");
+                txfEspecificaciones.setText("Nombre: " + juego.guerrerosDisponibles.get(i).getNombre());
+                txfEspecificaciones.append("\nDaño: " + juego.guerrerosDisponibles.get(i).getDamage() + " golpes por segundo");
+                txfEspecificaciones.append("\nVida: " + juego.guerrerosDisponibles.get(i).getHealth() + " golpes");
                 txfEspecificaciones.append("\nNivel: " + juego.guerrerosDisponibles.get(i).getLevel());
                 txfEspecificaciones.append("\nRango: " + juego.guerrerosDisponibles.get(i).getRange());
-                txfEspecificaciones.append("\nEspacio en ejercito: " + juego.guerrerosDisponibles.get(i).getDamage() + "unidades");
+                txfEspecificaciones.append("\nEspacio en ejercito: " + juego.guerrerosDisponibles.get(i).getDamage() + " unidades");
                 txfEspecificaciones.append("\nNivel de aparicion: " + juego.guerrerosDisponibles.get(i).getApLevel());
                 Icon icono = new Icon() {
                     @Override

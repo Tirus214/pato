@@ -6,6 +6,7 @@
 package clash;
 
 import GUI.PantallaInicial;
+import filemanager.FileManager;
 import java.util.ArrayList;
 
 /**
@@ -14,10 +15,17 @@ import java.util.ArrayList;
  */
 public class main {
     public static void main(String[] args) {
-        //Defensa a1 = new Defensa("Canon", 1, 1, 10, 3, true, false);
         
         PantallaInicial pantalla = new PantallaInicial();
         pantalla.setVisible(true);
-                
+       
+        
+        /*
+        ArrayList<Guerrero> lista = new ArrayList<Guerrero>();
+        
+        lista.add(new GuerreroAereo("Barbaro", 3, 20, 1, 1, 1, 1, true, "src\\Imagenes\\ImagenesGuerreros\\Barbarian9.png", "src\\Imagenes\\ImagenesGuerreros\\Barbarian9.png"));
+        
+        GuerreroBestia g = (GuerreroBestia) lista.get(0);
+        */
     }
 }
