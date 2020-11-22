@@ -5,7 +5,9 @@
  */
 package GUI;
 
+import clash.Configuracion;
 import clash.Juego;
+import filemanager.FileManager;
 
 /**
  *
@@ -277,6 +279,9 @@ public class PantallaAdd extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        Configuracion c = new Configuracion();
+        c.array = juego.guerrerosDisponibles;
+        FileManager.writeObject(c, "src\\filemanager\\Files\\configuracion.dat");
         setVisible(false);
         pantalla.putJuego(juego);
         pantalla.setVisible(true);

@@ -16,16 +16,15 @@ import java.util.ArrayList;
 public class main {
     public static void main(String[] args) {
         
-        PantallaInicial pantalla = new PantallaInicial();
-        pantalla.setVisible(true);
+        //PantallaInicial pantalla = new PantallaInicial();
+        //pantalla.setVisible(true);
        
         
-        /*
-        ArrayList<Guerrero> lista = new ArrayList<Guerrero>();
+        Configuracion config = new Configuracion();
+        //FileManager.writeObject(config, "src\\filemanager\\Files\\configuracion.dat");
         
-        lista.add(new GuerreroAereo("Barbaro", 3, 20, 1, 1, 1, 1, true, "src\\Imagenes\\ImagenesGuerreros\\Barbarian9.png", "src\\Imagenes\\ImagenesGuerreros\\Barbarian9.png"));
+        config = (Configuracion)FileManager.readObject("src\\filemanager\\Files\\configuracion.dat");
         
-        GuerreroBestia g = (GuerreroBestia) lista.get(0);
-        */
+        System.out.println(config.array.get(0).name);
     }
 }

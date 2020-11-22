@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import clash.Configuracion;
 import clash.Juego;
 import filemanager.FileManager;
 import javax.swing.JOptionPane;
@@ -19,6 +20,11 @@ public class PantallaInicial extends javax.swing.JFrame {
      */
     public PantallaInicial(){
         initComponents();
+    }
+    
+    public void setGuerreros(Juego juego){
+        Configuracion config = (Configuracion) FileManager.readObject("src\\filemanager\\Files\\configuracion.dat");
+        juego.guerrerosDisponibles = config.array;
     }
 
     /**
@@ -145,6 +151,7 @@ public class PantallaInicial extends javax.swing.JFrame {
         juego.name = nombre;
         FileManager.writeObject(juego, "src\\filemanager\\Files\\" + juego.name + ".dat");
         PantallaMenu pantalla = new PantallaMenu();
+        setGuerreros(juego);
         pantalla.putJuego(juego);
         pantalla.setVisible(true);
     }//GEN-LAST:event_btnNuevaActionPerformed
@@ -157,6 +164,7 @@ public class PantallaInicial extends javax.swing.JFrame {
         else{
             setVisible(false);
             PantallaMenu pantalla = new PantallaMenu();
+            setGuerreros(juego);
             pantalla.putJuego(juego);
             pantalla.setVisible(true);
         }

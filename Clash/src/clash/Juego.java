@@ -8,13 +8,14 @@ package clash;
 
 import GUI.PantallaPartida;
 import java.awt.Point;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 /**
  *
  * @author Jean Paul
  */
-public class Juego extends Thread{
+public class Juego extends Thread implements Serializable{
     public PantallaPartida refPantalla;
     public String name;
     public ArrayList<Guerrero> guerrerosDisponibles;
