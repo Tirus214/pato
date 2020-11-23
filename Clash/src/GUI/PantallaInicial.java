@@ -149,11 +149,11 @@ public class PantallaInicial extends javax.swing.JFrame {
         Juego juego = new Juego();
         String nombre = txfNombre.getText();
         juego.name = nombre;
-        FileManager.writeObject(juego, "src\\filemanager\\Files\\" + juego.name + ".dat");
+        FileManager.writeObject(juego, "src\\filemanager\\Files\\" + nombre + ".dat");
         PantallaMenu pantalla = new PantallaMenu();
         setGuerreros(juego);
-        pantalla.putJuego(juego);
         pantalla.setVisible(true);
+        pantalla.putJuego(juego);
     }//GEN-LAST:event_btnNuevaActionPerformed
 
     private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
@@ -165,8 +165,8 @@ public class PantallaInicial extends javax.swing.JFrame {
             setVisible(false);
             PantallaMenu pantalla = new PantallaMenu();
             setGuerreros(juego);
-            pantalla.putJuego(juego);
             pantalla.setVisible(true);
+            pantalla.putJuego(juego);
         }
     }//GEN-LAST:event_btnContinuarActionPerformed
 

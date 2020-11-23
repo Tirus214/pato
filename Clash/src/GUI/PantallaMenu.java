@@ -21,7 +21,7 @@ public class PantallaMenu extends javax.swing.JFrame {
     Juego juego;
     private ArrayList<String> nombreGuerreros;
     private ArrayList<Integer> numeroGuerreros;
-    int cantTropas;
+    private int cantTropas;
     PantallaAdmin pantalla;
     private String seleccion;
     
@@ -52,16 +52,20 @@ public class PantallaMenu extends javax.swing.JFrame {
     
     private void addItems(){
         for (int i = 0; i < juego.guerrerosDisponibles.size(); i++) {
-            nombreGuerreros.add(juego.guerrerosDisponibles.get(i).getName());
-            cmbGuerreros.addItem(nombreGuerreros.get(i));
-            numeroGuerreros.add(0);
+            if(juego.guerrerosDisponibles.get(i).getApLevel() <= juego.getNivel()){
+                nombreGuerreros.add(juego.guerrerosDisponibles.get(i).getNombre());
+                cmbGuerreros.addItem(nombreGuerreros.get(i));
+                numeroGuerreros.add(0);
+            }
         }
     }
     
     
     private void showPropeties(){
+        System.out.println(juego.guerrerosDisponibles.get(0).getNombre().toUpperCase() == seleccion.toUpperCase());
         for (int i = 0; i < juego.guerrerosDisponibles.size(); i++) {
-            if(juego.guerrerosDisponibles.get(i).getName() == seleccion){
+            if(juego.guerrerosDisponibles.get(i).getNombre().toUpperCase() == seleccion.toUpperCase()){
+                System.out.println(seleccion + "  " + juego.guerrerosDisponibles.get(i).getNombre());
                 txfEspecificaciones.setText("Nombre: " + juego.guerrerosDisponibles.get(i).getNombre());
                 txfEspecificaciones.append("\nDaño: " + juego.guerrerosDisponibles.get(i).getDamage() + " golpes por segundo");
                 txfEspecificaciones.append("\nVida: " + juego.guerrerosDisponibles.get(i).getHealth() + " golpes");
@@ -69,22 +73,6 @@ public class PantallaMenu extends javax.swing.JFrame {
                 txfEspecificaciones.append("\nRango: " + juego.guerrerosDisponibles.get(i).getRange());
                 txfEspecificaciones.append("\nEspacio en ejercito: " + juego.guerrerosDisponibles.get(i).getDamage() + " unidades");
                 txfEspecificaciones.append("\nNivel de aparicion: " + juego.guerrerosDisponibles.get(i).getApLevel());
-                Icon icono = new Icon() {
-                    @Override
-                    public void paintIcon(Component cmpnt, Graphics grphcs, int i, int i1) {
-                        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                    }
-
-                    @Override
-                    public int getIconWidth() {
-                        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                    }
-
-                    @Override
-                    public int getIconHeight() {
-                        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                    }
-                };
             }
         }
     }
@@ -177,7 +165,7 @@ public class PantallaMenu extends javax.swing.JFrame {
         lblEjercitoFaltante.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblEjercitoFaltante.setBorder(new javax.swing.border.MatteBorder(null));
         jPanel1.add(lblEjercitoFaltante);
-        lblEjercitoFaltante.setBounds(340, 120, 340, 34);
+        lblEjercitoFaltante.setBounds(350, 100, 340, 34);
 
         lblTropas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTropas.setText("Guerreros Seleccionados");
@@ -235,6 +223,11 @@ public class PantallaMenu extends javax.swing.JFrame {
                 cmbGuerrerosMouseExited(evt);
             }
         });
+        cmbGuerreros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbGuerrerosActionPerformed(evt);
+            }
+        });
         jPanel1.add(cmbGuerreros);
         cmbGuerreros.setBounds(380, 190, 257, 30);
 
@@ -272,7 +265,9 @@ public class PantallaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbGuerrerosMouseExited
 
     private void btnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIncluirActionPerformed
-        if(cantTropas > 0){
+        
+        if(this.cantTropas > 0){
+            System.out.println(cantTropas);
             txfTropasSeleccionadas.setText("");
             buscarNombre();
             printGuerreros();
@@ -296,9 +291,13 @@ public class PantallaMenu extends javax.swing.JFrame {
             PantallaPartida pantalla2 = new PantallaPartida();
             setVisible(false);
             pantalla2.putJuego(juego);
-            pantalla.setVisible(true);
+            pantalla2.setVisible(true);
         }
     }//GEN-LAST:event_btnIniciarActionPerformed
+
+    private void cmbGuerrerosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbGuerrerosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbGuerrerosActionPerformed
 
     /**
      * @param args the command line arguments

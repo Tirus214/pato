@@ -5,12 +5,13 @@
  */
 package clash;
 import java.awt.Point;
+import java.io.Serializable;
 
 /**
  *
  * @author Mauricio
  */
-public class Defensa extends Personaje {
+public class Defensa extends Personaje implements Serializable{
    private int range;
    private boolean ataqueAereo;
    private boolean ataqueTerrestre;

@@ -229,7 +229,7 @@ public class Juego extends Thread implements Serializable{
     
     public int addGuerrero(String name, int cantropas){
         for (int i = 0; i < guerrerosDisponibles.size(); i++) {
-            if(guerrerosDisponibles.get(i).name == name){
+            if(guerrerosDisponibles.get(i).getNombre() == name){
                 Guerrero tmp = guerrerosDisponibles.get(i);
                 return insertarGuerrero(cantropas, tmp, ejercito);
             }

@@ -31,10 +31,12 @@ public class PantallaPartida extends javax.swing.JFrame {
     public PantallaPartida() {
         arregloLabels = new ArrayList<JLabel>();
         initComponents();
+        juego.start();
     }
     
     public void putJuego(Juego juego){
         this.juego = juego;
+        lblNivel.setText("Nivel " + juego.getNivel());
     }
 
     public void leePersonajes(Juego j){

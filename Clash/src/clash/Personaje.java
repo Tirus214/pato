@@ -7,6 +7,7 @@ package clash;
 
 import GUI.PantallaPartida;
 import java.awt.Point;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.JLabel;
@@ -15,7 +16,7 @@ import javax.swing.JLabel;
  *
  * @author Jean Paul
  */
-public abstract class Personaje extends Thread{
+public abstract class Personaje extends Thread implements Serializable{
     public PantallaPartida refPantalla;
     protected String name;
     protected int damage;
@@ -55,7 +56,7 @@ public abstract class Personaje extends Thread{
     }
 
     public String getNombre() {
-        return name;
+        return this.name;
     }
 
     public void setNombre(String name) {

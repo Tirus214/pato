@@ -5,11 +5,13 @@
  */
 package clash;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Jean Paul
  */
-public class GuerreroBestia extends Guerrero{
+public class GuerreroBestia extends Guerrero implements Serializable{
     
     public GuerreroBestia(String name, int damage, int life, int level, int range, int space, int apLevel, boolean movility, String img1, String img2) {
         super(name, damage, life, level, range, space, apLevel, movility, img1, img2);

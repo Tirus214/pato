@@ -5,12 +5,14 @@
  */
 package clash;
 
+import java.io.Serializable;
+
 
 /**
  *
  * @author Jean Paul
  */
-public abstract class Guerrero extends Personaje{
+public abstract class Guerrero extends Personaje implements Serializable{
     protected int space;
     protected int health;
     String img2;
