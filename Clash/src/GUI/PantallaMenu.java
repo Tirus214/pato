@@ -19,6 +19,7 @@ import javax.swing.JComboBox;
  */
 public class PantallaMenu extends javax.swing.JFrame {
     Juego juego;
+    Juego copia;
     private ArrayList<String> nombreGuerreros;
     private ArrayList<Integer> numeroGuerreros;
     private int cantTropas;
@@ -62,10 +63,8 @@ public class PantallaMenu extends javax.swing.JFrame {
     
     
     private void showPropeties(){
-        System.out.println(juego.guerrerosDisponibles.get(0).getNombre().toUpperCase() == seleccion.toUpperCase());
         for (int i = 0; i < juego.guerrerosDisponibles.size(); i++) {
             if(juego.guerrerosDisponibles.get(i).getNombre().toUpperCase() == seleccion.toUpperCase()){
-                System.out.println(seleccion + "  " + juego.guerrerosDisponibles.get(i).getNombre());
                 txfEspecificaciones.setText("Nombre: " + juego.guerrerosDisponibles.get(i).getNombre());
                 txfEspecificaciones.append("\nDaño: " + juego.guerrerosDisponibles.get(i).getDamage() + " golpes por segundo");
                 txfEspecificaciones.append("\nVida: " + juego.guerrerosDisponibles.get(i).getHealth() + " golpes");
@@ -267,7 +266,6 @@ public class PantallaMenu extends javax.swing.JFrame {
     private void btnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIncluirActionPerformed
         
         if(this.cantTropas > 0){
-            System.out.println(cantTropas);
             txfTropasSeleccionadas.setText("");
             buscarNombre();
             printGuerreros();

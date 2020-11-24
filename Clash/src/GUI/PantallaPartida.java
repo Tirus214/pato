@@ -20,8 +20,8 @@ import javax.swing.JLabel;
  * @author Jean Paul
  */
 public class PantallaPartida extends javax.swing.JFrame {
-
     Juego juego;
+    Juego copia;
     ArrayList<JLabel> arregloLabels;
     
     /**
@@ -31,12 +31,13 @@ public class PantallaPartida extends javax.swing.JFrame {
     public PantallaPartida() {
         arregloLabels = new ArrayList<JLabel>();
         initComponents();
-        juego.start();
     }
     
     public void putJuego(Juego juego){
         this.juego = juego;
         lblNivel.setText("Nivel " + juego.getNivel());
+        copia = juego;
+        juego.start();
     }
 
     public void leePersonajes(Juego j){
@@ -181,10 +182,25 @@ public class PantallaPartida extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 102, 102));
 
         btnReelegir.setText("Reelegir Tropas");
+        btnReelegir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReelegirActionPerformed(evt);
+            }
+        });
 
         btnAvanzar.setText("Avanzar Nivel");
+        btnAvanzar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAvanzarActionPerformed(evt);
+            }
+        });
 
         btnReiniciar.setText("Reiniciar");
+        btnReiniciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReiniciarActionPerformed(evt);
+            }
+        });
 
         lblNivel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lblNivel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -238,6 +254,25 @@ public class PantallaPartida extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAvanzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvanzarActionPerformed
+        juego.win = true;
+        juego.running = false;
+        juego.finish = true;
+    }//GEN-LAST:event_btnAvanzarActionPerformed
+
+    private void btnReelegirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReelegirActionPerformed
+        juego.win = false;
+        juego.running = false;
+        juego.finish = true;
+    }//GEN-LAST:event_btnReelegirActionPerformed
+
+    private void btnReiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReiniciarActionPerformed
+        juego.reiniciar = true;
+        setVisible(false);
+        putJuego(copia);
+        setVisible(true);
+    }//GEN-LAST:event_btnReiniciarActionPerformed
 
     /**
      * @param args the command line arguments

@@ -26,11 +26,12 @@ public class Juego extends Thread implements Serializable{
     private int nivelPartida;
     private int cantTropas;
     private int cantDefensas;
-    private boolean running;
+    public boolean running;
     public ArrayList<String> nombreGuerreros;
     public ArrayList<Integer> numeroGuerreros;
     public boolean win;
     public boolean finish;
+    public boolean reiniciar = false;
 
     
     public Juego(){
@@ -48,6 +49,10 @@ public class Juego extends Thread implements Serializable{
         generarEnemigos();
         randomDefensas();
         while(running){
+            if (reiniciar){
+                running = false;
+                break;
+            }
             int ejercitoMuerto = 0;
             for (int i = 0; i < ejercito.size(); i++){
                 if(ejercito.get(i).health > 0){
@@ -170,8 +175,7 @@ public class Juego extends Thread implements Serializable{
     }
     
     public void searchAttackEnemy(Personaje attacker, ArrayList<Guerrero> array){// se va a atacar al azar
-        Random rand = new Random();
-        int at = rand.nextInt(array.size()-1);
+        int at = (int) Math.random()*(array.size()-1);
         attacker.objetivo = array.get(at);
     }
     
