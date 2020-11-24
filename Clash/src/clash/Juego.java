@@ -44,6 +44,12 @@ public class Juego extends Thread implements Serializable{
         guerrerosDisponibles.add(new GuerreroDeContacto("Barbaro", 3, 20, 1, 1, 1, 1, true, "src\\Imagenes\\ImagenesGuerreros\\Barbarian9.png", "src\\Imagenes\\ImagenesGuerreros\\Barbarian9.png"));
     }
     
+    public void searchAttackEnemy(Personaje attacker, ArrayList<Guerrero> array){// se va a atacar al azar
+        Random ran = new Random();
+        int at = ran.nextInt(array.size());
+        attacker.objetivo = array.get(at);
+    }
+    
     @Override
     public void run(){
         generarEnemigos();
@@ -174,19 +180,19 @@ public class Juego extends Thread implements Serializable{
         }
     }
     
-    public void searchAttackEnemy(Personaje attacker, ArrayList<Guerrero> array){// se va a atacar al azar
-        int at = (int) Math.random()*(array.size()-1);
-        attacker.objetivo = array.get(at);
-    }
+
     
     
     public void generarEnemigos(){
-        Random rand = new Random();
+        Random ran = new Random();
         int tropas2 = cantTropas;
         while (tropas2 > 0) {
-            int at = rand.nextInt(guerrerosDisponibles.size()-1);
+            int at = ran.nextInt(guerrerosDisponibles.size());
+            System.out.println(at);
+                    
             Guerrero g = guerrerosDisponibles.get(at);
-            tropas2 -= insertarGuerrero(tropas2, g, enemigo);
+            int i = insertarGuerrero(tropas2, g, enemigo);
+            if (i != -1) tropas2 -= i;
         }
     }
     
