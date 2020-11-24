@@ -6,6 +6,8 @@
 package clash;
 
 import java.io.Serializable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -49,6 +51,11 @@ public abstract class Guerrero extends Personaje implements Serializable{
                 if(objetivo != null) {
                     if(objetivo.health > 0){
                         objetivo.health -= this.damage;
+                        try {
+                            sleep(100);
+                        } catch (InterruptedException ex) {
+                            Logger.getLogger(Guerrero.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                     }
                     else {
                         objetivo = null;

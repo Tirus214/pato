@@ -54,12 +54,15 @@ public class Juego extends Thread implements Serializable{
     public void run(){
         generarEnemigos();
         randomDefensas();
+        generateLabels();
+        //System.out.println(enemigo.size());
+        int ejercitoMuerto = 0;
+        int enemigosMuertos = 0;
         while(running){
             if (reiniciar){
                 running = false;
                 break;
             }
-            int ejercitoMuerto = 0;
             for (int i = 0; i < ejercito.size(); i++){
                 if(ejercito.get(i).health > 0){
                     if(ejercito.get(i).objetivo != null && ejercito.get(i).objetivo.health > 0){
@@ -76,10 +79,8 @@ public class Juego extends Thread implements Serializable{
                 finish = true;
                 break;
             }
-            
-            int enemigosMuertos = 0;
             for (int i = 0; i < enemigo.size(); i++) {
-                if(ejercito.get(i).health > 0){
+                if(enemigo.get(i).health > 0){
                     if(enemigo.get(i).objetivo != null && enemigo.get(i).objetivo.health > 0){
                         if(enemigo.get(i).inRange) enemigo.get(i).start();
                         else refPantalla.moveLabeltoObjective(enemigo.get(i));
@@ -93,6 +94,12 @@ public class Juego extends Thread implements Serializable{
                 running = false;
                 finish = true;
             }
+            for (int i = 0; i < defensa.size(); i++) {
+                if(defensa.get(i).objetivo != null && defensa.get(i).objetivo.health > 0){
+                        if(defensa.get(i).inRange) defensa.get(i).start();
+                    }
+            }
+            
         }
         if(win){
             nextLevel();
@@ -188,9 +195,8 @@ public class Juego extends Thread implements Serializable{
         int tropas2 = cantTropas;
         while (tropas2 > 0) {
             int at = ran.nextInt(guerrerosDisponibles.size());
-            System.out.println(at);
-                    
             Guerrero g = guerrerosDisponibles.get(at);
+            System.out.println(g.name);
             int i = insertarGuerrero(tropas2, g, enemigo);
             if (i != -1) tropas2 -= i;
         }
@@ -248,29 +254,45 @@ public class Juego extends Thread implements Serializable{
     }
     
     public int insertarGuerrero(int tropas, Guerrero tmp, ArrayList<Guerrero> array){
-                if(GuerreroDeContacto.class == tmp.getClass() && cantTropas >= tmp.space) {
-                    ejercito.add(new GuerreroDeContacto(name, tmp.damage, tmp.health, tmp.level, tmp.range, tmp.space, tmp.apLevel, tmp.movility, tmp.getImg1(), tmp.getImg2()));
+                if(GuerreroDeContacto.class == tmp.getClass() && tropas >= tmp.space) {
+                    array.add(new GuerreroDeContacto(name, tmp.damage, tmp.health, tmp.level, tmp.range, tmp.space, tmp.apLevel, tmp.movility, tmp.getImg1(), tmp.getImg2()));
                     return tmp.space;
                 }
-                else if(GuerreroMedianoAlcance.class == tmp.getClass() && cantTropas >= tmp.space) {
-                    ejercito.add(new GuerreroMedianoAlcance(name, tmp.damage, tmp.health, tmp.level, tmp.range, tmp.space, tmp.apLevel, tmp.movility, tmp.getImg1(), tmp.getImg2()));
+                else if(GuerreroMedianoAlcance.class == tmp.getClass() && tropas >= tmp.space) {
+                    array.add(new GuerreroMedianoAlcance(name, tmp.damage, tmp.health, tmp.level, tmp.range, tmp.space, tmp.apLevel, tmp.movility, tmp.getImg1(), tmp.getImg2()));
                     return tmp.space;
                 }
-                else if(GuerreroAereo.class == tmp.getClass() && cantTropas >= tmp.space) {
-                    ejercito.add(new GuerreroAereo(name, tmp.damage, tmp.health, tmp.level, tmp.range, tmp.space, tmp.apLevel, tmp.movility, tmp.getImg1(), tmp.getImg2()));
+                else if(GuerreroAereo.class == tmp.getClass() && tropas >= tmp.space) {
+                    array.add(new GuerreroAereo(name, tmp.damage, tmp.health, tmp.level, tmp.range, tmp.space, tmp.apLevel, tmp.movility, tmp.getImg1(), tmp.getImg2()));
                     return tmp.space;
                 }
-                else if(GuerreroBestia.class == tmp.getClass() && cantTropas >= tmp.space) {
-                    ejercito.add(new GuerreroBestia(name, tmp.damage, tmp.health, tmp.level, tmp.range, tmp.space, tmp.apLevel, tmp.movility, tmp.getImg1(), tmp.getImg2()));
+                else if(GuerreroBestia.class == tmp.getClass() && tropas >= tmp.space) {
+                    array.add(new GuerreroBestia(name, tmp.damage, tmp.health, tmp.level, tmp.range, tmp.space, tmp.apLevel, tmp.movility, tmp.getImg1(), tmp.getImg2()));
                     return tmp.space;
                 }
-                else if(GuerreroHeroe.class == tmp.getClass() && cantTropas >= tmp.space) {
-                    ejercito.add(new GuerreroHeroe(name, tmp.damage, tmp.health, tmp.level, tmp.range, tmp.space, tmp.apLevel, tmp.movility, tmp.getImg1(), tmp.getImg2()));
+                else if(GuerreroHeroe.class == tmp.getClass() && tropas >= tmp.space) {
+                    array.add(new GuerreroHeroe(name, tmp.damage, tmp.health, tmp.level, tmp.range, tmp.space, tmp.apLevel, tmp.movility, tmp.getImg1(), tmp.getImg2()));
                     return tmp.space;
                 }
                 return -1;
                 
     }
+    
+    
+    public void generateLabels(){
+        for (int i = 0; i < ejercito.size(); i++) {
+            refPantalla.generateLabel(ejercito.get(i));  
+        }
+        for (int i = 0; i < enemigo.size(); i++) {
+            refPantalla.generateLabel(enemigo.get(i));
+        }
+        for (int i = 0; i < defensa.size(); i++) {
+            refPantalla.generateLabel(defensa.get(i));
+        }
+    }
+    
+    
+    
     
     
     public void startGuerreros(){
