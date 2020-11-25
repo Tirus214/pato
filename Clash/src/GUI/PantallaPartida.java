@@ -9,10 +9,15 @@ import clash.Guerrero;
 import clash.Juego;
 import clash.Personaje;
 import java.awt.Color;
+import java.awt.Image;
 import java.awt.Point;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import static java.lang.Math.abs;
 import java.util.ArrayList;
 import java.util.Random;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 /**
@@ -57,20 +62,35 @@ public class PantallaPartida extends javax.swing.JFrame {
     public JLabel generateLabel(Personaje p){
         JLabel newLabel = new JLabel(p.getName());
         newLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        newLabel.setForeground(new java.awt.Color(255, 255, 255));
-        newLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        //newLabel.setForeground(new java.awt.Color(255, 255, 255));
+        //newLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         newLabel.setSize(40, 40);
         jPanel1.add(newLabel);
-        newLabel.setBackground(Color.red);
-        newLabel.setOpaque(true);
+       // newLabel.setBackground(Color.red);
+        //newLabel.setOpaque(true);
         //newLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource(p.getImg1())));
-        newLabel.setIcon(new javax.swing.ImageIcon(p.getImg1()));
+        
+        //newLabel.setIcon(new javax.swing.ImageIcon(p.getImg1()));
+        
         int x = ((new Random()).nextInt(1000)/40) * 40;
         int y = ((new Random()).nextInt(600) / 40)* 40;
         newLabel.setLocation(x , y);
         Point punto = new Point(x,y);
         p.setPosicion(punto);
+        try{
+            File f = new File(p.getImg1());
+            BufferedImage img = null;
+            img  = ImageIO.read(new File(f.getAbsolutePath()));
+            Image img1 = img.getScaledInstance(newLabel.getWidth(), newLabel.getHeight(), Image.SCALE_SMOOTH);
+            ImageIcon format = new ImageIcon(img1);
+            newLabel.setIcon(format);
+        }
+        catch(Exception e){
+            return newLabel;
+        }
+        
         arregloLabels.add(newLabel);
+        
         return newLabel;
     }
     
