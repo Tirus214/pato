@@ -32,7 +32,7 @@ public abstract class Personaje extends Thread implements Serializable{
     protected boolean pause;
     public JLabel refLabel;
     private int num;
-    private Point posicion;
+    public Point posicion;
     Personaje objetivo;
     public boolean inRange;
     public int nivelPartida;

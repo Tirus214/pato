@@ -122,17 +122,25 @@ public class PantallaPartida extends javax.swing.JFrame {
    public void movLabel (Guerrero g, char direccion){
        switch(direccion){
            case 'a': 
-               g.refLabel.getLocation().y += 40;
-               g.getPosicion().y += 40;
+               int y = g.refLabel.getLocation().y + 40;
+               int x = g.refLabel.getLocation().x;
+               g.setPosicion(new Point(x,y));
+               g.refLabel.setLocation(x, y);
            case 'b': 
-               g.refLabel.getLocation().y -= 40;
-               g.getPosicion().y -= 40;
+               int y1 = g.refLabel.getLocation().y - 40;
+               int x1 = g.refLabel.getLocation().x;
+               g.setPosicion(new Point(x1,y1));
+               g.refLabel.setLocation(x1, y1);
            case 'd': 
-               g.refLabel.getLocation().x += 40;
-               g.getPosicion().x += 40;
+               int y2 = g.refLabel.getLocation().y;
+               int x2 = g.refLabel.getLocation().x + 40;
+               g.setPosicion(new Point(x2,y2));
+               g.refLabel.setLocation(x2, y2);
            case 'i': 
-               g.getPosicion().x -= 40;
-               g.refLabel.getLocation().x -= 40;
+               int y3 = g.refLabel.getLocation().y;
+               int x3 = g.refLabel.getLocation().x - 40;
+               g.setPosicion(new Point(x3,y3));
+               g.refLabel.setLocation(x3, y3);;
        }    
        
    }
