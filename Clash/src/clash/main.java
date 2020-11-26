@@ -23,8 +23,5 @@ public class main {
         //Configuracion config = new Configuracion();
         //FileManager.writeObject(config, "src\\filemanager\\Files\\configuracion.dat");
         
-        //Configuracion config = (Configuracion)FileManager.readObject("src\\filemanager\\Files\\configuracion.dat");
-        
-        //System.out.println(config.array.get(0).name);
     }
 }
