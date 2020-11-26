@@ -4,8 +4,9 @@
  * and open the template in the editor.
  */
 package clash;
-import java.awt.Point;
 import java.io.Serializable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -25,16 +26,41 @@ public class Defensa extends Personaje implements Serializable{
    }
    
    @Override
+   public void attackRango(){
+       int dx = this.getPosicion().x;
+       int dy = this.getPosicion().y;
+       
+       for (int i = 0; i < juego.getEjercito().size(); i++) {
+           int gix = juego.getEjercito().get(i).getPosicion().x;
+           int giy = juego.getEjercito().get(i).getPosicion().y;
+           
+           if (Math.sqrt((dx-gix)*(dx-gix)/40  + (dy-giy)*(dy-giy))/40  <= range){ //casillas de 40 x 40
+               attack(juego.getEjercito().get(i));
+           }
+       }
+        for (int i = 0; i < juego.getEnemigo().size(); i++) {
+           int gix = juego.getEnemigo().get(i).getPosicion().x;
+           int giy = juego.getEnemigo().get(i).getPosicion().y;
+           
+           if (Math.sqrt((dx-gix)*(dx-gix)/40  + (dy-giy)*(dy-giy))/40  <= range){ //casillas de 40 x 40
+               attack(juego.getEnemigo().get(i));
+           }
+       }
+   }  
+   
+   @Override
     public void run(){
         while (running){
-            if(objetivo != null) {
-                if(objetivo.health > 0){
-                    objetivo.health -= this.damage;
-                }
-                else objetivo = null;
-            } 
-            
-            //
+            attackRango();
+            try {
+                sleep(100);
+                } 
+            catch (InterruptedException ex) {
+                Logger.getLogger(Guerrero.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if (health <= 0){
+                running = false;
+            }
             while(super.pause){
                 try {
                     sleep(1000);
