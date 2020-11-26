@@ -28,6 +28,7 @@ public abstract class Personaje extends Thread implements Serializable{
     protected boolean movility;
     protected String img1;
     protected String img2;
+    protected boolean aliado;
     
     protected boolean running;
     protected boolean pause;
@@ -110,6 +111,16 @@ public abstract class Personaje extends Thread implements Serializable{
         return refPantalla;
     }
 
+    public boolean isAliado() {
+        return aliado;
+    }
+
+    public void setAliado(boolean aliado) {
+        this.aliado = aliado;
+    }
+
+    
+    
     public Personaje getObjetivo() {
         return objetivo;
     }

@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import clash.Defensa;
 import clash.Guerrero;
 import clash.Juego;
 import clash.Personaje;
@@ -52,15 +53,20 @@ public class PantallaPartida extends javax.swing.JFrame {
     public void generateLabel(Personaje p){
         JLabel newLabel = new JLabel(p.getName());
         newLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        //newLabel.setForeground(new java.awt.Color(255, 255, 255));
-        //newLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        
+        try{
+            p = (Defensa) p;
+        }
+        catch(Exception e){
+            if (p.isAliado())
+                newLabel.setBorder(javax.swing.BorderFactory.createLineBorder(Color.BLUE,2));
+            else 
+                newLabel.setBorder(javax.swing.BorderFactory.createLineBorder(Color.RED,2));
+        }
         newLabel.setSize(40, 40);
         jPanel1.add(newLabel);
-       // newLabel.setBackground(Color.red);
-        //newLabel.setOpaque(true);
-        //newLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource(p.getImg1())));
+       
         
-        //newLabel.setIcon(new javax.swing.ImageIcon(p.getImg1()));
         System.out.println(p.getImg1());
         int x = ((new Random()).nextInt(1000)/40) * 40;
         int y = ((new Random()).nextInt(600) / 40)* 40;
