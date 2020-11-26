@@ -73,6 +73,7 @@ public abstract class Personaje extends Thread implements Serializable{
         this.name = name;
     }
     
+    /*
     public void attackRango(){
        int dx = this.getPosicion().x;
        int dy = this.getPosicion().y;
@@ -86,7 +87,7 @@ public abstract class Personaje extends Thread implements Serializable{
            }
        }
    }  
-    
+   */
     
     
     public void setNum(int num){

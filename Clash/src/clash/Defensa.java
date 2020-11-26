@@ -13,7 +13,6 @@ import java.util.logging.Logger;
  * @author Mauricio
  */
 public class Defensa extends Personaje implements Serializable{
-   private int range;
    private boolean ataqueAereo;
    private boolean ataqueTerrestre;
    

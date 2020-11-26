@@ -56,7 +56,7 @@ public abstract class Guerrero extends Personaje implements Serializable{
                             try {
                                 sleep(1000);
                             } catch (InterruptedException ex){
-                                Logger.getLogger(Guerrero.class.getName()).log(Level.SEVERE, null, ex);
+                                // Logger.getLogger(Guerrero.class.getName()).log(Level.SEVERE, null, ex);
                             }
                         }
                         else {

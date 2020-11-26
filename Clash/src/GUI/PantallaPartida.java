@@ -49,7 +49,7 @@ public class PantallaPartida extends javax.swing.JFrame {
 
    
     
-    public JLabel generateLabel(Personaje p){
+    public void generateLabel(Personaje p){
         JLabel newLabel = new JLabel(p.getName());
         newLabel.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         //newLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -76,12 +76,12 @@ public class PantallaPartida extends javax.swing.JFrame {
             newLabel.setIcon(format);
         }
         catch(Exception e){
-            return newLabel;
+            //return newLabel;
         }
         
         arregloLabels.add(newLabel);
         
-        return newLabel;
+        //return newLabel;
     }
     
     public boolean compararPoint(Point p){ //True si la casilla esta descoupada

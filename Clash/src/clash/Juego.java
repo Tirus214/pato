@@ -227,10 +227,11 @@ public class Juego implements Serializable{
     
     //crea defensas aleatoriamente segun su nivel
     private void randomDefensas(){
+        Random ran = new Random();
         for (int i = 0; i < cantDefensas; i++) {
-            int random = (int) Math.random()*5;
-            while(defensasDisponibles.get(random).apLevel != this.nivelPartida){
-                random = (int) Math.random()*5;
+            int random = ran.nextInt(defensasDisponibles.size());
+            while(defensasDisponibles.get(random).apLevel > this.nivelPartida){
+                random = ran.nextInt(defensasDisponibles.size());
             }
             defensa.add(defensasDisponibles.get(random));
         }
