@@ -50,12 +50,13 @@ public class Defensa extends Personaje implements Serializable{
    @Override
     public void run(){
         while (running){
+            System.out.println("a");
             attackRango();
             try {
                 sleep(1000);
                 } 
             catch (InterruptedException ex) {
-                Logger.getLogger(Guerrero.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Defensa.class.getName()).log(Level.SEVERE, null, ex);
             }
             if (health <= 0){
                 running = false;
