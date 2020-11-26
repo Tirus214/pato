@@ -53,7 +53,6 @@ public class Juego implements Serializable{
     public void correr(){
         generarEnemigos();
         randomDefensas();
-        generateLabels();
         makeAliados();
         startGuerreros();
         
@@ -218,12 +217,12 @@ public class Juego implements Serializable{
     
     //crea la plantilla de defensas para elegir
     private void createDefensas(){
-        defensasDisponibles.add(new Defensa("Canon", 1, 1, 10, 3, true, false, "C:\\Users\\Mauricio\\Desktop\\TEC\\Semestre II\\POO\\pato\\Clash\\src\\Imagenes\\ImagenesDefensas\\canon.png", "C:\\Users\\Mauricio\\Desktop\\TEC\\Semestre II\\POO\\pato\\Clash\\src\\Imagenes\\ImagenesDefensas\\canon.png"));
-        defensasDisponibles.add(new Defensa("TorreArqueras", 1, 1, 8, 3, true, true, "C:\\Users\\Mauricio\\Desktop\\TEC\\Semestre II\\POO\\pato\\Clash\\src\\Imagenes\\ImagenesDefensas\\torreArqueras.png", "C:\\Users\\Mauricio\\Desktop\\TEC\\Semestre II\\POO\\pato\\Clash\\src\\Imagenes\\ImagenesDefensas\\torreArqueras.png"));
-        defensasDisponibles.add(new Defensa("Muro", 1, 1, 0, 0, false, false, "C:\\Users\\Mauricio\\Desktop\\TEC\\Semestre II\\POO\\pato\\Clash\\src\\Imagenes\\ImagenesDefensas\\wall.png", "C:\\Users\\Mauricio\\Desktop\\TEC\\Semestre II\\POO\\pato\\Clash\\src\\Imagenes\\ImagenesDefensas\\wall.png"));
-        defensasDisponibles.add(new Defensa("Mortero", 10, 1, 10, 10, true, false, "C:\\Users\\Mauricio\\Desktop\\TEC\\Semestre II\\POO\\pato\\Clash\\src\\Imagenes\\ImagenesDefensas\\Mortar7.png", "C:\\Users\\Mauricio\\Desktop\\TEC\\Semestre II\\POO\\pato\\Clash\\src\\Imagenes\\ImagenesDefensas\\Mortar7.png"));
-        defensasDisponibles.add(new Defensa("Cohetes", 5, 1, 10, 10, false, true, "C:\\Users\\Mauricio\\Desktop\\TEC\\Semestre II\\POO\\pato\\Clash\\src\\Imagenes\\ImagenesDefensas\\Air_Denfense.png", "C:\\Users\\Mauricio\\Desktop\\TEC\\Semestre II\\POO\\pato\\Clash\\src\\Imagenes\\ImagenesDefensas\\Air_Denfense.png"));
-        defensasDisponibles.add(new Defensa("Bomba", 1, 1, 10, 1, false, true, "C:\\Users\\Mauricio\\Desktop\\TEC\\Semestre II\\POO\\pato\\Clash\\src\\Imagenes\\ImagenesDefensas\\bomb.png", "C:\\Users\\Mauricio\\Desktop\\TEC\\Semestre II\\POO\\pato\\Clash\\src\\Imagenes\\ImagenesDefensas\\bomb.png"));
+        defensasDisponibles.add(new Defensa("Canon", 1, 1, 10, 3, true, false, "src\\Imagenes\\ImagenesDefensas\\canon.png", "src\\Imagenes\\ImagenesDefensas\\canon.png"));
+        defensasDisponibles.add(new Defensa("TorreArqueras", 1, 1, 8, 3, true, true, "src\\Imagenes\\ImagenesDefensas\\torreArqueras.png", "src\\Imagenes\\ImagenesDefensas\\torreArqueras.png"));
+        defensasDisponibles.add(new Defensa("Muro", 1, 1, 0, 0, false, false, "src\\Imagenes\\ImagenesDefensas\\wall.png", "src\\Imagenes\\ImagenesDefensas\\wall.png"));
+        defensasDisponibles.add(new Defensa("Mortero", 10, 1, 10, 10, true, false, "src\\Imagenes\\ImagenesDefensas\\Mortar7.png", "src\\Imagenes\\ImagenesDefensas\\Mortar7.png"));
+        defensasDisponibles.add(new Defensa("Cohetes", 5, 1, 10, 10, false, true, "src\\Imagenes\\ImagenesDefensas\\Air_Denfense.png", "src\\Imagenes\\ImagenesDefensas\\Air_Denfense.png"));
+        defensasDisponibles.add(new Defensa("Bomba", 1, 1, 10, 1, false, true, "src\\Imagenes\\ImagenesDefensas\\bomb.png", "src\\Imagenes\\ImagenesDefensas\\bomb.png"));
     }
     
     //crea defensas aleatoriamente segun su nivel
@@ -292,18 +291,7 @@ public class Juego implements Serializable{
     }
     
     
-    public void generateLabels(){
-        for (int i = 0; i < ejercito.size(); i++) {
-            refPantalla.generateLabel(ejercito.get(i));  
-        }
-        for (int i = 0; i < enemigo.size(); i++) {
-            refPantalla.generateLabel(enemigo.get(i));
-        }
-        for (int i = 0; i < defensa.size(); i++) {
-            refPantalla.generateLabel(defensa.get(i));
-        }
-    }
-    
+
    
     
     public void pauseGuerreros(){

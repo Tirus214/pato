@@ -47,17 +47,7 @@ public class PantallaPartida extends javax.swing.JFrame {
         juego.correr();
     }
 
-    public void leePersonajes(Juego j){
-        for (int i = 0; i < j.getEjercito().size(); i++) {
-            generateLabel(j.getEjercito().get(i));
-        }
-        for (int i = 0; i < j.getEnemigo().size(); i++) {
-            generateLabel(j.getEnemigo().get(i));
-        }
-        for (int i = 0; i < j.getDefensa().size(); i++) {
-            generateLabel(j.getDefensa().get(i));
-        }
-    }
+   
     
     public JLabel generateLabel(Personaje p){
         JLabel newLabel = new JLabel(p.getName());
@@ -71,7 +61,7 @@ public class PantallaPartida extends javax.swing.JFrame {
         //newLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource(p.getImg1())));
         
         //newLabel.setIcon(new javax.swing.ImageIcon(p.getImg1()));
-        
+        System.out.println(p.getImg1());
         int x = ((new Random()).nextInt(1000)/40) * 40;
         int y = ((new Random()).nextInt(600) / 40)* 40;
         newLabel.setLocation(x , y);
