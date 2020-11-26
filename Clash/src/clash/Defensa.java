@@ -52,7 +52,7 @@ public class Defensa extends Personaje implements Serializable{
         while (running){
             attackRango();
             try {
-                sleep(100);
+                sleep(1000);
                 } 
             catch (InterruptedException ex) {
                 Logger.getLogger(Guerrero.class.getName()).log(Level.SEVERE, null, ex);
@@ -62,7 +62,7 @@ public class Defensa extends Personaje implements Serializable{
             }
             while(super.pause){
                 try {
-                    sleep(1000);
+                    sleep(10000);
                 } catch (InterruptedException ex) {
                    
                 }

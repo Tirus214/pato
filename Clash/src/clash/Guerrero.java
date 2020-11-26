@@ -63,7 +63,7 @@ public abstract class Guerrero extends Personaje implements Serializable{
                             objetivo = null;
                             inRange = false;
                         }
-                    }else refPantalla.moveLabeltoObjective(this);
+                    } else refPantalla.moveLabeltoObjective(this);
                 } else juego.fijarObjetivoIndividual(this);
             if (health <= 0){
                 running = false;

@@ -68,14 +68,20 @@ public class Juego implements Serializable{
     public void startGuerreros(){
         for (int i = 0; i < ejercito.size(); i++){
             ejercito.get(i).setJuego(this);
+            ejercito.get(i).refPantalla = refPantalla;
+            refPantalla.generateLabel(ejercito.get(i));
             ejercito.get(i).start();
         }
         for (int i = 0; i < enemigo.size(); i++){
             enemigo.get(i).setJuego(this);
+            enemigo.get(i).refPantalla = refPantalla;
+            refPantalla.generateLabel(enemigo.get(i));
             enemigo.get(i).start();
         }
         for (int i = 0; i < defensa.size(); i++){
             defensa.get(i).setJuego(this);
+            defensa.get(i).refPantalla = refPantalla;
+            refPantalla.generateLabel(defensa.get(i));
             defensa.get(i).start();
         }
     }
