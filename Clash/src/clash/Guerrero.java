@@ -64,6 +64,7 @@ public abstract class Guerrero extends Personaje implements Serializable{
                     
                 }
             }
+            else 
             if (health <= 0){
                 running = false;
             }

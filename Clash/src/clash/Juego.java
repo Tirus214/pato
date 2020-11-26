@@ -15,7 +15,7 @@ import java.util.Random;
  *
  * @author Jean Paul
  */
-public class Juego extends Thread implements Serializable{
+public class Juego implements Serializable{
     public PantallaPartida refPantalla;
     public String name;
     public ArrayList<Guerrero> guerrerosDisponibles;
@@ -50,64 +50,67 @@ public class Juego extends Thread implements Serializable{
         attacker.objetivo = array.get(at);
     }
     
-    @Override
-    public void run(){
+    public void correr(){
         generarEnemigos();
         randomDefensas();
         generateLabels();
-        //System.out.println(enemigo.size());
-        int ejercitoMuerto = 0;
-        int enemigosMuertos = 0;
-        while(running){
-            if (reiniciar){
-                running = false;
-                break;
-            }
-            for (int i = 0; i < ejercito.size(); i++){
-                if(ejercito.get(i).health > 0){
-                    if(ejercito.get(i).objetivo != null && ejercito.get(i).objetivo.health > 0){
-                        if(ejercito.get(i).inRange) ejercito.get(i).start();
-                        else refPantalla.moveLabeltoObjective(ejercito.get(i));
-                    }
-                    else searchAttackEnemy(ejercito.get(i), enemigo); 
-                }
-                else ejercitoMuerto++;
-            }
-            if(ejercitoMuerto == ejercito.size()){
-                win = false;
-                running = false;
-                finish = true;
-                break;
-            }
-            for (int i = 0; i < enemigo.size(); i++) {
-                if(enemigo.get(i).health > 0){
-                    if(enemigo.get(i).objetivo != null && enemigo.get(i).objetivo.health > 0){
-                        if(enemigo.get(i).inRange) enemigo.get(i).start();
-                        else refPantalla.moveLabeltoObjective(enemigo.get(i));
-                    }
-                    else searchAttackEnemy(enemigo.get(i), ejercito); 
-                }
-                else enemigosMuertos++;
-            }
-            if(enemigosMuertos == enemigo.size()){
-                win = true;
-                running = false;
-                finish = true;
-            }
-            for (int i = 0; i < defensa.size(); i++) {
-                if(defensa.get(i).objetivo != null && defensa.get(i).objetivo.health > 0){
-                        if(defensa.get(i).inRange) defensa.get(i).start();
-                    }
-            }
-            
+        startGuerreros();
+        
+    }
+    
+    public void startGuerreros(){
+        for (int i = 0; i < ejercito.size(); i++){
+            ejercito.get(i).setJuego(this);
+            ejercito.get(i).start();
         }
-        if(win){
-            nextLevel();
+        for (int i = 0; i < enemigo.size(); i++){
+            enemigo.get(i).setJuego(this);
+            enemigo.get(i).start();
         }
-        else{
-            inicializar();
+        for (int i = 0; i < defensa.size(); i++){
+            defensa.get(i).setJuego(this);
+            defensa.get(i).start();
         }
     }
+    
+    
+    public void stopGuerreros(){
+        for (int i = 0; i < ejercito.size(); i++){
+            ejercito.get(i).running = false;
+        }
+        for (int i = 0; i < enemigo.size(); i++){
+            enemigo.get(i).running = false;
+        }
+        for (int i = 0; i < defensa.size(); i++){
+            defensa.get(i).running = false;
+        } 
+    }
+    
+    
+    public void verificarGanador(){
+        if(verificarEjercito()) inicializar();
+        else if(verificarEnemigo()) nextLevel();
+    }
+    
+    
+    public boolean verificarEjercito(){
+        int muertos = 0;
+        for (int i = 0; i < ejercito.size(); i++){
+            if(ejercito.get(i).health <= 0) muertos++;
+        }
+        if(muertos == ejercito.size()) return true;
+            return false;
+    }
+    
+    public boolean verificarEnemigo(){
+        int muertos = 0;
+        for (int i = 0; i < enemigo.size(); i++){
+            if(enemigo.get(i).health <= 0) muertos++;
+        }
+        if(muertos == enemigo.size()) return true;
+            return false;
+    }
+    
     
     private void nextLevel(){
         nivelPartida++;
@@ -196,7 +199,6 @@ public class Juego extends Thread implements Serializable{
         while (tropas2 > 0) {
             int at = ran.nextInt(guerrerosDisponibles.size());
             Guerrero g = guerrerosDisponibles.get(at);
-            System.out.println(g.name);
             int i = insertarGuerrero(tropas2, g, enemigo);
             if (i != -1) tropas2 -= i;
         }

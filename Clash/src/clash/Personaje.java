@@ -17,6 +17,7 @@ import javax.swing.JLabel;
  * @author Jean Paul
  */
 public abstract class Personaje extends Thread implements Serializable{
+    public Juego juego;
     public PantallaPartida refPantalla;
     protected String name;
     protected int damage;
@@ -52,8 +53,17 @@ public abstract class Personaje extends Thread implements Serializable{
         this.num = 0;
         this.inRange = false;
         this.damage = damage;
-                
     }
+
+    public Juego getJuego() {
+        return juego;
+    }
+
+    public void setJuego(Juego juego) {
+        this.juego = juego;
+    }
+   
+    
 
     public String getNombre() {
         return this.name;
