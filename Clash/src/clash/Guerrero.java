@@ -17,8 +17,9 @@ import java.util.logging.Logger;
 public abstract class Guerrero extends Personaje implements Serializable{
     protected int space;
     protected int health;
-    String img2;
-    boolean movility;
+    protected String img2;
+    protected boolean movility;
+    protected boolean aliado;
 
 
     //Constructor
@@ -28,6 +29,7 @@ public abstract class Guerrero extends Personaje implements Serializable{
         this.img2 = img2;
         this.movility = movility;
         this.health = health;
+        this.aliado = false;
     }
     
     public void crecer(){
@@ -47,37 +49,31 @@ public abstract class Guerrero extends Personaje implements Serializable{
     @Override
     public void run(){
         while (running){
-            if(inRange){
                 if(objetivo != null) {
                     if(objetivo.health > 0){
                         objetivo.health -= this.damage;
                         try {
-                            sleep(100);
-                        } catch (InterruptedException ex) {
+                            sleep(1000);
+                        } catch (InterruptedException ex){
                             Logger.getLogger(Guerrero.class.getName()).log(Level.SEVERE, null, ex);
                         }
                     }
                     else {
                         objetivo = null;
                         inRange = false;
-                    }
-                    
-                }
-            }
-            else 
+                    }  
+                } else juego.fijarObjetivoIndividual(this);
             if (health <= 0){
                 running = false;
             }
             
-            //
             while(super.pause){
                 try {
-                    sleep(1000);
+                    sleep(10000);
                 } catch (InterruptedException ex) {
                    
                 }
             }
-            
         }    
     }
 
@@ -95,6 +91,14 @@ public abstract class Guerrero extends Personaje implements Serializable{
 
     public void setHealth(int health) {
         this.health = health;
+    }
+
+    public boolean isAliado() {
+        return aliado;
+    }
+
+    public void setAliado(boolean aliado) {
+        this.aliado = aliado;
     }
     
     

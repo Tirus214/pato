@@ -25,7 +25,6 @@ public class Defensa extends Personaje implements Serializable{
         this.ataqueAereo = ataqueAereo;
    }
    
-   @Override
    public void attackRango(){
        int dx = this.getPosicion().x;
        int dy = this.getPosicion().y;

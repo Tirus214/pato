@@ -44,7 +44,7 @@ public class PantallaPartida extends javax.swing.JFrame {
         juego.refPantalla = this;
         lblNivel.setText("Nivel " + juego.getNivel());
         copia = juego;
-        juego.start();
+        juego.correr();
     }
 
     public void leePersonajes(Juego j){
@@ -197,7 +197,7 @@ public class PantallaPartida extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(153, 255, 153));
         jPanel1.setMinimumSize(new java.awt.Dimension(800, 600));
-        jPanel1.setPreferredSize(new java.awt.Dimension(1000, 800));
+        jPanel1.setPreferredSize(new java.awt.Dimension(800, 800));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

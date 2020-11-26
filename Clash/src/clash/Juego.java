@@ -54,8 +54,15 @@ public class Juego implements Serializable{
         generarEnemigos();
         randomDefensas();
         generateLabels();
+        makeAliados();
         startGuerreros();
         
+    }
+    
+    public void makeAliados(){
+        for (int i = 0; i < ejercito.size(); i++) {
+            ejercito.get(i).aliado = true;
+        }
     }
     
     public void startGuerreros(){
@@ -138,24 +145,8 @@ public class Juego implements Serializable{
             this.cantDefensas = nivelPartida * 3 + 3;
         }
     }
-    /*
-    public void crecerGuerreros(){
-        for (int i = 0; i < guerrerosDisponibles.size(); i++) {
-            try{
-                GuerreroBestia g = (GuerreroBestia) guerrerosDisponibles.get(i);
-                continue;
-                try {
-                    GuerreroHeroe h = (GuerreroHeroe) guerrerosDisponibles.get(i);
-                    continue;
-                }
-                catch()
-            }
-            catch (InterruptedException e){
-                guerrerosDisponibles.get(i).crecer();
-            }
-        }
-    }
-*/
+
+    
     public void increaseNivel(){
         for (int i = 0; i < guerrerosDisponibles.size(); i++) {
             guerrerosDisponibles.get(i).nivelPartida = nivelPartida;
@@ -175,7 +166,6 @@ public class Juego implements Serializable{
     
     public void fijarObjetivo(){ // fija los objetivos de enemigos y aliados
         Random ran = new Random();
-        
         for (int i = 0; i < this.ejercito.size() ; i++) {
             ejercito.get(i).setObjetivo(enemigo.get(ran.nextInt(enemigo.size())));
         }
@@ -190,7 +180,17 @@ public class Juego implements Serializable{
         }
     }
     
-
+    
+    public void fijarObjetivoIndividual(Guerrero g){
+        Random ran = new Random();
+        if(g.aliado){
+            g.setObjetivo(enemigo.get(ran.nextInt(enemigo.size())));
+        }
+        else{
+            g.setObjetivo(enemigo.get(ran.nextInt(ejercito.size())));
+        }
+    }
+    
     
     
     public void generarEnemigos(){
@@ -293,29 +293,7 @@ public class Juego implements Serializable{
         }
     }
     
-    
-    
-    
-    
-    public void startGuerreros(){
-        for (int i = 0; i < ejercito.size(); i++) {
-            ejercito.get(i).start();
-            enemigo.get(i).start();
-        }
-        for (int j = 0; j < defensa.size(); j++) {
-            defensa.get(j).stopThread();
-        }
-    }
-    
-    public void stopGuerreros(){
-        for (int i = 0; i < ejercito.size(); i++) {
-            ejercito.get(i).stopThread();
-            enemigo.get(i).stopThread();
-        }
-        for (int j = 0; j < defensa.size(); j++) {
-            defensa.get(j).stopThread();
-        }
-    }
+   
     
     public void pauseGuerreros(){
         for (int i = 0; i < ejercito.size(); i++) {
