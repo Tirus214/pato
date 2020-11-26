@@ -73,7 +73,19 @@ public abstract class Personaje extends Thread implements Serializable{
         this.name = name;
     }
     
-    
+    public void attackRango(){
+       int dx = this.getPosicion().x;
+       int dy = this.getPosicion().y;
+       
+       for (int i = 0; i < juego.getEjercito().size(); i++) {
+           int gix = juego.getEjercito().get(i).getPosicion().x;
+           int giy = juego.getEjercito().get(i).getPosicion().y;
+           
+           if (Math.sqrt((dx-gix)*(dx-gix)/40  + (dy-giy)*(dy-giy))/40  <= range){ //casillas de 40 x 40
+               attack(juego.getEjercito().get(i));
+           }
+       }
+   }  
     
     
     
