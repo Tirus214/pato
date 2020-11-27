@@ -19,8 +19,8 @@ public class main {
         PantallaInicial pantalla = new PantallaInicial();
         pantalla.setVisible(true);
         
-        Configuracion config = new Configuracion();
-        FileManager.writeObject(config, "src\\filemanager\\Files\\configuracion.dat");
+        //Configuracion config = new Configuracion();
+        //FileManager.writeObject(config, "src\\filemanager\\Files\\configuracion.dat");
         
     }
 }

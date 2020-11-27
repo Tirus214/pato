@@ -30,6 +30,7 @@ public class PantallaPartida extends javax.swing.JFrame {
     Juego copia;
     ArrayList<JLabel> arregloLabels;
     int index;  
+    PantallaMenu pantalla;
     
     /**
      * Creates new form PantallaPartida
@@ -170,6 +171,19 @@ public class PantallaPartida extends javax.swing.JFrame {
         }
         return -1;
     }
+    
+    
+    public void setPantalla(PantallaMenu pantalla){
+        this.pantalla = pantalla;
+    }
+    
+    
+    public void volverMenu(){
+        setVisible(false);
+        PantallaMenu pantalla = new PantallaMenu();
+        pantalla.setVisible(true);
+        pantalla.putJuego(juego);
+    }
 
 
     /**
@@ -282,15 +296,13 @@ public class PantallaPartida extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAvanzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvanzarActionPerformed
-        juego.win = true;
-        juego.running = false;
-        juego.finish = true;
+        juego.stopGuerreros();
+        juego.nextLevel();
+        volverMenu();
     }//GEN-LAST:event_btnAvanzarActionPerformed
 
     private void btnReelegirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReelegirActionPerformed
-        juego.win = false;
-        juego.running = false;
-        juego.finish = true;
+        juego.inicializar();
     }//GEN-LAST:event_btnReelegirActionPerformed
 
     private void btnReiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReiniciarActionPerformed

@@ -40,8 +40,6 @@ public class Juego implements Serializable{
         guerrerosDisponibles = new ArrayList<Guerrero>();
         inicializar();
         putCantidad();
-        guerrerosDisponibles.add(new GuerreroDeContacto("Barbaro", 3, 20, 1, 1, 1, 1, true, "src\\Imagenes\\ImagenesGuerreros\\Barbarian9.png", "src\\Imagenes\\ImagenesGuerreros\\Barbarian9.png"));
-        guerrerosDisponibles.add(new GuerreroDeContacto("Barbaro", 3, 20, 1, 1, 1, 1, true, "src\\Imagenes\\ImagenesGuerreros\\Barbarian9.png", "src\\Imagenes\\ImagenesGuerreros\\Barbarian9.png"));
     }
     
     public void searchAttackEnemy(Personaje attacker, ArrayList<Guerrero> array){// se va a atacar al azar
@@ -105,8 +103,14 @@ public class Juego implements Serializable{
     
     
     public void verificarGanador(){
-        if(verificarEjercito()) inicializar();
-        else if(verificarEnemigo()) nextLevel();
+        if(verificarEjercito()){
+            stopGuerreros();
+            inicializar();
+        }
+        else if(verificarEnemigo()){
+            stopGuerreros();
+            nextLevel();
+        }
     }
     
     
@@ -129,7 +133,7 @@ public class Juego implements Serializable{
     }
     
     
-    private void nextLevel(){
+    public   void nextLevel(){
         nivelPartida++;
         //crecerGuerreros();
         inicializar();
@@ -138,7 +142,7 @@ public class Juego implements Serializable{
     }
     
     
-    private void inicializar(){
+    public void inicializar(){
         ejercito = new ArrayList<Guerrero>();
         defensa = new ArrayList<Defensa>();
         enemigo = new ArrayList<Guerrero>();
@@ -150,25 +154,25 @@ public class Juego implements Serializable{
     }
     
     private void putCantidad(){
-        if(nivelPartida < 6){
-            this.cantTropas = nivelPartida * 3 + 5;
-            this.cantDefensas = nivelPartida * 3 + 3;
-        }
+        this.cantTropas = 2 + nivelPartida * 3;
+        this.cantDefensas = 1 + nivelPartida * 2;
     }
 
     
     public void increaseNivel(){
-        for (int i = 0; i < guerrerosDisponibles.size(); i++) {
-            guerrerosDisponibles.get(i).nivelPartida = nivelPartida;
-            try{
-                GuerreroBestia b = (GuerreroBestia) guerrerosDisponibles.get(i);
-                continue;
-            } catch(Exception e){
+        if(nivelPartida < 6){
+            for (int i = 0; i < guerrerosDisponibles.size(); i++) {
+                guerrerosDisponibles.get(i).nivelPartida = nivelPartida;
                 try{
-                    GuerreroHeroe h = (GuerreroHeroe) guerrerosDisponibles.get(i);
+                    GuerreroBestia b = (GuerreroBestia) guerrerosDisponibles.get(i);
                     continue;
-                } catch(Exception f){
-                    guerrerosDisponibles.get(i).crecer();
+                } catch(Exception e){
+                    try{
+                        GuerreroHeroe h = (GuerreroHeroe) guerrerosDisponibles.get(i);
+                        continue;
+                    } catch(Exception f){
+                        guerrerosDisponibles.get(i).crecer();
+                    }
                 }
             }
         }
@@ -191,13 +195,13 @@ public class Juego implements Serializable{
     }
     
     
-    public void fijarObjetivoIndividual(Guerrero g){
+    public Guerrero fijarObjetivoIndividual(boolean aliado){
         Random ran = new Random();
-        if(g.aliado){
-            g.setObjetivo(enemigo.get(ran.nextInt(enemigo.size())));
+        if(aliado){
+            return enemigo.get(ran.nextInt(enemigo.size()));
         }
         else{
-            g.setObjetivo(enemigo.get(ran.nextInt(ejercito.size())));
+            return ejercito.get(ran.nextInt(ejercito.size()));
         }
     }
     

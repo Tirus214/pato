@@ -19,7 +19,7 @@ public abstract class Guerrero extends Personaje implements Serializable{
     protected int health;
     protected String img2;
     protected boolean movility;
-    protected boolean aliado;
+    protected boolean aliado = false;
 
 
     //Constructor
@@ -29,7 +29,6 @@ public abstract class Guerrero extends Personaje implements Serializable{
         this.img2 = img2;
         this.movility = movility;
         this.health = health;
-        this.aliado = false;
     }
     
     public void crecer(){
@@ -64,7 +63,8 @@ public abstract class Guerrero extends Personaje implements Serializable{
                             inRange = false;
                         }
                     } else refPantalla.moveLabeltoObjective(this);
-                } else juego.fijarObjetivoIndividual(this);
+                } 
+                else objetivo = juego.fijarObjetivoIndividual(aliado);
             if (health <= 0){
                 running = false;
             }
