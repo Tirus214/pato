@@ -47,6 +47,7 @@ public abstract class Guerrero extends Personaje implements Serializable{
     
     @Override
     public void run(){
+        System.out.println(num);
         while (running){
                 if(objetivo != null) {
                     if(inRange){
@@ -57,10 +58,14 @@ public abstract class Guerrero extends Personaje implements Serializable{
                             objetivo = null;
                             inRange = false;
                         }
-                    } else refPantalla.moveLabeltoObjective(this, num);
+                    } else {
+                        refPantalla.moveLabeltoObjective(this, num);
+                    
+                    refPantalla.movLabel(this, 'd', num);}
                 }
                 else try{
                     objetivo = juego.fijarObjetivoIndividual(aliado);
+              
                 }
                 catch(Exception e){
                     
