@@ -84,9 +84,13 @@ public class PantallaPartida extends javax.swing.JFrame {
         catch(Exception e){
             //return newLabel;
         }
-        
-        arregloLabels.add(p.num ,newLabel);
+        try{
+            arregloLabels.add(p.num ,newLabel);
         //return newLabel;
+        }catch (Exception e){
+            arregloLabels.add(newLabel);
+        }
+        
         
     }
     
@@ -107,8 +111,8 @@ public class PantallaPartida extends javax.swing.JFrame {
         return true;
     }
     
-    public boolean moveLabeltoObjective (Guerrero g, int num){ //retorna true cuando esta en rango
-        if ((abs(g.getPosicion().x - g.getObjetivo().getPosicion().x)) <= 40 * g.getRange() || abs(g.getPosicion().y - g.getObjetivo().getPosicion().y) <= 40 * g.getRange()){
+    public boolean moveLabeltoObjective2 (Guerrero g, int num){ //retorna true cuando esta en rango
+        if ((abs(  g.getPosicion().x - g.getObjetivo().getPosicion().x)) <= 40 * g.getRange() || abs(g.getPosicion().y - g.getObjetivo().getPosicion().y) <= 40 * g.getRange()){
             g.inRange = true;
             return true;
         }
@@ -132,6 +136,36 @@ public class PantallaPartida extends javax.swing.JFrame {
                 return false;
             }
         }
+    }
+    
+    public boolean moveLabeltoObjective (Guerrero g, int num){ //retorna true cuando esta en rango
+        if ((abs(  g.getPosicion().x - g.getObjetivo().getPosicion().x)) <= 40 * g.getRange() || abs(g.getPosicion().y - g.getObjetivo().getPosicion().y) <= 40 * g.getRange()){
+            g.inRange = true;
+            return true;
+        }
+        else if (abs(g.getPosicion().x - g.getObjetivo().getPosicion().x) > 40 * g.getRange()){
+           
+            if (g.getPosicion().x > g.getObjetivo().getPosicion().x){
+                movLabel(g, 'i', num);
+                return true;
+            }
+            else{
+                movLabel(g, 'd', num);
+                return true;
+            }
+        }
+        else if (abs(g.getPosicion().y - g.getObjetivo().getPosicion().y) > 40 * g.getRange()){
+           
+            if (g.getPosicion().y > g.getObjetivo().getPosicion().y){
+                movLabel(g, 'b', num);
+                return true;
+            }
+            else{
+                movLabel(g, 'a', num);
+                return true;
+            }
+        }
+        else return false;
     }
     
    public void movLabel (Guerrero g, char direccion, int num){
