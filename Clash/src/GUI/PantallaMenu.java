@@ -55,7 +55,12 @@ public class PantallaMenu extends javax.swing.JFrame {
         for (int i = 0; i < juego.guerrerosDisponibles.size(); i++) {
             if(juego.guerrerosDisponibles.get(i).getApLevel() <= juego.getNivel()){
                 nombreGuerreros.add(juego.guerrerosDisponibles.get(i).getNombre());
-                cmbGuerreros.addItem(nombreGuerreros.get(i));
+                try{
+                    cmbGuerreros.addItem(nombreGuerreros.get(i));
+                }
+                catch( Exception e){
+                    cmbGuerreros.addItem(nombreGuerreros.get(i-1));
+                }
                 numeroGuerreros.add(0);
             }
         }
