@@ -138,34 +138,49 @@ public class PantallaPartida extends javax.swing.JFrame {
         }
     }
     
+    
     public boolean moveLabeltoObjective (Guerrero g, int num){ //retorna true cuando esta en rango
+        int y = arregloLabels.get(num).getLocation().y;
+        int x = arregloLabels.get(num).getLocation().x;
         if ((abs(  g.getPosicion().x - g.getObjetivo().getPosicion().x)) <= 40 * g.getRange() || abs(g.getPosicion().y - g.getObjetivo().getPosicion().y) <= 40 * g.getRange()){
             g.inRange = true;
             return true;
         }
-        else if (abs(g.getPosicion().x - g.getObjetivo().getPosicion().x) > 40 * g.getRange()){
-           
-            if (g.getPosicion().x > g.getObjetivo().getPosicion().x){
+        else if ((abs(g.getPosicion().x - g.getObjetivo().getPosicion().x)) >= (abs(g.getPosicion().y - g.getObjetivo().getPosicion().y))){
+            if ((g.getPosicion().x - g.getObjetivo().getPosicion().x) < 0){
                 movLabel(g, 'i', num);
-                return true;
+                arregloLabels.get(num).setLocation(x -40 , y );
+                return false;
             }
             else{
                 movLabel(g, 'd', num);
-                return true;
+                arregloLabels.get(num).setLocation(x +40 , y );
+                return false;
             }
         }
-        else if (abs(g.getPosicion().y - g.getObjetivo().getPosicion().y) > 40 * g.getRange()){
-           
-            if (g.getPosicion().y > g.getObjetivo().getPosicion().y){
+        else{
+            if ((g.getPosicion().y - g.getObjetivo().getPosicion().y) < 0){
                 movLabel(g, 'b', num);
-                return true;
+                arregloLabels.get(num).setLocation(x, y -40 );
+                return false;
             }
             else{
                 movLabel(g, 'a', num);
-                return true;
+                arregloLabels.get(num).setLocation(x, y +40 );
+                return false;
             }
         }
-        else return false;
+    }
+    
+    public boolean moveLabeltoObjective3 (Guerrero g, int num){ //retorna true cuando esta en rango
+        char[] xd = new char[4];
+        xd[0] = 'a';
+        xd[1] = 'd';
+        xd[2] = 'b';
+        xd[3] = 'i';
+        Random ran = new Random();
+        movLabel(g, xd[ran.nextInt(3)], num);
+        return true;
     }
     
 public void movLabel (Guerrero g, char direccion, int num){
@@ -176,23 +191,27 @@ public void movLabel (Guerrero g, char direccion, int num){
            case 'a': 
                y = arregloLabels.get(num).getLocation().y + 40;
                x = arregloLabels.get(num).getLocation().x;
-               g.setPosicion(new Point(x ,y));
+               g.setPosicion(g.getPosicion());
                arregloLabels.get(num).setLocation(x, y );
+               arregloLabels.get(num).move(x, y);
            case 'b': 
                y = arregloLabels.get(num).getLocation().y - 40;
                x = arregloLabels.get(num).getLocation().x;
                g.setPosicion(new Point(x,y));
                arregloLabels.get(num).setLocation(x, y);
+               arregloLabels.get(num).move(x, y);
            case 'd': 
                y = arregloLabels.get(num).getLocation().y;
                x = arregloLabels.get(num).getLocation().x + 40;
                g.setPosicion(new Point(x, y));
                arregloLabels.get(num).setLocation(x, y);
+               arregloLabels.get(num).move(x, y);
            case 'i': 
                y = arregloLabels.get(num).getLocation().y;
                x = arregloLabels.get(num).getLocation().x - 40;
                g.setPosicion(new Point(x,y));
                arregloLabels.get(num).setLocation(x, y);
+               arregloLabels.get(num).move(x, y);
        }
 }
     
