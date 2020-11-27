@@ -72,6 +72,7 @@ public abstract class Guerrero extends Personaje implements Serializable{
                 }
             if (health <= 0){
                 running = false;
+                refPantalla.arregloLabels.get(num).setLocation(1000, 1000);
             }
             while(super.pause){
                 try {

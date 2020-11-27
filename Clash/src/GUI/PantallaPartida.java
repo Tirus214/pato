@@ -28,7 +28,7 @@ import javax.swing.JLabel;
 public class PantallaPartida extends javax.swing.JFrame {
     Juego juego;
     Juego copia;
-    ArrayList<JLabel> arregloLabels;
+    public ArrayList<JLabel> arregloLabels;
     int index;  
     PantallaMenu pantalla;
     

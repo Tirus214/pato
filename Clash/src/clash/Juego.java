@@ -61,6 +61,10 @@ public class Juego implements Serializable{
     
     
     public void putNum(){
+        for (int i = 0; i < ejercito.size(); i++) {
+            ejercito.get(i).num = indice;
+            indice++;
+        }
         for (int i = 0; i < enemigo.size(); i++) {
             enemigo.get(i).num = indice;
             indice++;
@@ -74,8 +78,6 @@ public class Juego implements Serializable{
     public void makeAliados(){
         for (int i = 0; i < ejercito.size(); i++) {
             ejercito.get(i).aliado = true;
-            ejercito.get(i).num = indice;
-            indice++;
         }
     }
     
