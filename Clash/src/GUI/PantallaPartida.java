@@ -85,8 +85,9 @@ public class PantallaPartida extends javax.swing.JFrame {
             //return newLabel;
         }
         
-        arregloLabels.add(newLabel);
+        arregloLabels.add(p.num ,newLabel);
         //return newLabel;
+        
     }
     
     public boolean compararPoint(Point p){ //True si la casilla esta descoupada
