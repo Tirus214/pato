@@ -139,35 +139,38 @@ public class PantallaPartida extends javax.swing.JFrame {
     }
     
     
-    public boolean moveLabeltoObjective (Guerrero g, int num){ //retorna true cuando esta en rango
+    public void moveLabeltoObjective (Guerrero g, int num){ //retorna true cuando esta en rango
         int y = arregloLabels.get(num).getLocation().y;
         int x = arregloLabels.get(num).getLocation().x;
         if ((abs(  g.getPosicion().x - g.getObjetivo().getPosicion().x)) <= 40 * g.getRange() || abs(g.getPosicion().y - g.getObjetivo().getPosicion().y) <= 40 * g.getRange()){
             g.inRange = true;
-            return true;
         }
         else if ((abs(g.getPosicion().x - g.getObjetivo().getPosicion().x)) >= (abs(g.getPosicion().y - g.getObjetivo().getPosicion().y))){
             if ((g.getPosicion().x - g.getObjetivo().getPosicion().x) < 0){
-                movLabel(g, 'i', num);
-                arregloLabels.get(num).setLocation(x -40 , y );
-                return false;
+                if(arregloLabels.get(num).getLocation().x - 40 >= 0){
+                    movLabel(g, 'i', num);
+                    arregloLabels.get(num).setLocation(x -40 , y );
+                }
             }
             else{
-                movLabel(g, 'd', num);
-                arregloLabels.get(num).setLocation(x +40 , y );
-                return false;
+                if(arregloLabels.get(num).getLocation().x + 40 <= 760){
+                    movLabel(g, 'd', num);
+                    arregloLabels.get(num).setLocation(x +40 , y );
+                }
             }
         }
         else{
             if ((g.getPosicion().y - g.getObjetivo().getPosicion().y) < 0){
-                movLabel(g, 'b', num);
-                arregloLabels.get(num).setLocation(x, y -40 );
-                return false;
+                if(arregloLabels.get(num).getLocation().y - 40 >= 0){
+                    movLabel(g, 'b', num);
+                    arregloLabels.get(num).setLocation(x, y -40 );
+                }
             }
             else{
-                movLabel(g, 'a', num);
-                arregloLabels.get(num).setLocation(x, y +40 );
-                return false;
+                if(arregloLabels.get(num).getLocation().y + 40 <= 720){
+                    movLabel(g, 'a', num);
+                    arregloLabels.get(num).setLocation(x, y +40 );
+                }
             }
         }
     }
@@ -259,7 +262,7 @@ public void movLabel (Guerrero g, char direccion, int num){
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(153, 255, 153));
-        jPanel1.setMinimumSize(new java.awt.Dimension(800, 600));
+        jPanel1.setMinimumSize(new java.awt.Dimension(800, 800));
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 800));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -270,7 +273,7 @@ public void movLabel (Guerrero g, char direccion, int num){
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 718, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 102, 102));

@@ -47,7 +47,6 @@ public abstract class Guerrero extends Personaje implements Serializable{
     
     @Override
     public void run(){
-        System.out.println(num);
         while (running){
                 if(objetivo != null) {
                     if(inRange){
