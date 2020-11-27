@@ -168,31 +168,33 @@ public class PantallaPartida extends javax.swing.JFrame {
         else return false;
     }
     
-   public void movLabel (Guerrero g, char direccion, int num){
+public void movLabel (Guerrero g, char direccion, int num){
+       //System.out.println(arregloLabels.get(num).getLocation().toString() + g.getPosicion().toString() + num + direccion);
+       int x;
+       int y;
        switch(direccion){
            case 'a': 
-               int y = arregloLabels.get(num).getLocation().y + 40;
-               int x = arregloLabels.get(num).getLocation().x;
+               y = arregloLabels.get(num).getLocation().y + 40;
+               x = arregloLabels.get(num).getLocation().x;
+               g.setPosicion(new Point(x ,y));
+               arregloLabels.get(num).setLocation(x, y );
+           case 'b': 
+               y = arregloLabels.get(num).getLocation().y - 40;
+               x = arregloLabels.get(num).getLocation().x;
                g.setPosicion(new Point(x,y));
                arregloLabels.get(num).setLocation(x, y);
-           case 'b': 
-               int y1 = arregloLabels.get(num).getLocation().y - 40;
-               int x1 = arregloLabels.get(num).getLocation().x;
-               g.setPosicion(new Point(x1,y1));
-               arregloLabels.get(num).setLocation(x1, y1);
            case 'd': 
-               int y2 = arregloLabels.get(num).getLocation().y;
-               int x2 = arregloLabels.get(num).getLocation().x + 40;
-               g.setPosicion(new Point(x2,y2));
-               arregloLabels.get(num).setLocation(x2, y2);
+               y = arregloLabels.get(num).getLocation().y;
+               x = arregloLabels.get(num).getLocation().x + 40;
+               g.setPosicion(new Point(x, y));
+               arregloLabels.get(num).setLocation(x, y);
            case 'i': 
-               int y3 = arregloLabels.get(num).getLocation().y;
-               int x3 = arregloLabels.get(num).getLocation().x - 40;
-               g.setPosicion(new Point(x3,y3));
-               arregloLabels.get(num).setLocation(x3, y3);;
-       }    
-       
-   }
+               y = arregloLabels.get(num).getLocation().y;
+               x = arregloLabels.get(num).getLocation().x - 40;
+               g.setPosicion(new Point(x,y));
+               arregloLabels.get(num).setLocation(x, y);
+       }
+}
     
     
     public int isAvailablePostion(int x, int y, JLabel refLabel){      
