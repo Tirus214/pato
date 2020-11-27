@@ -139,7 +139,7 @@ public class PantallaPartida extends javax.swing.JFrame {
     }
     
     
-    public void moveLabeltoObjective (Guerrero g, int num){ //retorna true cuando esta en rango
+    public void moveLabeltoObjective3 (Guerrero g, int num){ //retorna true cuando esta en rango
         int y = arregloLabels.get(num).getLocation().y;
         int x = arregloLabels.get(num).getLocation().x;
         if ((abs(  g.getPosicion().x - g.getObjetivo().getPosicion().x)) <= 40 * g.getRange() || abs(g.getPosicion().y - g.getObjetivo().getPosicion().y) <= 40 * g.getRange()){
@@ -175,7 +175,9 @@ public class PantallaPartida extends javax.swing.JFrame {
         }
     }
     
-    public boolean moveLabeltoObjective3 (Guerrero g, int num){ //retorna true cuando esta en rango
+        public void moveLabeltoObjective (Guerrero g, int num){ //retorna true cuando esta en rango
+        int y = arregloLabels.get(num).getLocation().y;
+        int x = arregloLabels.get(num).getLocation().x;
         char[] xd = new char[4];
         xd[0] = 'a';
         xd[1] = 'd';
@@ -183,9 +185,16 @@ public class PantallaPartida extends javax.swing.JFrame {
         xd[3] = 'i';
         Random ran = new Random();
         movLabel(g, xd[ran.nextInt(3)], num);
-        return true;
+        int ss = ran.nextInt(3);
+        switch(ss){
+            case 0: arregloLabels.get(num).setLocation(x -40 , y );
+                    break;
+            case 1:arregloLabels.get(num).setLocation(x +40 , y );break;
+            case 2: arregloLabels.get(num).setLocation(x, y -40 );break;
+            case 3:arregloLabels.get(num).setLocation(x, y +40 );
+        }
     }
-    
+        
 public void movLabel (Guerrero g, char direccion, int num){
        //System.out.println(arregloLabels.get(num).getLocation().toString() + g.getPosicion().toString() + num + direccion);
        int x;
