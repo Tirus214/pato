@@ -20,7 +20,6 @@ public class main {
         pantalla.setVisible(true);
         
         //Configuracion config = new Configuracion();
-        //FileManager.writeObject(config, "src\\filemanager\\Files\\configuracion.dat");
-        
+        //FileManager.writeObject(config, "src\\filemanager\\Files\\configuracion.dat");  
     }
 }

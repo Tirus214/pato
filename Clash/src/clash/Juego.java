@@ -271,6 +271,7 @@ public class Juego implements Serializable{
     }
     
     public int insertarGuerrero(int tropas, Guerrero tmp, ArrayList<Guerrero> array){
+        if(tmp.apLevel <= nivelPartida){
                 if(GuerreroDeContacto.class == tmp.getClass() && tropas >= tmp.space) {
                     array.add(new GuerreroDeContacto(name, tmp.damage, tmp.health, tmp.level, tmp.range, tmp.space, tmp.apLevel, tmp.movility, tmp.getImg1(), tmp.getImg2()));
                     return tmp.space;
@@ -292,7 +293,8 @@ public class Juego implements Serializable{
                     return tmp.space;
                 }
                 return -1;
-                
+        }
+        return -1;
     }
     
     
