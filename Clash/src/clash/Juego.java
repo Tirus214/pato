@@ -32,7 +32,6 @@ public class Juego implements Serializable{
     public boolean win;
     public boolean finish;
     public boolean reiniciar = false;
-    public int indice;
 
     
     public Juego(){
@@ -41,7 +40,6 @@ public class Juego implements Serializable{
         guerrerosDisponibles = new ArrayList<Guerrero>();
         inicializar();
         putCantidad();
-        indice = 0;
     }
     
     public void searchAttackEnemy(Personaje attacker, ArrayList<Guerrero> array){// se va a atacar al azar
@@ -61,6 +59,7 @@ public class Juego implements Serializable{
     
     
     public void putNum(){
+        int indice = 0;
         for (int i = 0; i < ejercito.size(); i++) {
             ejercito.get(i).num = indice;
             indice++;
@@ -82,6 +81,7 @@ public class Juego implements Serializable{
     }
     
     public void startGuerreros(){
+        int num = 0;
         for (int i = 0; i < ejercito.size(); i++){
             ejercito.get(i).setJuego(this);
             ejercito.get(i).refPantalla = refPantalla;
@@ -95,13 +95,13 @@ public class Juego implements Serializable{
             enemigo.get(i).start();
         }
         for (int i = 0; i < defensa.size(); i++){
-            defensa.get(i).setJuego(this);
-            defensa.get(i).refPantalla = refPantalla;
-            refPantalla.generateLabel(defensa.get(i));
-            
             
             try{
+                
                 defensa.get(i).start();
+                defensa.get(i).setJuego(this);
+                defensa.get(i).refPantalla = refPantalla;
+                refPantalla.generateLabel(defensa.get(i));
             }
             catch(Exception e){
                 // System.out.println(defensa.get(i).toString());
