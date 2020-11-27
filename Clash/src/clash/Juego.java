@@ -79,11 +79,13 @@ public class Juego implements Serializable{
             defensa.get(i).setJuego(this);
             defensa.get(i).refPantalla = refPantalla;
             refPantalla.generateLabel(defensa.get(i));
+            
+            
             try{
                 defensa.get(i).start();
             }
             catch(Exception e){
-                
+                // System.out.println(defensa.get(i).toString());
             }
         }
     }

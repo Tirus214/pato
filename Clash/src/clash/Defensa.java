@@ -49,7 +49,7 @@ public class Defensa extends Personaje implements Serializable{
    @Override
     public void run(){
         while (running){
-            System.out.println("a");
+            //System.out.println("a");
             attackRango();
             try {
                 sleep(1000);

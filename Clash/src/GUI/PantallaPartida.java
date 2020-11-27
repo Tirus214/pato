@@ -68,7 +68,6 @@ public class PantallaPartida extends javax.swing.JFrame {
         jPanel1.add(newLabel);
        
         
-        System.out.println(p.getImg1());
         int x = ((new Random()).nextInt(1000)/40) * 40;
         int y = ((new Random()).nextInt(600) / 40)* 40;
         newLabel.setLocation(x , y);
