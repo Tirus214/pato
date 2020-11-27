@@ -52,23 +52,23 @@ public abstract class Guerrero extends Personaje implements Serializable{
                     if(inRange){
                         if(objetivo.health > 0){
                             objetivo.health -= this.damage;
-                            try {
-                                sleep(1000);
-                            } catch (InterruptedException ex){
-                                // Logger.getLogger(Guerrero.class.getName()).log(Level.SEVERE, null, ex);
-                            }
                         }
                         else {
                             objetivo = null;
                             inRange = false;
                         }
                     } else refPantalla.moveLabeltoObjective(this, num);
-                } 
+                }
                 else try{
                     objetivo = juego.fijarObjetivoIndividual(aliado);
                 }
                 catch(Exception e){
                     
+                }
+                try {
+                    sleep(1000);
+                } catch (InterruptedException ex){
+                    // Logger.getLogger(Guerrero.class.getName()).log(Level.SEVERE, null, ex);
                 }
             if (health <= 0){
                 running = false;
