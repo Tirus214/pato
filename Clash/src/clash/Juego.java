@@ -32,6 +32,7 @@ public class Juego implements Serializable{
     public boolean win;
     public boolean finish;
     public boolean reiniciar = false;
+    public int indice;
 
     
     public Juego(){
@@ -40,6 +41,7 @@ public class Juego implements Serializable{
         guerrerosDisponibles = new ArrayList<Guerrero>();
         inicializar();
         putCantidad();
+        indice = 0;
     }
     
     public void searchAttackEnemy(Personaje attacker, ArrayList<Guerrero> array){// se va a atacar al azar
@@ -51,14 +53,29 @@ public class Juego implements Serializable{
     public void correr(){
         generarEnemigos();
         randomDefensas();
+        putNum();
         makeAliados();
         startGuerreros();
         
     }
     
+    
+    public void putNum(){
+        for (int i = 0; i < enemigo.size(); i++) {
+            enemigo.get(i).num = indice;
+            indice++;
+        }
+        for (int i = 0; i < defensa.size(); i++) {
+            defensa.get(i).num = indice;
+            indice++;
+        }
+    }
+    
     public void makeAliados(){
         for (int i = 0; i < ejercito.size(); i++) {
             ejercito.get(i).aliado = true;
+            ejercito.get(i).num = indice;
+            indice++;
         }
     }
     

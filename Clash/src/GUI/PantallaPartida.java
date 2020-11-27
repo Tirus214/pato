@@ -86,7 +86,6 @@ public class PantallaPartida extends javax.swing.JFrame {
         }
         
         arregloLabels.add(newLabel);
-        
         //return newLabel;
     }
     
@@ -107,55 +106,55 @@ public class PantallaPartida extends javax.swing.JFrame {
         return true;
     }
     
-    public boolean moveLabeltoObjective (Guerrero g){ //retorna true cuando esta en rango
+    public boolean moveLabeltoObjective (Guerrero g, int num){ //retorna true cuando esta en rango
         if ((abs(g.getPosicion().x - g.getObjetivo().getPosicion().x)) <= 40 * g.getRange() || abs(g.getPosicion().y - g.getObjetivo().getPosicion().y) <= 40 * g.getRange()){
             g.inRange = true;
             return true;
         }
         else if ((abs(g.getPosicion().x - g.getObjetivo().getPosicion().x)) >= (abs(g.getPosicion().y - g.getObjetivo().getPosicion().y))){
             if ((g.getPosicion().x - g.getObjetivo().getPosicion().x) < 0){
-                movLabel(g, 'i');
+                movLabel(g, 'i', num);
                 return false;
             }
             else{
-                movLabel(g, 'd');
+                movLabel(g, 'd', num);
                 return false;
             }
         }
         else{
             if ((g.getPosicion().y - g.getObjetivo().getPosicion().y) < 0){
-                movLabel(g, 'b');
+                movLabel(g, 'b', num);
                 return false;
             }
             else{
-                movLabel(g, 'a');
+                movLabel(g, 'a', num);
                 return false;
             }
         }
     }
     
-   public void movLabel (Guerrero g, char direccion){
+   public void movLabel (Guerrero g, char direccion, int num){
        switch(direccion){
            case 'a': 
-               int y = g.refLabel.getLocation().y + 40;
-               int x = g.refLabel.getLocation().x;
+               int y = arregloLabels.get(num).getLocation().y + 40;
+               int x = arregloLabels.get(num).getLocation().x;
                g.setPosicion(new Point(x,y));
-               g.refLabel.setLocation(x, y);
+               arregloLabels.get(num).setLocation(x, y);
            case 'b': 
-               int y1 = g.refLabel.getLocation().y - 40;
-               int x1 = g.refLabel.getLocation().x;
+               int y1 = arregloLabels.get(num).getLocation().y - 40;
+               int x1 = arregloLabels.get(num).getLocation().x;
                g.setPosicion(new Point(x1,y1));
-               g.refLabel.setLocation(x1, y1);
+               arregloLabels.get(num).setLocation(x1, y1);
            case 'd': 
-               int y2 = g.refLabel.getLocation().y;
-               int x2 = g.refLabel.getLocation().x + 40;
+               int y2 = arregloLabels.get(num).getLocation().y;
+               int x2 = arregloLabels.get(num).getLocation().x + 40;
                g.setPosicion(new Point(x2,y2));
-               g.refLabel.setLocation(x2, y2);
+               arregloLabels.get(num).setLocation(x2, y2);
            case 'i': 
-               int y3 = g.refLabel.getLocation().y;
-               int x3 = g.refLabel.getLocation().x - 40;
+               int y3 = arregloLabels.get(num).getLocation().y;
+               int x3 = arregloLabels.get(num).getLocation().x - 40;
                g.setPosicion(new Point(x3,y3));
-               g.refLabel.setLocation(x3, y3);;
+               arregloLabels.get(num).setLocation(x3, y3);;
        }    
        
    }

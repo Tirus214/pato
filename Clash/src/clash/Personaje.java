@@ -33,7 +33,7 @@ public abstract class Personaje extends Thread implements Serializable{
     protected boolean running;
     protected boolean pause;
     public JLabel refLabel;
-    private int num;
+    public int num;
     public Point posicion;
     public Personaje objetivo;
     public boolean inRange;
@@ -51,7 +51,6 @@ public abstract class Personaje extends Thread implements Serializable{
         this.posicion = new Point();
         this.running = true;
         this.pause = false;
-        this.num = 0;
         this.inRange = false;
         this.damage = damage;
     }
