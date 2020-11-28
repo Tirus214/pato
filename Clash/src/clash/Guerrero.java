@@ -51,33 +51,37 @@ public abstract class Guerrero extends Personaje implements Serializable{
             //System.out.println("Guerrero: " + num + "   vida: " + health);
                 if(objetivo != null) {
                     if(inRange){
+                        
                         if(objetivo.health > 0){
                             objetivo.health -= this.damage;
+                            System.out.println("Guerrero: " + objetivo.num + "   Vida: " + objetivo.health);
                         }
                         else {
                             objetivo = null;
                             inRange = false;
                         }
-                    }   else {
+                        
+                    }else {
                         refPantalla.moveLabeltoObjective(this, num);
                         }
-                }else   try{
+                }else   
+                    try{
                     objetivo = juego.fijarObjetivoIndividual(aliado);
               
-                        }
-                        catch(Exception e){
+                    }catch(Exception e){
 
-                        }
+                    }
                 try {
                     sleep(1000);
                 } catch (InterruptedException ex){
                     // Logger.getLogger(Guerrero.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                
             if (health <= 0){
-                
+                System.out.println("Guerrero: " + num +" -> Ah weon me mataron");
                 running = false;
-                
                 refPantalla.arregloLabels.get(num).setLocation(1000, 1000);
+                juego.verificarGanador();
             }
             while(super.pause){
                 try {

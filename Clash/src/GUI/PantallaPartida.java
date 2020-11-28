@@ -20,6 +20,7 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -116,7 +117,7 @@ public class PantallaPartida extends javax.swing.JFrame {
     public void moveLabeltoObjective (Guerrero g, int num){ //retorna true cuando esta en rango
         int y = arregloLabels.get(num).getLocation().y;
         int x = arregloLabels.get(num).getLocation().x;
-        if ((abs(x - g.getObjetivo().getPosicion().x)) <= 40 * g.getRange() && abs(y - g.getObjetivo().getPosicion().y) <= 40 * g.getRange()){
+        if ((abs(x - g.getObjetivo().getPosicion().x)) <= 40 * g.getRange() || abs(y - g.getObjetivo().getPosicion().y) <= 40 * g.getRange()){
             g.inRange = true;
         }
         else if ((abs(x - g.getObjetivo().getPosicion().x)) >= (abs(y - g.getObjetivo().getPosicion().y))){
@@ -180,6 +181,14 @@ public class PantallaPartida extends javax.swing.JFrame {
         PantallaMenu pantalla = new PantallaMenu();
         pantalla.setVisible(true);
         pantalla.putJuego(juego);
+    }
+    
+    public void gano(){
+        JOptionPane.showMessageDialog(jPanel1, "VICTORIA MAGISTRAL!!!");
+    }
+    
+    public void perdio(){
+        JOptionPane.showMessageDialog(jPanel1, "GAME OVER\nMejor suerte la proxima campeon :'(");
     }
 
 

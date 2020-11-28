@@ -35,7 +35,7 @@ public abstract class Personaje extends Thread implements Serializable{
     public JLabel refLabel;
     public int num;
     public Point posicion;
-    public Personaje objetivo;
+    public Guerrero objetivo;
     public boolean inRange;
     public int nivelPartida;
     
@@ -47,7 +47,6 @@ public abstract class Personaje extends Thread implements Serializable{
         this.refLabel = new JLabel();
         this.img1 = img1;
         this.img2 = img2;
-        this.objetivo = null;
         this.posicion = new Point();
         this.running = true;
         this.pause = false;
@@ -88,6 +87,14 @@ public abstract class Personaje extends Thread implements Serializable{
        }
    }  
    */
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
     
     
     public void setNum(int num){
@@ -124,7 +131,7 @@ public abstract class Personaje extends Thread implements Serializable{
         return objetivo;
     }
 
-    public void setObjetivo(Personaje objetivo) {
+    public void setObjetivo(Guerrero objetivo) {
         this.objetivo = objetivo;
     }
 

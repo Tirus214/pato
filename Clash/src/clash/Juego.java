@@ -81,7 +81,6 @@ public class Juego implements Serializable{
     }
     
     public void startGuerreros(){
-        int num = 0;
         for (int i = 0; i < ejercito.size(); i++){
             ejercito.get(i).setJuego(this);
             ejercito.get(i).refPantalla = refPantalla;
@@ -127,10 +126,14 @@ public class Juego implements Serializable{
         if(verificarEjercito()){
             stopGuerreros();
             inicializar();
+            refPantalla.perdio();
+            refPantalla.volverMenu();
         }
         else if(verificarEnemigo()){
             stopGuerreros();
             nextLevel();
+            refPantalla.gano();
+            refPantalla.volverMenu();
         }
     }
     
@@ -294,23 +297,23 @@ public class Juego implements Serializable{
     public int insertarGuerrero(int tropas, Guerrero tmp, ArrayList<Guerrero> array){
         if(tmp.apLevel <= nivelPartida){
                 if(GuerreroDeContacto.class == tmp.getClass() && tropas >= tmp.space) {
-                    array.add(new GuerreroDeContacto(name, tmp.damage, tmp.health, tmp.level, tmp.range, tmp.space, tmp.apLevel, tmp.movility, tmp.getImg1(), tmp.getImg2()));
+                    array.add(new GuerreroDeContacto(tmp.name, tmp.damage, tmp.health, tmp.level, tmp.range, tmp.space, tmp.apLevel, tmp.movility, tmp.getImg1(), tmp.getImg2()));
                     return tmp.space;
                 }
                 else if(GuerreroMedianoAlcance.class == tmp.getClass() && tropas >= tmp.space) {
-                    array.add(new GuerreroMedianoAlcance(name, tmp.damage, tmp.health, tmp.level, tmp.range, tmp.space, tmp.apLevel, tmp.movility, tmp.getImg1(), tmp.getImg2()));
+                    array.add(new GuerreroMedianoAlcance(tmp.name, tmp.damage, tmp.health, tmp.level, tmp.range, tmp.space, tmp.apLevel, tmp.movility, tmp.getImg1(), tmp.getImg2()));
                     return tmp.space;
                 }
                 else if(GuerreroAereo.class == tmp.getClass() && tropas >= tmp.space) {
-                    array.add(new GuerreroAereo(name, tmp.damage, tmp.health, tmp.level, tmp.range, tmp.space, tmp.apLevel, tmp.movility, tmp.getImg1(), tmp.getImg2()));
+                    array.add(new GuerreroAereo(tmp.name, tmp.damage, tmp.health, tmp.level, tmp.range, tmp.space, tmp.apLevel, tmp.movility, tmp.getImg1(), tmp.getImg2()));
                     return tmp.space;
                 }
                 else if(GuerreroBestia.class == tmp.getClass() && tropas >= tmp.space) {
-                    array.add(new GuerreroBestia(name, tmp.damage, tmp.health, tmp.level, tmp.range, tmp.space, tmp.apLevel, tmp.movility, tmp.getImg1(), tmp.getImg2()));
+                    array.add(new GuerreroBestia(tmp.name, tmp.damage, tmp.health, tmp.level, tmp.range, tmp.space, tmp.apLevel, tmp.movility, tmp.getImg1(), tmp.getImg2()));
                     return tmp.space;
                 }
                 else if(GuerreroHeroe.class == tmp.getClass() && tropas >= tmp.space) {
-                    array.add(new GuerreroHeroe(name, tmp.damage, tmp.health, tmp.level, tmp.range, tmp.space, tmp.apLevel, tmp.movility, tmp.getImg1(), tmp.getImg2()));
+                    array.add(new GuerreroHeroe(tmp.name, tmp.damage, tmp.health, tmp.level, tmp.range, tmp.space, tmp.apLevel, tmp.movility, tmp.getImg1(), tmp.getImg2()));
                     return tmp.space;
                 }
                 return -1;
