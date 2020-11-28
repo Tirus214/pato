@@ -111,85 +111,45 @@ public class PantallaPartida extends javax.swing.JFrame {
         return true;
     }
     
-    public boolean moveLabeltoObjective2 (Guerrero g, int num){ //retorna true cuando esta en rango
-        if ((abs(  g.getPosicion().x - g.getObjetivo().getPosicion().x)) <= 40 * g.getRange() || abs(g.getPosicion().y - g.getObjetivo().getPosicion().y) <= 40 * g.getRange()){
-            g.inRange = true;
-            return true;
-        }
-        else if ((abs(g.getPosicion().x - g.getObjetivo().getPosicion().x)) >= (abs(g.getPosicion().y - g.getObjetivo().getPosicion().y))){
-            if ((g.getPosicion().x - g.getObjetivo().getPosicion().x) < 0){
-                movLabel(g, 'i', num);
-                return false;
-            }
-            else{
-                movLabel(g, 'd', num);
-                return false;
-            }
-        }
-        else{
-            if ((g.getPosicion().y - g.getObjetivo().getPosicion().y) < 0){
-                movLabel(g, 'b', num);
-                return false;
-            }
-            else{
-                movLabel(g, 'a', num);
-                return false;
-            }
-        }
-    }
     
     
     public void moveLabeltoObjective (Guerrero g, int num){ //retorna true cuando esta en rango
         int y = arregloLabels.get(num).getLocation().y;
         int x = arregloLabels.get(num).getLocation().x;
-        if ((abs(  g.getPosicion().x - g.getObjetivo().getPosicion().x)) <= 40 * g.getRange() || abs(g.getPosicion().y - g.getObjetivo().getPosicion().y) <= 40 * g.getRange()){
+        if ((abs(x - g.getObjetivo().getPosicion().x)) <= 40 * g.getRange() && abs(y - g.getObjetivo().getPosicion().y) <= 40 * g.getRange()){
             g.inRange = true;
         }
-        else if ((abs(g.getPosicion().x - g.getObjetivo().getPosicion().x)) >= (abs(g.getPosicion().y - g.getObjetivo().getPosicion().y))){
-            if ((g.getPosicion().x - g.getObjetivo().getPosicion().x) < 0){
-                if(arregloLabels.get(num).getLocation().x - 40 >= 0){
+        else if ((abs(x - g.getObjetivo().getPosicion().x)) >= (abs(y - g.getObjetivo().getPosicion().y))){
+            if ((x - g.getObjetivo().getPosicion().x) < 0){
+                if(x - 40 >= 0){
                     arregloLabels.get(num).setLocation(x +40 , y );
+                    g.setPosicion(new Point(x +40 , y ));
                 }
             }
             else{
-                if(arregloLabels.get(num).getLocation().x + 40 <= 760){
+                if(x + 40 <= 760){
                     arregloLabels.get(num).setLocation(x -40 , y );
+                    g.setPosicion(new Point(x -40 , y ));
                 }
             }
         }
         else{
-            if ((g.getPosicion().y - g.getObjetivo().getPosicion().y) < 0){
-                if(arregloLabels.get(num).getLocation().y - 40 >= 0){
+            if ((y - g.getObjetivo().getPosicion().y) < 0){
+                if(y + 40 >= 0){
                     arregloLabels.get(num).setLocation(x, y +40 );
+                    g.setPosicion(new Point(x, y + 40));
                 }
             }
             else{
-                if(arregloLabels.get(num).getLocation().y + 40 <= 720){
+                if(y - 40 <= 720){
                     arregloLabels.get(num).setLocation(x, y -40 );
+                    g.setPosicion(new Point(x , y - 40));
                 }
             }
         }
     }
     
-        public void moveLabeltoObjective3 (Guerrero g, int num){ //retorna true cuando esta en rango
-        int y = arregloLabels.get(num).getLocation().y;
-        int x = arregloLabels.get(num).getLocation().x;
-        char[] xd = new char[4];
-        xd[0] = 'a';
-        xd[1] = 'd';
-        xd[2] = 'b';
-        xd[3] = 'i';
-        Random ran = new Random();
-        movLabel(g, xd[ran.nextInt(3)], num);
-        int ss = ran.nextInt(3);
-        switch(ss){
-            case 0: arregloLabels.get(num).setLocation(x -40 , y );
-                    break;
-            case 1:arregloLabels.get(num).setLocation(x +40 , y );break;
-            case 2: arregloLabels.get(num).setLocation(x, y -40 );break;
-            case 3:arregloLabels.get(num).setLocation(x, y +40 );
-        }
-    }
+
         
     
     
@@ -236,6 +196,7 @@ public class PantallaPartida extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(153, 255, 153));
+        jPanel1.setMaximumSize(new java.awt.Dimension(800, 800));
         jPanel1.setMinimumSize(new java.awt.Dimension(800, 800));
         jPanel1.setPreferredSize(new java.awt.Dimension(800, 800));
 
@@ -243,11 +204,11 @@ public class PantallaPartida extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 958, Short.MAX_VALUE)
+            .addGap(0, 800, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 800, Short.MAX_VALUE)
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 102, 102));
@@ -302,7 +263,7 @@ public class PantallaPartida extends javax.swing.JFrame {
                 .addComponent(btnReelegir, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAvanzar, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(455, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -312,14 +273,14 @@ public class PantallaPartida extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 958, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(59, 59, 59))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 718, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
