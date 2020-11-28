@@ -18,11 +18,11 @@ import java.util.Random;
 public class Juego implements Serializable{
     public transient PantallaPartida refPantalla;
     public String nameJuego;
-    public transient ArrayList<Guerrero> guerrerosDisponibles;
-    private transient ArrayList<Guerrero> ejercito;
-    private transient ArrayList<Defensa> defensa;
-    private transient ArrayList<Guerrero> enemigo;
-    private transient ArrayList<Defensa> defensasDisponibles;
+    public  ArrayList<Guerrero> guerrerosDisponibles;
+    private  ArrayList<Guerrero> ejercito;
+    private  ArrayList<Defensa> defensa;
+    private  ArrayList<Guerrero> enemigo;
+    public  ArrayList<Defensa> defensasDisponibles;
     private int nivelPartida;
     private int cantTropas;
     private int cantDefensas;
@@ -32,12 +32,17 @@ public class Juego implements Serializable{
     public boolean win;
     public boolean finish;
     public boolean reiniciar = false;
+    public ArrayList<Object> saveGame;
 
     
     public Juego(){
         nivelPartida = 1;
+        saveGame = new ArrayList<Object>();
         defensasDisponibles = new ArrayList<Defensa>();
         guerrerosDisponibles = new ArrayList<Guerrero>();
+        saveGame.add(nivelPartida);
+        saveGame.add(guerrerosDisponibles);
+        saveGame.add(defensasDisponibles);
         inicializar();
         putCantidad();
     }
