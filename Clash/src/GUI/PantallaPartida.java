@@ -122,28 +122,36 @@ public class PantallaPartida extends javax.swing.JFrame {
         else if ((abs(x - g.getObjetivo().getPosicion().x)) >= (abs(y - g.getObjetivo().getPosicion().y))){
             if ((x - g.getObjetivo().getPosicion().x) < 0){
                 if(x - 40 >= 0){
-                    arregloLabels.get(num).setLocation(x +40 , y );
-                    g.setPosicion(new Point(x +40 , y ));
+                    if (isAvailablePostion(x +40 , y )){
+                        arregloLabels.get(num).setLocation(x +40 , y );
+                        g.setPosicion(new Point(x +40 , y ));
+                    }
                 }
             }
             else{
                 if(x + 40 <= 760){
-                    arregloLabels.get(num).setLocation(x -40 , y );
-                    g.setPosicion(new Point(x -40 , y ));
+                    if (isAvailablePostion(x - 40 , y )){
+                        arregloLabels.get(num).setLocation(x - 40 , y );
+                        g.setPosicion(new Point(x - 40 , y ));
+                    }
                 }
             }
         }
         else{
             if ((y - g.getObjetivo().getPosicion().y) < 0){
                 if(y + 40 >= 0){
-                    arregloLabels.get(num).setLocation(x, y +40 );
-                    g.setPosicion(new Point(x, y + 40));
+                    if (isAvailablePostion(x , y + 40 )){
+                        arregloLabels.get(num).setLocation(x , y + 40 );
+                        g.setPosicion(new Point(x , y + 40  ));
+                    }
                 }
             }
             else{
                 if(y - 40 <= 720){
-                    arregloLabels.get(num).setLocation(x, y -40 );
-                    g.setPosicion(new Point(x , y - 40));
+                    if (isAvailablePostion(x , y - 40 )){
+                        arregloLabels.get(num).setLocation(x , y - 40 );
+                        g.setPosicion(new Point(x , y - 40  ));
+                    }
                 }
             }
         }
@@ -153,14 +161,12 @@ public class PantallaPartida extends javax.swing.JFrame {
         
     
     
-    public int isAvailablePostion(int x, int y, JLabel refLabel){      
+    public boolean isAvailablePostion(int x, int y ){      
         for (int i = 0; i < arregloLabels.size(); i++) {
-            if(arregloLabels.get(i).getLocation().x == x && 
-                    arregloLabels.get(i).getLocation().y == y
-                        && !arregloLabels.get(i).equals(refLabel))
-                return i;
+            if(arregloLabels.get(i).getLocation().x == x && arregloLabels.get(i).getLocation().y == y )
+                return false ;
         }
-        return -1;
+        return true;
     }
     
     
