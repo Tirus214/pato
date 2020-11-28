@@ -1,0 +1,768 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Clash">
+  <ClassDiagramComponents>
+    <Class name="Configuracion" package="clash" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="array" type="ArrayList&lt;Guerrero&gt;" visibility="public"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="addGuerreros" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Defensa" package="clash" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields>
+        <Field name="ataqueAereo" type="boolean" visibility="private"/>
+        <Field name="ataqueTerrestre" type="boolean" visibility="private"/>
+        <Field name="range" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="int" name="apLevel"/>
+          <Argument type="int" name="level"/>
+          <Argument type="int" name="damage"/>
+          <Argument type="int" name="range"/>
+          <Argument type="boolean" name="ataqueTerrestre"/>
+          <Argument type="boolean" name="ataqueAereo"/>
+          <Argument type="String" name="img1"/>
+          <Argument type="String" name="img2"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="attackRango" returnType="void" visibility="public"/>
+        <Method name="run" returnType="void" visibility="public"/>
+        <Method name="getApLevel" returnType="int" visibility="public"/>
+        <Method name="setApLevel" returnType="void" visibility="public">
+          <Argument type="int" name="apLevel"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Guerrero" package="clash" visibility="public" isAbstract="true" xPosition="620.0" yPosition="20.0">
+      <Fields>
+        <Field name="space" type="int" visibility="protected"/>
+        <Field name="health" type="int" visibility="protected"/>
+        <Field name="img2" type="String" visibility="protected"/>
+        <Field name="movility" type="boolean" visibility="protected"/>
+        <Field name="aliado" type="boolean" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="int" name="damage"/>
+          <Argument type="int" name="health"/>
+          <Argument type="int" name="level"/>
+          <Argument type="int" name="range"/>
+          <Argument type="int" name="space"/>
+          <Argument type="int" name="apLevel"/>
+          <Argument type="boolean" name="movility"/>
+          <Argument type="String" name="img1"/>
+          <Argument type="String" name="img2"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="crecer" returnType="void" visibility="public"/>
+        <Method name="Atack" returnType="int" visibility="package"/>
+        <Method name="lostHealth" returnType="void" visibility="public">
+          <Argument type="int" name="_damage"/>
+        </Method>
+        <Method name="run" returnType="void" visibility="public"/>
+        <Method name="getSpace" returnType="int" visibility="public"/>
+        <Method name="setSpace" returnType="void" visibility="public">
+          <Argument type="int" name="space"/>
+        </Method>
+        <Method name="getHealth" returnType="int" visibility="public"/>
+        <Method name="setHealth" returnType="void" visibility="public">
+          <Argument type="int" name="health"/>
+        </Method>
+        <Method name="isAliado" returnType="boolean" visibility="public"/>
+        <Method name="setAliado" returnType="void" visibility="public">
+          <Argument type="boolean" name="aliado"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="GuerreroAereo" package="clash" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="int" name="damage"/>
+          <Argument type="int" name="life"/>
+          <Argument type="int" name="level"/>
+          <Argument type="int" name="range"/>
+          <Argument type="int" name="space"/>
+          <Argument type="int" name="apLevel"/>
+          <Argument type="boolean" name="movility"/>
+          <Argument type="String" name="img1"/>
+          <Argument type="String" name="img2"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="attackRango" returnType="void" visibility="public"/>
+        <Method name="run" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="GuerreroBestia" package="clash" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="int" name="damage"/>
+          <Argument type="int" name="life"/>
+          <Argument type="int" name="level"/>
+          <Argument type="int" name="range"/>
+          <Argument type="int" name="space"/>
+          <Argument type="int" name="apLevel"/>
+          <Argument type="boolean" name="movility"/>
+          <Argument type="String" name="img1"/>
+          <Argument type="String" name="img2"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="GuerreroDeContacto" package="clash" visibility="public" xPosition="1520.0" yPosition="20.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="int" name="damage"/>
+          <Argument type="int" name="life"/>
+          <Argument type="int" name="level"/>
+          <Argument type="int" name="range"/>
+          <Argument type="int" name="space"/>
+          <Argument type="int" name="apLevel"/>
+          <Argument type="boolean" name="movility"/>
+          <Argument type="String" name="img1"/>
+          <Argument type="String" name="img2"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="GuerreroHeroe" package="clash" visibility="public" xPosition="1820.0" yPosition="20.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="int" name="damage"/>
+          <Argument type="int" name="life"/>
+          <Argument type="int" name="level"/>
+          <Argument type="int" name="range"/>
+          <Argument type="int" name="space"/>
+          <Argument type="int" name="apLevel"/>
+          <Argument type="boolean" name="movility"/>
+          <Argument type="String" name="img1"/>
+          <Argument type="String" name="img2"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="GuerreroMedianoAlcance" package="clash" visibility="public" xPosition="2120.0" yPosition="20.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="int" name="damage"/>
+          <Argument type="int" name="life"/>
+          <Argument type="int" name="level"/>
+          <Argument type="int" name="range"/>
+          <Argument type="int" name="space"/>
+          <Argument type="int" name="apLevel"/>
+          <Argument type="boolean" name="movility"/>
+          <Argument type="String" name="img1"/>
+          <Argument type="String" name="img2"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="Juego" package="clash" visibility="public" xPosition="20.0" yPosition="420.0">
+      <Fields>
+        <Field name="refPantalla" type="PantallaPartida" visibility="public" isTransient="true"/>
+        <Field name="nameJuego" type="String" visibility="public"/>
+        <Field name="guerrerosDisponibles" type="ArrayList&lt;Guerrero&gt;" visibility="public"/>
+        <Field name="ejercito" type="ArrayList&lt;Guerrero&gt;" visibility="private"/>
+        <Field name="defensa" type="ArrayList&lt;Defensa&gt;" visibility="private"/>
+        <Field name="enemigo" type="ArrayList&lt;Guerrero&gt;" visibility="private"/>
+        <Field name="defensasDisponibles" type="ArrayList&lt;Defensa&gt;" visibility="public"/>
+        <Field name="nivelPartida" type="int" visibility="private"/>
+        <Field name="cantTropas" type="int" visibility="private"/>
+        <Field name="cantDefensas" type="int" visibility="private"/>
+        <Field name="running" type="boolean" visibility="public"/>
+        <Field name="nombreGuerreros" type="ArrayList&lt;String&gt;" visibility="public"/>
+        <Field name="numeroGuerreros" type="ArrayList&lt;Integer&gt;" visibility="public"/>
+        <Field name="win" type="boolean" visibility="public"/>
+        <Field name="finish" type="boolean" visibility="public"/>
+        <Field name="reiniciar" type="boolean" visibility="public"/>
+        <Field name="saveGame" type="ArrayList&lt;Object&gt;" visibility="public"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="searchAttackEnemy" returnType="void" visibility="public">
+          <Argument type="Personaje" name="attacker"/>
+          <Argument type="ArrayList&lt;Guerrero&gt;" name="array"/>
+        </Method>
+        <Method name="correr" returnType="void" visibility="public"/>
+        <Method name="putNum" returnType="void" visibility="public"/>
+        <Method name="makeAliados" returnType="void" visibility="public"/>
+        <Method name="startGuerreros" returnType="void" visibility="public"/>
+        <Method name="stopGuerreros" returnType="void" visibility="public"/>
+        <Method name="verificarGanador" returnType="void" visibility="public"/>
+        <Method name="verificarEjercito" returnType="boolean" visibility="public"/>
+        <Method name="verificarEnemigo" returnType="boolean" visibility="public"/>
+        <Method name="nextLevel" returnType="void" visibility="public"/>
+        <Method name="inicializar" returnType="void" visibility="public"/>
+        <Method name="putCantidad" returnType="void" visibility="private"/>
+        <Method name="increaseNivel" returnType="void" visibility="public"/>
+        <Method name="fijarObjetivo" returnType="void" visibility="public"/>
+        <Method name="fijarObjetivoIndividual" returnType="Guerrero" visibility="public">
+          <Argument type="boolean" name="aliado"/>
+        </Method>
+        <Method name="generarEnemigos" returnType="void" visibility="public"/>
+        <Method name="createDefensas" returnType="void" visibility="private"/>
+        <Method name="randomDefensas" returnType="void" visibility="private"/>
+        <Method name="generarGuerrero" returnType="void" visibility="public">
+          <Argument type="String" name="tipoGuerrero"/>
+          <Argument type="String" name="name"/>
+          <Argument type="int" name="damage"/>
+          <Argument type="int" name="life"/>
+          <Argument type="int" name="level"/>
+          <Argument type="int" name="range"/>
+          <Argument type="int" name="space"/>
+          <Argument type="int" name="apLevel"/>
+          <Argument type="boolean" name="movility"/>
+          <Argument type="String" name="img1"/>
+          <Argument type="String" name="img2"/>
+        </Method>
+        <Method name="addGuerrero" returnType="int" visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="int" name="cantropas"/>
+        </Method>
+        <Method name="insertarGuerrero" returnType="int" visibility="public">
+          <Argument type="int" name="tropas"/>
+          <Argument type="Guerrero" name="tmp"/>
+          <Argument type="ArrayList&lt;Guerrero&gt;" name="array"/>
+        </Method>
+        <Method name="pauseGuerreros" returnType="void" visibility="public"/>
+        <Method name="getEjercito" returnType="ArrayList&lt;Guerrero&gt;" visibility="public"/>
+        <Method name="setEjercito" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Guerrero&gt;" name="ejercito"/>
+        </Method>
+        <Method name="getDefensa" returnType="ArrayList&lt;Defensa&gt;" visibility="public"/>
+        <Method name="setDefensa" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Defensa&gt;" name="defensa"/>
+        </Method>
+        <Method name="getEnemigo" returnType="ArrayList&lt;Guerrero&gt;" visibility="public"/>
+        <Method name="setEnemigo" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Guerrero&gt;" name="enemigo"/>
+        </Method>
+        <Method name="getNivel" returnType="int" visibility="public"/>
+        <Method name="setNivel" returnType="void" visibility="public">
+          <Argument type="int" name="nivel"/>
+        </Method>
+        <Method name="getCantTropas" returnType="int" visibility="public"/>
+        <Method name="setCantTropas" returnType="void" visibility="public">
+          <Argument type="int" name="cantTropas"/>
+        </Method>
+        <Method name="getCantDefensas" returnType="int" visibility="public"/>
+        <Method name="setCantDefensas" returnType="void" visibility="public">
+          <Argument type="int" name="cantDefensas"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="main" package="clash" visibility="public" xPosition="320.0" yPosition="420.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Personaje" package="clash" visibility="public" isAbstract="true" xPosition="620.0" yPosition="420.0">
+      <Fields>
+        <Field name="juego" type="Juego" visibility="public"/>
+        <Field name="refPantalla" type="PantallaPartida" visibility="public" isTransient="true"/>
+        <Field name="name" type="String" visibility="protected"/>
+        <Field name="damage" type="int" visibility="protected"/>
+        <Field name="level" type="int" visibility="protected"/>
+        <Field name="apLevel" type="int" visibility="protected"/>
+        <Field name="range" type="int" visibility="protected"/>
+        <Field name="health" type="int" visibility="protected"/>
+        <Field name="movility" type="boolean" visibility="protected"/>
+        <Field name="img1" type="String" visibility="protected"/>
+        <Field name="img2" type="String" visibility="protected"/>
+        <Field name="aliado" type="boolean" visibility="protected"/>
+        <Field name="running" type="boolean" visibility="protected"/>
+        <Field name="pause" type="boolean" visibility="protected"/>
+        <Field name="refLabel" type="JLabel" visibility="public" isTransient="true"/>
+        <Field name="num" type="int" visibility="public"/>
+        <Field name="posicion" type="Point" visibility="public"/>
+        <Field name="objetivo" type="Guerrero" visibility="public"/>
+        <Field name="inRange" type="boolean" visibility="public"/>
+        <Field name="nivelPartida" type="int" visibility="public"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="int" name="apLevel"/>
+          <Argument type="int" name="level"/>
+          <Argument type="int" name="damage"/>
+          <Argument type="int" name="range"/>
+          <Argument type="String" name="img1"/>
+          <Argument type="String" name="img2"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getJuego" returnType="Juego" visibility="public"/>
+        <Method name="setJuego" returnType="void" visibility="public">
+          <Argument type="Juego" name="juego"/>
+        </Method>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="getHealth" returnType="int" visibility="public"/>
+        <Method name="setHealth" returnType="void" visibility="public">
+          <Argument type="int" name="health"/>
+        </Method>
+        <Method name="setNum" returnType="void" visibility="public">
+          <Argument type="int" name="num"/>
+        </Method>
+        <Method name="stopThread" returnType="void" visibility="public"/>
+        <Method name="setPause" returnType="void" visibility="public"/>
+        <Method name="attack" returnType="void" visibility="public">
+          <Argument type="Personaje" name="p"/>
+        </Method>
+        <Method name="getRefPantalla" returnType="PantallaPartida" visibility="public"/>
+        <Method name="isAliado" returnType="boolean" visibility="public"/>
+        <Method name="setAliado" returnType="void" visibility="public">
+          <Argument type="boolean" name="aliado"/>
+        </Method>
+        <Method name="getObjetivo" returnType="Personaje" visibility="public"/>
+        <Method name="setObjetivo" returnType="void" visibility="public">
+          <Argument type="Guerrero" name="objetivo"/>
+        </Method>
+        <Method name="setRefPantalla" returnType="void" visibility="public">
+          <Argument type="PantallaPartida" name="refPantalla"/>
+        </Method>
+        <Method name="getDamage" returnType="int" visibility="public"/>
+        <Method name="setDamage" returnType="void" visibility="public">
+          <Argument type="int" name="damage"/>
+        </Method>
+        <Method name="getLevel" returnType="int" visibility="public"/>
+        <Method name="setLevel" returnType="void" visibility="public">
+          <Argument type="int" name="level"/>
+        </Method>
+        <Method name="getApLevel" returnType="int" visibility="public"/>
+        <Method name="setApLevel" returnType="void" visibility="public">
+          <Argument type="int" name="apLevel"/>
+        </Method>
+        <Method name="getRange" returnType="int" visibility="public"/>
+        <Method name="setRange" returnType="void" visibility="public">
+          <Argument type="int" name="range"/>
+        </Method>
+        <Method name="isMovility" returnType="boolean" visibility="public"/>
+        <Method name="setMovility" returnType="void" visibility="public">
+          <Argument type="boolean" name="movility"/>
+        </Method>
+        <Method name="getImg1" returnType="String" visibility="public"/>
+        <Method name="setImg1" returnType="void" visibility="public">
+          <Argument type="String" name="img1"/>
+        </Method>
+        <Method name="getImg2" returnType="String" visibility="public"/>
+        <Method name="setImg2" returnType="void" visibility="public">
+          <Argument type="String" name="img2"/>
+        </Method>
+        <Method name="isRunning" returnType="boolean" visibility="public"/>
+        <Method name="setRunning" returnType="void" visibility="public">
+          <Argument type="boolean" name="running"/>
+        </Method>
+        <Method name="isPause" returnType="boolean" visibility="public"/>
+        <Method name="setPause" returnType="void" visibility="public">
+          <Argument type="boolean" name="pause"/>
+        </Method>
+        <Method name="getRefLabel" returnType="JLabel" visibility="public"/>
+        <Method name="setRefLabel" returnType="void" visibility="public">
+          <Argument type="JLabel" name="refLabel"/>
+        </Method>
+        <Method name="getIde" returnType="int" visibility="public"/>
+        <Method name="setIde" returnType="void" visibility="public">
+          <Argument type="int" name="id"/>
+        </Method>
+        <Method name="getPosicion" returnType="Point" visibility="public"/>
+        <Method name="setPosicion" returnType="void" visibility="public">
+          <Argument type="Point" name="posicion"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="FileManager" package="filemanager" visibility="public" xPosition="920.0" yPosition="420.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="readFile" returnType="String" visibility="public" isStatic="true">
+          <Argument type="String" name="path"/>
+        </Method>
+        <Method name="writeObject" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Object" name="obj"/>
+          <Argument type="String" name="filePath"/>
+        </Method>
+        <Method name="readObject" returnType="Object" visibility="public" isStatic="true">
+          <Argument type="String" name="filePath"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="MiObjeto" package="filemanager" visibility="public" xPosition="1220.0" yPosition="420.0">
+      <Fields>
+        <Field name="id" type="int" visibility="public"/>
+        <Field name="nombre" type="String" visibility="public"/>
+        <Field name="precio" type="double" visibility="public"/>
+        <Field name="isActive" type="boolean" visibility="public"/>
+        <Field name="arrayObjetos" type="ArrayList&lt;SecondaryObject&gt;" visibility="public"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="id"/>
+          <Argument type="String" name="nombre"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Msin" package="filemanager" visibility="public" xPosition="1520.0" yPosition="420.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="SecondaryObject" package="filemanager" visibility="public" xPosition="1820.0" yPosition="420.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="public"/>
+        <Field name="identificacion" type="int" visibility="public"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="nombre"/>
+          <Argument type="int" name="identificacion"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="PantallaAdd" package="GUI" visibility="public" xPosition="2120.0" yPosition="420.0">
+      <Fields>
+        <Field name="pantalla" type="PantallaMenu" visibility="package"/>
+        <Field name="juego" type="Juego" visibility="package"/>
+        <Field name="btnAgregar" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnClear" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnSalir" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jLabel1" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel2" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel3" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel4" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel5" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel6" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel7" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel8" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblDano" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblNombre" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblTipo" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="txfDano" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txfEspacio" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txfImagen1" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txfImagen2" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txfNivel" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txfNivelAp" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txfNombre" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txfRango" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txfTipo" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txfVida" type="javax.swing.JTextField" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="putJuego" returnType="void" visibility="public">
+          <Argument type="Juego" name="juego"/>
+        </Method>
+        <Method name="putPantalla" returnType="void" visibility="public">
+          <Argument type="PantallaMenu" name="pantalla"/>
+        </Method>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+void" visibility="private"/>
+        <Method name="txfTipoActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="txfNivelActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnAgregarActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnSalirActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnClearActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="PantallaAdmin" package="GUI" visibility="public" xPosition="20.0" yPosition="820.0">
+      <Fields>
+        <Field name="pantalla" type="PantallaMenu" visibility="public"/>
+        <Field name="pantalla2" type="PantallaAdd" visibility="public"/>
+        <Field name="juego" type="Juego" visibility="package"/>
+        <Field name="btnAceptar" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnSalir" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jLabel1" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel2" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jLabel3" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jPanel1" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="txfContrasena" type="javax.swing.JTextField" visibility="private"/>
+        <Field name="txfUsuario" type="javax.swing.JTextField" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="putJuego" returnType="void" visibility="public">
+          <Argument type="Juego" name="juego"/>
+        </Method>
+        <Method name="putPantalla" returnType="void" visibility="public">
+          <Argument type="PantallaMenu" name="pantalla"/>
+        </Method>
+        <Method name="devolverse" returnType="void" visibility="public"/>
+        <Method name="avanzar" returnType="void" visibility="public"/>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+void" visibility="private"/>
+        <Method name="btnAceptarActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnSalirActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="PantallaInicial" package="GUI" visibility="public" xPosition="320.0" yPosition="820.0">
+      <Fields>
+        <Field name="btnContinuar" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnNueva" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jLabel1" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jPanel3" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="lblFoto" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="txfNombre" type="javax.swing.JTextField" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="setGuerreros" returnType="void" visibility="public">
+          <Argument type="Juego" name="juego"/>
+        </Method>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+void" visibility="private"/>
+        <Method name="btnNuevaActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnContinuarActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="lblFotoMouseClicked" returnType="void" visibility="private">
+          <Argument type="java.awt.event.MouseEvent" name="evt"/>
+        </Method>
+        <Method name="txfNombreActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="PantallaMenu" package="GUI" visibility="public" xPosition="620.0" yPosition="820.0">
+      <Fields>
+        <Field name="juego" type="Juego" visibility="package"/>
+        <Field name="copia" type="Juego" visibility="package"/>
+        <Field name="nombreGuerreros" type="ArrayList&lt;String&gt;" visibility="private"/>
+        <Field name="numeroGuerreros" type="ArrayList&lt;Integer&gt;" visibility="private"/>
+        <Field name="cantTropas" type="int" visibility="private"/>
+        <Field name="pantalla" type="PantallaAdmin" visibility="package"/>
+        <Field name="seleccion" type="String" visibility="private"/>
+        <Field name="btnConfiguracion" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnGuardar" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnIncluir" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnIniciar" type="javax.swing.JButton" visibility="private"/>
+        <Field name="cmbGuerreros" type="javax.swing.JComboBox&lt;String&gt;" visibility="private"/>
+        <Field name="jLabel1" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="jPanel1" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jScrollPane2" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="jScrollPane3" type="javax.swing.JScrollPane" visibility="private"/>
+        <Field name="lblEjercitoFaltante" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblEspecificaciones" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblImagenTropa" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblNivel" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblSMStropa" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="lblTropas" type="javax.swing.JLabel" visibility="private"/>
+        <Field name="txfEspecificaciones" type="javax.swing.JTextArea" visibility="private"/>
+        <Field name="txfTropasSeleccionadas" type="javax.swing.JTextArea" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="putJuego" returnType="void" visibility="public">
+          <Argument type="Juego" name="juego"/>
+        </Method>
+        <Method name="putComponentes" returnType="void" visibility="public"/>
+        <Method name="addItems" returnType="void" visibility="private"/>
+        <Method name="showPropeties" returnType="void" visibility="private"/>
+        <Method name="buscarNombre" returnType="void" visibility="private"/>
+        <Method name="printGuerreros" returnType="void" visibility="private"/>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+void" visibility="private"/>
+        <Method name="btnConfiguracionActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="cmbGuerrerosMouseExited" returnType="void" visibility="private">
+          <Argument type="java.awt.event.MouseEvent" name="evt"/>
+        </Method>
+        <Method name="btnIncluirActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="cmbGuerrerosItemStateChanged" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ItemEvent" name="evt"/>
+        </Method>
+        <Method name="btnGuardarActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnIniciarActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="cmbGuerrerosActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="PantallaPartida" package="GUI" visibility="public" xPosition="920.0" yPosition="820.0">
+      <Fields>
+        <Field name="juego" type="Juego" visibility="package"/>
+        <Field name="copia" type="Juego" visibility="package"/>
+        <Field name="arregloLabels" type="ArrayList&lt;JLabel&gt;" visibility="public"/>
+        <Field name="index" type="int" visibility="package"/>
+        <Field name="pantalla" type="PantallaMenu" visibility="package"/>
+        <Field name="btnAvanzar" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnReelegir" type="javax.swing.JButton" visibility="private"/>
+        <Field name="btnReiniciar" type="javax.swing.JButton" visibility="private"/>
+        <Field name="jPanel1" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="jPanel2" type="javax.swing.JPanel" visibility="private"/>
+        <Field name="lblNivel" type="javax.swing.JLabel" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="putJuego" returnType="void" visibility="public">
+          <Argument type="Juego" name="juego"/>
+        </Method>
+        <Method name="generateLabel" returnType="void" visibility="public">
+          <Argument type="Personaje" name="p"/>
+        </Method>
+        <Method name="compararPoint" returnType="boolean" visibility="public">
+          <Argument type="Point" name="p"/>
+        </Method>
+        <Method name="moveLabeltoObjective" returnType="void" visibility="public">
+          <Argument type="Guerrero" name="g"/>
+          <Argument type="int" name="num"/>
+        </Method>
+        <Method name="isAvailablePostion" returnType="boolean" visibility="public">
+          <Argument type="int" name="x"/>
+          <Argument type="int" name="y"/>
+        </Method>
+        <Method name="setPantalla" returnType="void" visibility="public">
+          <Argument type="PantallaMenu" name="pantalla"/>
+        </Method>
+        <Method name="volverMenu" returnType="void" visibility="public"/>
+        <Method name="gano" returnType="void" visibility="public"/>
+        <Method name="perdio" returnType="void" visibility="public"/>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+void" visibility="private"/>
+        <Method name="btnAvanzarActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnReelegirActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="btnReiniciarActionPerformed" returnType="void" visibility="private">
+          <Argument type="java.awt.event.ActionEvent" name="evt"/>
+        </Method>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="clash.Defensa" target="clash.Personaje"/>
+    <HasRelation name="juego" source="GUI.PantallaPartida" target="clash.Juego" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="clash.Juego" target="clash.Personaje" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="refPantalla" source="clash.Personaje" target="GUI.PantallaPartida" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GUI.PantallaAdd" target="clash.Juego" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="clash.Juego" target="clash.Guerrero" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GUI.PantallaPartida" target="clash.Juego" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="clash.GuerreroHeroe" target="clash.Guerrero"/>
+    <IsRelation name="is" source="clash.GuerreroDeContacto" target="clash.Guerrero"/>
+    <UseRelation source="clash.Juego" target="clash.Defensa" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GUI.PantallaPartida" target="clash.Guerrero" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="clash.Personaje" target="clash.Personaje" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GUI.PantallaAdd" target="GUI.PantallaMenu" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="clash.GuerreroAereo" target="clash.Guerrero"/>
+    <HasRelation name="defensasDisponibles" source="clash.Juego" target="clash.Defensa" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Defensa&gt;"/>
+    <HasRelation name="enemigo" source="clash.Juego" target="clash.Guerrero" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Guerrero&gt;"/>
+    <HasRelation name="juego" source="clash.Personaje" target="clash.Juego" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GUI.PantallaInicial" target="clash.Juego" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="ejercito" source="clash.Juego" target="clash.Guerrero" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Guerrero&gt;"/>
+    <HasRelation name="juego" source="GUI.PantallaMenu" target="clash.Juego" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="clash.Guerrero" target="clash.Personaje"/>
+    <IsRelation name="is" source="clash.GuerreroBestia" target="clash.Guerrero"/>
+    <HasRelation name="juego" source="GUI.PantallaAdmin" target="clash.Juego" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="juego" source="GUI.PantallaAdd" target="clash.Juego" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="clash.Personaje" target="clash.Guerrero" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="pantalla" source="GUI.PantallaAdmin" target="GUI.PantallaMenu" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GUI.PantallaMenu" target="clash.Juego" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="guerrerosDisponibles" source="clash.Juego" target="clash.Guerrero" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Guerrero&gt;"/>
+    <HasRelation name="copia" source="GUI.PantallaPartida" target="clash.Juego" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="objetivo" source="clash.Personaje" target="clash.Guerrero" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="clash.Personaje" target="GUI.PantallaPartida" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="copia" source="GUI.PantallaMenu" target="clash.Juego" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="pantalla" source="GUI.PantallaMenu" target="GUI.PantallaAdmin" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="refPantalla" source="clash.Juego" target="GUI.PantallaPartida" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="arrayObjetos" source="filemanager.MiObjeto" target="filemanager.SecondaryObject" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;SecondaryObject&gt;"/>
+    <IsRelation name="is" source="clash.GuerreroMedianoAlcance" target="clash.Guerrero"/>
+    <HasRelation name="defensa" source="clash.Juego" target="clash.Defensa" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Defensa&gt;"/>
+    <HasRelation name="pantalla" source="GUI.PantallaAdd" target="GUI.PantallaMenu" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GUI.PantallaPartida" target="clash.Personaje" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="pantalla" source="GUI.PantallaPartida" target="GUI.PantallaMenu" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GUI.PantallaPartida" target="GUI.PantallaMenu" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="pantalla2" source="GUI.PantallaAdmin" target="GUI.PantallaAdd" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="clash.Personaje" target="clash.Juego" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GUI.PantallaAdmin" target="clash.Juego" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="array" source="clash.Configuracion" target="clash.Guerrero" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Guerrero&gt;"/>
+    <UseRelation source="GUI.PantallaAdmin" target="GUI.PantallaMenu" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
