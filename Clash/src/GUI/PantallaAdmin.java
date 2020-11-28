@@ -145,7 +145,7 @@ public class PantallaAdmin extends javax.swing.JFrame {
         String contra = txfUsuario.getText();
         if("admin".equals(nombre) & "admin".equals(contra)){
             pantalla2.putPantalla(pantalla);
-            
+            pantalla2.putJuego(juego);
             avanzar();
         }
     }//GEN-LAST:event_btnAceptarActionPerformed
