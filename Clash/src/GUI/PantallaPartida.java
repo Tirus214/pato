@@ -313,7 +313,8 @@ public class PantallaPartida extends javax.swing.JFrame {
     }//GEN-LAST:event_btnReelegirActionPerformed
 
     private void btnReiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReiniciarActionPerformed
-        juego.reiniciar = true;
+        juego.stopGuerreros();
+        juego.inicializar();
         setVisible(false);
         putJuego(copia);
         setVisible(true);

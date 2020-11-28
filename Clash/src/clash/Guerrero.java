@@ -55,7 +55,8 @@ public abstract class Guerrero extends Personaje implements Serializable{
                         
                         if(objetivo.health > 0){
                             objetivo.health -= this.damage;
-                            System.out.println("Guerrero: {" + objetivo.num + "}   Vida: " + objetivo.health);
+                            if(aliado) System.out.println("Enemigo: {" + objetivo.num + "}   Vida: " + objetivo.health);
+                            else System.out.println("Aliado: {" + objetivo.num + "}   Vida: " + objetivo.health);
                         }
                         else {
                             objetivo = null;
@@ -79,7 +80,8 @@ public abstract class Guerrero extends Personaje implements Serializable{
                 }
                 
             if (health <= 0){
-                System.out.println("Guerrero: {" + num +"} -> Ah weon me mataron");
+                if(aliado) System.out.println("Aliado: {" + num + "}     -> AH WEON ME MATAROOON!");
+                else System.out.println("Enemigo: {" + num + "}     -> AH WEON ME MATAROOON!");
                 running = false;
                 refPantalla.arregloLabels.get(num).setLocation(1000, 1000);
                 juego.verificarGanador();
