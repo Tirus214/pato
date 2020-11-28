@@ -37,9 +37,8 @@ public class Defensa extends Personaje implements Serializable{
                this.objetivo = juego.getEjercito().get(i);
                this.objetivo.health -= this.damage;
                System.out.println("Disparo: " + getNombre());
-               if(aliado) System.out.println("Enemigo: {" + objetivo.num + "}   Vida: " + objetivo.health);
-               else System.out.println("Aliado: {" + objetivo.num + "}   Vida: " + objetivo.health);
-               
+               if(objetivo.aliado) System.out.println("Enemigo: {" + objetivo.num + "}   Vida: " + objetivo.health);
+               else System.out.println("Aliado: {" + objetivo.num + "}   Vida: " + objetivo.health); 
            }
        }
         for (int i = 0; i < juego.getEnemigo().size(); i++) {
@@ -50,7 +49,7 @@ public class Defensa extends Personaje implements Serializable{
            if (Math.sqrt((dx-gix)*(dx-gix)  + (dy-giy)*(dy-giy))/40  <= this.range){ //casillas de 40 x 40
                this.objetivo.health -= this.damage;
                System.out.println("Disparo: " + getNombre());
-               if(aliado) System.out.println("Enemigo: {" + objetivo.num + "}   Vida: " + objetivo.health);
+               if(objetivo.aliado) System.out.println("Enemigo: {" + objetivo.num + "}   Vida: " + objetivo.health);
                else System.out.println("Aliado: {" + objetivo.num + "}   Vida: " + objetivo.health);
            }
        }

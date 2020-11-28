@@ -83,7 +83,13 @@ public class Juego implements Serializable{
     public void startGuerreros(){
         for (int i = 0; i < ejercito.size(); i++){
             try{
-                ejercito.get(i).start();
+                try{
+                    GuerreroBestia g = (GuerreroBestia) ejercito.get(i);
+                    g.start();
+                }
+                catch (Exception e ){
+                    ejercito.get(i).start();
+                }
                 ejercito.get(i).setJuego(this);
                 ejercito.get(i).refPantalla = refPantalla;
                 refPantalla.generateLabel(ejercito.get(i));
@@ -95,7 +101,13 @@ public class Juego implements Serializable{
             
         for (int i = 0; i < enemigo.size(); i++){
             try{
-                enemigo.get(i).start();
+                try{
+                    GuerreroBestia g = (GuerreroBestia) enemigo.get(i);
+                    g.start();
+                }
+                catch (Exception e ){
+                    enemigo.get(i).start();
+                }
                 enemigo.get(i).setJuego(this);
                 enemigo.get(i).refPantalla = refPantalla;
                 refPantalla.generateLabel(enemigo.get(i));
@@ -105,9 +117,7 @@ public class Juego implements Serializable{
             }
         }
         for (int i = 0; i < defensa.size(); i++){
-            
             try{
-                
                 defensa.get(i).start();
                 defensa.get(i).setJuego(this);
                 defensa.get(i).refPantalla = refPantalla;
@@ -134,27 +144,27 @@ public class Juego implements Serializable{
     
     
     public void verificarGanador(){
-        if(verificarEjercito()){
-            stopGuerreros();
-            inicializar();
-            refPantalla.perdio();
-            refPantalla.volverMenu();
-        }
-        else if(verificarEnemigo()){
-            stopGuerreros();
-            nextLevel();
-            refPantalla.gano();
-            refPantalla.volverMenu();
-        }
+            if(verificarEjercito()){
+                    stopGuerreros();
+                    inicializar();
+                    refPantalla.perdio();
+                    refPantalla.volverMenu();            }
+            else if(verificarEnemigo()){
+                    stopGuerreros();
+                    nextLevel();
+                    refPantalla.gano();
+                    refPantalla.volverMenu();
+            }
     }
-    
     
     public boolean verificarEjercito(){
         int muertos = 0;
         for (int i = 0; i < ejercito.size(); i++){
             if(ejercito.get(i).health <= 0) muertos++;
         }
-        if(muertos == ejercito.size()) return true;
+        if(muertos == ejercito.size()) {
+            return true;
+        }
             return false;
     }
     
@@ -163,7 +173,9 @@ public class Juego implements Serializable{
         for (int i = 0; i < enemigo.size(); i++){
             if(enemigo.get(i).health <= 0) muertos++;
         }
-        if(muertos == enemigo.size()) return true;
+        if(muertos == enemigo.size()) {
+            return true;
+        }
             return false;
     }
     

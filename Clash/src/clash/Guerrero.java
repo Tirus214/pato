@@ -96,7 +96,7 @@ public abstract class Guerrero extends Personaje implements Serializable{
                    
                 }
             }
-        }    
+        }  
     }
 
     public int getSpace() {

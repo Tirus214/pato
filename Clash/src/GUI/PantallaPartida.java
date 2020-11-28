@@ -177,6 +177,7 @@ public class PantallaPartida extends javax.swing.JFrame {
     
     
     public void volverMenu(){
+        System.out.println("hola");
         setVisible(false);
         PantallaMenu pantalla = new PantallaMenu();
         pantalla.setVisible(true);
@@ -303,21 +304,25 @@ public class PantallaPartida extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAvanzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvanzarActionPerformed
-        juego.stopGuerreros();
-        juego.nextLevel();
-        volverMenu();
+
+            juego.stopGuerreros();
+            juego.nextLevel();
+            volverMenu();
+
     }//GEN-LAST:event_btnAvanzarActionPerformed
 
     private void btnReelegirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReelegirActionPerformed
+        juego.stopGuerreros();
         juego.inicializar();
+        volverMenu();
     }//GEN-LAST:event_btnReelegirActionPerformed
 
     private void btnReiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReiniciarActionPerformed
         juego.stopGuerreros();
         juego.inicializar();
         setVisible(false);
-        putJuego(copia);
         setVisible(true);
+        juego.correr();
     }//GEN-LAST:event_btnReiniciarActionPerformed
 
     /**
