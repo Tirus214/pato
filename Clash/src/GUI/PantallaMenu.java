@@ -9,8 +9,13 @@ import clash.Juego;
 import filemanager.FileManager;
 import java.awt.Component;
 import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.util.ArrayList;
+import javax.imageio.ImageIO;
 import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 
 /**
@@ -69,14 +74,25 @@ public class PantallaMenu extends javax.swing.JFrame {
     
     private void showPropeties(){
         for (int i = 0; i < juego.guerrerosDisponibles.size(); i++) {
-            if(juego.guerrerosDisponibles.get(i).getNombre().toUpperCase() == seleccion.toUpperCase()){
+            if(juego.guerrerosDisponibles.get(i).getNombre() == seleccion){
                 txfEspecificaciones.setText("Nombre: " + juego.guerrerosDisponibles.get(i).getNombre());
                 txfEspecificaciones.append("\nDaño: " + juego.guerrerosDisponibles.get(i).getDamage() + " golpes por segundo");
                 txfEspecificaciones.append("\nVida: " + juego.guerrerosDisponibles.get(i).getHealth() + " golpes");
                 txfEspecificaciones.append("\nNivel: " + juego.guerrerosDisponibles.get(i).getLevel());
                 txfEspecificaciones.append("\nRango: " + juego.guerrerosDisponibles.get(i).getRange());
-                txfEspecificaciones.append("\nEspacio en ejercito: " + juego.guerrerosDisponibles.get(i).getDamage() + " unidades");
+                txfEspecificaciones.append("\nEspacio en ejercito: " + juego.guerrerosDisponibles.get(i).getSpace() + " unidades");
                 txfEspecificaciones.append("\nNivel de aparicion: " + juego.guerrerosDisponibles.get(i).getApLevel());
+                try{
+                File f = new File(juego.guerrerosDisponibles.get(i).getImg1());
+                BufferedImage img = null;
+                img  = ImageIO.read(new File(f.getAbsolutePath()));
+                Image img1 = img.getScaledInstance(lblImagenTropa.getWidth(), lblImagenTropa.getHeight(), Image.SCALE_SMOOTH);
+                ImageIcon format = new ImageIcon(img1);
+                lblImagenTropa.setIcon(format);
+                }
+                catch(Exception e){
+                    //return newLabel;
+                }
             }
         }
     }

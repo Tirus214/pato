@@ -52,6 +52,7 @@ public abstract class Personaje extends Thread implements Serializable{
         this.pause = false;
         this.inRange = false;
         this.damage = damage;
+        this.range = range;
     }
 
     public Juego getJuego() {

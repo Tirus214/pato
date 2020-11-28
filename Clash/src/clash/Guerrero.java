@@ -33,6 +33,7 @@ public abstract class Guerrero extends Personaje implements Serializable{
     public void crecer(){
         this.damage = nivelPartida*5 + damage;
         this.health = nivelPartida*5 + health;
+        this.level = nivelPartida;
     }
     
     //Procedimientos
@@ -81,13 +82,18 @@ public abstract class Guerrero extends Personaje implements Serializable{
                 } catch (InterruptedException ex){
                     // Logger.getLogger(Guerrero.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                
+            if(juego.finish){
+                running = false;
+                break;
+            }
             if (health <= 0){
                 if(aliado) System.out.println("Aliado: {" + num + "}     -> AH WEON ME MATAROOON!");
                 else System.out.println("Enemigo: {" + num + "}     -> AH WEON ME MATAROOON!");
                 running = false;
                 refPantalla.arregloLabels.get(num).setLocation(1000, 1000);
-                juego.verificarGanador();
+                if(!juego.finish){
+                    juego.verificarGanador();
+                }
             }
             while(super.pause){
                 try {

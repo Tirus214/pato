@@ -61,12 +61,15 @@ public class GuerreroAereo extends Guerrero implements Serializable{
                     // Logger.getLogger(Guerrero.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 attackRango();
+
             if (health <= 0){
                 if(aliado) System.out.println("Aliado: {" + num + "}     -> AH WEON ME MATAROOON!");
                 else System.out.println("Enemigo: {" + num + "}     -> AH WEON ME MATAROOON!");
                 running = false;
                 refPantalla.arregloLabels.get(num).setLocation(1000, 1000);
-                juego.verificarGanador();
+                if(!juego.finish){
+                    juego.verificarGanador();
+                }
             }
             while(super.pause){
                 try {
