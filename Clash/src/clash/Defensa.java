@@ -30,14 +30,13 @@ public class Defensa extends Personaje implements Serializable{
    public void attackRango(){
        int dx = this.getPosicion().x;
        int dy = this.getPosicion().y;
-       System.out.println(name);
        for (int i = 0; i < juego.getEjercito().size(); i++) {
            int gix = juego.getEjercito().get(i).getPosicion().x;
            int giy = juego.getEjercito().get(i).getPosicion().y;
            if (Math.sqrt( ((dx-gix)*(dx-gix))  + ((dy-giy)*(dy-giy)) )/40  <= this.range){ //casillas de 40 x 40
                this.objetivo = juego.getEjercito().get(i);
                this.objetivo.health -= this.damage;
-               System.out.println("disparo");
+               System.out.println("Disparo: " + getNombre());
            }
        }
         for (int i = 0; i < juego.getEnemigo().size(); i++) {
@@ -47,7 +46,7 @@ public class Defensa extends Personaje implements Serializable{
            
            if (Math.sqrt((dx-gix)*(dx-gix)  + (dy-giy)*(dy-giy))/40  <= this.range){ //casillas de 40 x 40
                this.objetivo.health -= this.damage;
-               System.out.println("disparo");
+               System.out.println("Disparo: " + getNombre());
            }
        }
    }  
