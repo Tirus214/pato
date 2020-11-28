@@ -149,17 +149,22 @@ public class Juego implements Serializable{
     
     
     public void verificarGanador(){
+        if(finish == false){
             if(verificarEjercito()){
                     stopGuerreros();
                     inicializar();
                     refPantalla.perdio();
-                    refPantalla.volverMenu();            }
+                    refPantalla.volverMenu();
+                    return;
+            }
             else if(verificarEnemigo()){
                     stopGuerreros();
                     nextLevel();
                     refPantalla.gano();
                     refPantalla.volverMenu();
+                    return;
             }
+        }
     }
     
     public boolean verificarEjercito(){
