@@ -56,7 +56,7 @@ public class Defensa extends Personaje implements Serializable{
 
         while (running){
             try {
-                sleep(1000);
+                sleep(2000);
                 } 
             catch (InterruptedException e) {
                 //Logger.getLogger(Defensa.class.getName()).log(Level.SEVERE, null, ex);
