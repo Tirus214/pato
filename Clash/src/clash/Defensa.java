@@ -27,13 +27,14 @@ public class Defensa extends Personaje implements Serializable{
    public void attackRango(){
        int dx = this.getPosicion().x;
        int dy = this.getPosicion().y;
-       
+       //System.out.println("llamada");
        for (int i = 0; i < juego.getEjercito().size(); i++) {
            int gix = juego.getEjercito().get(i).getPosicion().x;
            int giy = juego.getEjercito().get(i).getPosicion().y;
            
            if (Math.sqrt((dx-gix)*(dx-gix)/40  + (dy-giy)*(dy-giy))/40  <= range){ //casillas de 40 x 40
-               attack(juego.getEjercito().get(i));
+               this.objetivo.health -= this.damage;
+               System.out.println("disparo");
            }
        }
         for (int i = 0; i < juego.getEnemigo().size(); i++) {
@@ -41,7 +42,8 @@ public class Defensa extends Personaje implements Serializable{
            int giy = juego.getEnemigo().get(i).getPosicion().y;
            
            if (Math.sqrt((dx-gix)*(dx-gix)/40  + (dy-giy)*(dy-giy))/40  <= range){ //casillas de 40 x 40
-               attack(juego.getEnemigo().get(i));
+               this.objetivo.health -= this.damage;
+               System.out.println("disparo");
            }
        }
    }  
@@ -49,17 +51,15 @@ public class Defensa extends Personaje implements Serializable{
    @Override
     public void run(){
         while (running){
-            //System.out.println("a");
-            attackRango();
+            
             try {
                 sleep(1000);
                 } 
             catch (InterruptedException e) {
                 //Logger.getLogger(Defensa.class.getName()).log(Level.SEVERE, null, ex);
             }
-            if (health <= 0){
-                running = false;
-            }
+            attackRango();
+
             while(super.pause){
                 try {
                     sleep(10000);
