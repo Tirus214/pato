@@ -17,7 +17,7 @@ import java.util.Random;
  */
 public class Juego implements Serializable{
     public PantallaPartida refPantalla;
-    public String name;
+    public String nameJuego;
     public ArrayList<Guerrero> guerrerosDisponibles;
     private ArrayList<Guerrero> ejercito;
     private ArrayList<Defensa> defensa;
@@ -222,9 +222,11 @@ public class Juego implements Serializable{
     public Guerrero fijarObjetivoIndividual(boolean aliado){
         Random ran = new Random();
         if(aliado){
+            System.out.println(enemigo.get(ran.nextInt(enemigo.size())).name);
             return enemigo.get(ran.nextInt(enemigo.size()));
         }
         else{
+            System.out.println(enemigo.get(ran.nextInt(enemigo.size())).name);
             return ejercito.get(ran.nextInt(ejercito.size()));
         }
     }
