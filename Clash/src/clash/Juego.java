@@ -16,13 +16,13 @@ import java.util.Random;
  * @author Jean Paul
  */
 public class Juego implements Serializable{
-    public PantallaPartida refPantalla;
+    public transient PantallaPartida refPantalla;
     public String nameJuego;
-    public ArrayList<Guerrero> guerrerosDisponibles;
-    private ArrayList<Guerrero> ejercito;
-    private ArrayList<Defensa> defensa;
-    private ArrayList<Guerrero> enemigo;
-    private ArrayList<Defensa> defensasDisponibles;
+    public transient ArrayList<Guerrero> guerrerosDisponibles;
+    private transient ArrayList<Guerrero> ejercito;
+    private transient ArrayList<Defensa> defensa;
+    private transient ArrayList<Guerrero> enemigo;
+    private transient ArrayList<Defensa> defensasDisponibles;
     private int nivelPartida;
     private int cantTropas;
     private int cantDefensas;

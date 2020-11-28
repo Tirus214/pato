@@ -18,7 +18,7 @@ import javax.swing.JLabel;
  */
 public abstract class Personaje extends Thread implements Serializable{
     public Juego juego;
-    public PantallaPartida refPantalla;
+    public transient PantallaPartida refPantalla;
     protected String name;
     protected int damage;
     protected int level;
@@ -32,7 +32,7 @@ public abstract class Personaje extends Thread implements Serializable{
     
     protected boolean running;
     protected boolean pause;
-    public JLabel refLabel;
+    public transient JLabel refLabel;
     public int num;
     public Point posicion;
     public Guerrero objetivo;
