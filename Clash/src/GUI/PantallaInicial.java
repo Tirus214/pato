@@ -148,7 +148,7 @@ public class PantallaInicial extends javax.swing.JFrame {
         setVisible(false);
         Juego juego = new Juego();
         String nombre = txfNombre.getText();
-        juego.name = nombre;
+        juego.nameJuego = nombre;
         FileManager.writeObject(juego, "src\\filemanager\\Files\\" + nombre + ".dat");
         PantallaMenu pantalla = new PantallaMenu();
         setGuerreros(juego);

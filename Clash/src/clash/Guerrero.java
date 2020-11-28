@@ -47,6 +47,7 @@ public abstract class Guerrero extends Personaje implements Serializable{
     
     @Override
     public void run(){
+
         while (running){
             //System.out.println("Guerrero: " + num + "   vida: " + health);
                 if(objetivo != null) {
