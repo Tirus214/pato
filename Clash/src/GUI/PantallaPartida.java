@@ -191,37 +191,6 @@ public class PantallaPartida extends javax.swing.JFrame {
         }
     }
         
-public void movLabel (Guerrero g, char direccion, int num){
-       //System.out.println(arregloLabels.get(num).getLocation().toString() + g.getPosicion().toString() + num + direccion);
-       int x;
-       int y;
-       switch(direccion){
-           case 'a': 
-               y = arregloLabels.get(num).getLocation().y + 40;
-               x = arregloLabels.get(num).getLocation().x;
-               g.setPosicion(g.getPosicion());
-               arregloLabels.get(num).setLocation(x, y );
-               arregloLabels.get(num).move(x, y);
-           case 'b': 
-               y = arregloLabels.get(num).getLocation().y - 40;
-               x = arregloLabels.get(num).getLocation().x;
-               g.setPosicion(new Point(x,y));
-               arregloLabels.get(num).setLocation(x, y);
-               arregloLabels.get(num).move(x, y);
-           case 'd': 
-               y = arregloLabels.get(num).getLocation().y;
-               x = arregloLabels.get(num).getLocation().x + 40;
-               g.setPosicion(new Point(x, y));
-               arregloLabels.get(num).setLocation(x, y);
-               arregloLabels.get(num).move(x, y);
-           case 'i': 
-               y = arregloLabels.get(num).getLocation().y;
-               x = arregloLabels.get(num).getLocation().x - 40;
-               g.setPosicion(new Point(x,y));
-               arregloLabels.get(num).setLocation(x, y);
-               arregloLabels.get(num).move(x, y);
-       }
-}
     
     
     public int isAvailablePostion(int x, int y, JLabel refLabel){      
