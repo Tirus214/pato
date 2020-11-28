@@ -52,7 +52,6 @@ public abstract class Guerrero extends Personaje implements Serializable{
             //System.out.println("Guerrero: " + num + "   vida: " + health);
                 if(objetivo != null) {
                     if(inRange){
-                        
                         if(objetivo.health > 0){
                             objetivo.health -= this.damage;
                             if(aliado) System.out.println("Enemigo: {" + objetivo.num + "}   Vida: " + objetivo.health);
@@ -69,39 +68,31 @@ public abstract class Guerrero extends Personaje implements Serializable{
                         if (pos.x == this.refLabel.getLocation().x  && pos.y == this.refLabel.getLocation().y)
                             objetivo = juego.fijarObjetivoIndividual(aliado);
                         }
-                    this.refLabel.setLocation(posicion);
-                }else   
-                    try{
+                        this.refLabel.setLocation(posicion);
+                }else {   
                     objetivo = juego.fijarObjetivoIndividual(aliado);
-              
-                    }catch(Exception e){
-
-                    }
+                }
                 try {
                     sleep(700);
                 } catch (InterruptedException ex){
                     // Logger.getLogger(Guerrero.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            if(juego.finish){
-                running = false;
-                break;
-            }
-            if (health <= 0){
-                if(aliado) System.out.println("Aliado: {" + num + "}     -> AH WEON ME MATAROOON!");
-                else System.out.println("Enemigo: {" + num + "}     -> AH WEON ME MATAROOON!");
-                running = false;
-                refPantalla.arregloLabels.get(num).setLocation(1000, 1000);
-                if(!juego.finish){
+                if (juego.finish) break;
+                if (health <= 0){
+                    if(aliado) System.out.println("Aliado: {" + num + "}     -> AH WEON ME MATAROOON!");
+                    else System.out.println("Enemigo: {" + num + "}     -> AH WEON ME MATAROOON!");
+                    running = false;
+                    refPantalla.arregloLabels.get(num).setLocation(1000, 1000);
                     juego.verificarGanador();
                 }
-            }
-            while(super.pause){
-                try {
-                    sleep(10000);
-                } catch (InterruptedException ex) {
-                   
+                
+                while(super.pause){
+                    try {
+                        sleep(10000);
+                    } catch (InterruptedException ex) {
+
+                    }
                 }
-            }
         }  
     }
 

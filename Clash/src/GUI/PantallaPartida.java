@@ -303,7 +303,7 @@ public class PantallaPartida extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAvanzarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAvanzarActionPerformed
-            juego.finish = true;
+
             juego.stopGuerreros();
             juego.nextLevel();
             volverMenu();
