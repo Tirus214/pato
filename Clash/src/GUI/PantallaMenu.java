@@ -302,7 +302,8 @@ public class PantallaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbGuerrerosItemStateChanged
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        FileManager.writeObject(juego, "src\\filemanager\\Files\\" + juego.nameJuego + ".dat");
+        juego.saveGame.set(0, juego.getNivel());
+        FileManager.writeObject(juego.saveGame, "src\\filemanager\\Files\\" + juego.nameJuego + ".dat");
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed

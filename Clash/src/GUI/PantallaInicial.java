@@ -6,8 +6,11 @@
 package GUI;
 
 import clash.Configuracion;
+import clash.Defensa;
+import clash.Guerrero;
 import clash.Juego;
 import filemanager.FileManager;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -147,10 +150,14 @@ public class PantallaInicial extends javax.swing.JFrame {
 
     private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
         String nombre = txfNombre.getText();
-        Juego juego = (Juego) FileManager.readObject("src\\filemanager\\Files\\" + nombre + ".dat");
-        if (juego == null) 
+        Juego juego = new Juego();
+        ArrayList<Object> saveGame = (ArrayList<Object>) FileManager.readObject("src\\filemanager\\Files\\" + nombre + ".dat");
+        if (saveGame == null) 
             JOptionPane.showMessageDialog(jPanel3, "No existe el archivo de " + nombre + '!');
         else{
+            juego.setNivel((int) saveGame.get(0));
+            juego.guerrerosDisponibles = (ArrayList<Guerrero>) saveGame.get(1);
+            juego.defensasDisponibles = (ArrayList<Defensa>) saveGame.get(2);
             setVisible(false);
             PantallaMenu pantalla = new PantallaMenu();
             setGuerreros(juego);
