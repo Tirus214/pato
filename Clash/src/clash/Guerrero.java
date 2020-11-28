@@ -5,9 +5,8 @@
  */
 package clash;
 
+import java.awt.Point;
 import java.io.Serializable;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 
 /**
@@ -64,7 +63,10 @@ public abstract class Guerrero extends Personaje implements Serializable{
                         }
                         
                     }else {
+                        Point pos = new Point(this.refLabel.getLocation().x +0 ,this.refLabel.getLocation().y + 0 );
                         refPantalla.moveLabeltoObjective(this, num);
+                        if (pos.x == this.refLabel.getLocation().x  && pos.y == this.refLabel.getLocation().y)
+                            objetivo = juego.fijarObjetivoIndividual(aliado);
                         }
                 }else   
                     try{
