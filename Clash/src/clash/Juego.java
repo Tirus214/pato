@@ -82,16 +82,27 @@ public class Juego implements Serializable{
     
     public void startGuerreros(){
         for (int i = 0; i < ejercito.size(); i++){
-            ejercito.get(i).setJuego(this);
-            ejercito.get(i).refPantalla = refPantalla;
-            refPantalla.generateLabel(ejercito.get(i));
-            ejercito.get(i).start();
+            try{
+                ejercito.get(i).start();
+                ejercito.get(i).setJuego(this);
+                ejercito.get(i).refPantalla = refPantalla;
+                refPantalla.generateLabel(ejercito.get(i));
+            }
+            catch(Exception e){
+                // System.out.println(defensa.get(i).toString());
+            }
         }
+            
         for (int i = 0; i < enemigo.size(); i++){
-            enemigo.get(i).setJuego(this);
-            enemigo.get(i).refPantalla = refPantalla;
-            refPantalla.generateLabel(enemigo.get(i));
-            enemigo.get(i).start();
+            try{
+                enemigo.get(i).start();
+                enemigo.get(i).setJuego(this);
+                enemigo.get(i).refPantalla = refPantalla;
+                refPantalla.generateLabel(enemigo.get(i));
+            }
+            catch(Exception e){
+                // System.out.println(defensa.get(i).toString());
+            }
         }
         for (int i = 0; i < defensa.size(); i++){
             
@@ -247,7 +258,7 @@ public class Juego implements Serializable{
     private void createDefensas(){
                     //public Defensa(String name, int apLevel, int level, int damage, int range, boolean ataqueTerrestre, boolean ataqueAereo, String img1, String img2){
         defensasDisponibles.add(new Defensa("Canon", 1, 1, 10, 3, true, false, "src\\Imagenes\\ImagenesDefensas\\canon.png", "src\\Imagenes\\ImagenesDefensas\\canon.png"));
-        defensasDisponibles.add(new Defensa("TorreArqueras", 1, 1, 8, 3, true, true, "src\\Imagenes\\ImagenesDefensas\\torreArqueras.png", "src\\Imagenes\\ImagenesDefensas\\torreArqueras.png"));
+        defensasDisponibles.add(new Defensa("TorreArqueras", 1, 1, 8, 5, true, true, "src\\Imagenes\\ImagenesDefensas\\torreArqueras.png", "src\\Imagenes\\ImagenesDefensas\\torreArqueras.png"));
         defensasDisponibles.add(new Defensa("Muro", 1, 1, 0, 0, false, false, "src\\Imagenes\\ImagenesDefensas\\wall.png", "src\\Imagenes\\ImagenesDefensas\\wall.png"));
         defensasDisponibles.add(new Defensa("Mortero", 10, 1, 10, 10, true, false, "src\\Imagenes\\ImagenesDefensas\\Mortar7.png", "src\\Imagenes\\ImagenesDefensas\\Mortar7.png"));
         defensasDisponibles.add(new Defensa("Cohetes", 5, 1, 10, 10, false, true, "src\\Imagenes\\ImagenesDefensas\\cohetes.png", "src\\Imagenes\\ImagenesDefensas\\cohetes.png"));

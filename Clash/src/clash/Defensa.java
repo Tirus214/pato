@@ -15,33 +15,37 @@ import java.util.logging.Logger;
 public class Defensa extends Personaje implements Serializable{
    private boolean ataqueAereo;
    private boolean ataqueTerrestre;
+   private int range;
    
    
     
    public Defensa(String name, int apLevel, int level, int damage, int range, boolean ataqueTerrestre, boolean ataqueAereo, String img1, String img2){
         super(name, apLevel, level, damage, range, img1, img2);
+
         this.ataqueTerrestre = ataqueTerrestre;
         this.ataqueAereo = ataqueAereo;
+        this.range = range;
    }
    
    public void attackRango(){
        int dx = this.getPosicion().x;
        int dy = this.getPosicion().y;
-       //System.out.println("llamada");
+       System.out.println(name);
        for (int i = 0; i < juego.getEjercito().size(); i++) {
            int gix = juego.getEjercito().get(i).getPosicion().x;
            int giy = juego.getEjercito().get(i).getPosicion().y;
-           
-           if (Math.sqrt((dx-gix)*(dx-gix)/40  + (dy-giy)*(dy-giy))/40  <= range){ //casillas de 40 x 40
+           if (Math.sqrt( ((dx-gix)*(dx-gix))  + ((dy-giy)*(dy-giy)) )/40  <= this.range){ //casillas de 40 x 40
+               this.objetivo = juego.getEjercito().get(i);
                this.objetivo.health -= this.damage;
                System.out.println("disparo");
            }
        }
         for (int i = 0; i < juego.getEnemigo().size(); i++) {
+            this.objetivo = juego.getEnemigo().get(i);
            int gix = juego.getEnemigo().get(i).getPosicion().x;
            int giy = juego.getEnemigo().get(i).getPosicion().y;
            
-           if (Math.sqrt((dx-gix)*(dx-gix)/40  + (dy-giy)*(dy-giy))/40  <= range){ //casillas de 40 x 40
+           if (Math.sqrt((dx-gix)*(dx-gix)  + (dy-giy)*(dy-giy))/40  <= this.range){ //casillas de 40 x 40
                this.objetivo.health -= this.damage;
                System.out.println("disparo");
            }
@@ -50,8 +54,8 @@ public class Defensa extends Personaje implements Serializable{
    
    @Override
     public void run(){
+
         while (running){
-            
             try {
                 sleep(1000);
                 } 
