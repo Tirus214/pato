@@ -139,7 +139,7 @@ public class PantallaPartida extends javax.swing.JFrame {
     }
     
     
-    public void moveLabeltoObjective3 (Guerrero g, int num){ //retorna true cuando esta en rango
+    public void moveLabeltoObjective (Guerrero g, int num){ //retorna true cuando esta en rango
         int y = arregloLabels.get(num).getLocation().y;
         int x = arregloLabels.get(num).getLocation().x;
         if ((abs(  g.getPosicion().x - g.getObjetivo().getPosicion().x)) <= 40 * g.getRange() || abs(g.getPosicion().y - g.getObjetivo().getPosicion().y) <= 40 * g.getRange()){
@@ -148,34 +148,30 @@ public class PantallaPartida extends javax.swing.JFrame {
         else if ((abs(g.getPosicion().x - g.getObjetivo().getPosicion().x)) >= (abs(g.getPosicion().y - g.getObjetivo().getPosicion().y))){
             if ((g.getPosicion().x - g.getObjetivo().getPosicion().x) < 0){
                 if(arregloLabels.get(num).getLocation().x - 40 >= 0){
-                    movLabel(g, 'i', num);
-                    arregloLabels.get(num).setLocation(x -40 , y );
+                    arregloLabels.get(num).setLocation(x +40 , y );
                 }
             }
             else{
                 if(arregloLabels.get(num).getLocation().x + 40 <= 760){
-                    movLabel(g, 'd', num);
-                    arregloLabels.get(num).setLocation(x +40 , y );
+                    arregloLabels.get(num).setLocation(x -40 , y );
                 }
             }
         }
         else{
             if ((g.getPosicion().y - g.getObjetivo().getPosicion().y) < 0){
                 if(arregloLabels.get(num).getLocation().y - 40 >= 0){
-                    movLabel(g, 'b', num);
-                    arregloLabels.get(num).setLocation(x, y -40 );
+                    arregloLabels.get(num).setLocation(x, y +40 );
                 }
             }
             else{
                 if(arregloLabels.get(num).getLocation().y + 40 <= 720){
-                    movLabel(g, 'a', num);
-                    arregloLabels.get(num).setLocation(x, y +40 );
+                    arregloLabels.get(num).setLocation(x, y -40 );
                 }
             }
         }
     }
     
-        public void moveLabeltoObjective (Guerrero g, int num){ //retorna true cuando esta en rango
+        public void moveLabeltoObjective3 (Guerrero g, int num){ //retorna true cuando esta en rango
         int y = arregloLabels.get(num).getLocation().y;
         int x = arregloLabels.get(num).getLocation().x;
         char[] xd = new char[4];
