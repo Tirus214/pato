@@ -2,7 +2,7 @@
 
 <ClassDiagram name="Clash">
   <ClassDiagramComponents>
-    <Class name="Configuracion" package="clash" visibility="public" xPosition="20.0" yPosition="20.0">
+    <Class name="Configuracion" package="clash" visibility="public" xPosition="461.0" yPosition="382.0">
       <Fields>
         <Field name="array" type="ArrayList&lt;Guerrero&gt;" visibility="public"/>
       </Fields>
@@ -13,7 +13,7 @@
         <Method name="addGuerreros" returnType="void" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="Defensa" package="clash" visibility="public" xPosition="320.0" yPosition="20.0">
+    <Class name="Defensa" package="clash" visibility="public" xPosition="36.0" yPosition="649.0">
       <Fields>
         <Field name="ataqueAereo" type="boolean" visibility="private"/>
         <Field name="ataqueTerrestre" type="boolean" visibility="private"/>
@@ -41,7 +41,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="Guerrero" package="clash" visibility="public" isAbstract="true" xPosition="620.0" yPosition="20.0">
+    <Class name="Guerrero" package="clash" visibility="public" isAbstract="true" xPosition="1729.0" yPosition="176.0">
       <Fields>
         <Field name="space" type="int" visibility="protected"/>
         <Field name="health" type="int" visibility="protected"/>
@@ -84,7 +84,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="GuerreroAereo" package="clash" visibility="public" xPosition="920.0" yPosition="20.0">
+    <Class name="GuerreroAereo" package="clash" visibility="public" xPosition="98.0" yPosition="36.0">
       <Fields/>
       <Constructors>
         <Constructor visibility="public">
@@ -105,7 +105,7 @@
         <Method name="run" returnType="void" visibility="public"/>
       </Methods>
     </Class>
-    <Class name="GuerreroBestia" package="clash" visibility="public" xPosition="1220.0" yPosition="20.0">
+    <Class name="GuerreroBestia" package="clash" visibility="public" xPosition="976.0" yPosition="55.0">
       <Fields/>
       <Constructors>
         <Constructor visibility="public">
@@ -123,7 +123,7 @@
       </Constructors>
       <Methods/>
     </Class>
-    <Class name="GuerreroDeContacto" package="clash" visibility="public" xPosition="1520.0" yPosition="20.0">
+    <Class name="GuerreroDeContacto" package="clash" visibility="public" xPosition="1713.0" yPosition="26.0">
       <Fields/>
       <Constructors>
         <Constructor visibility="public">
@@ -141,7 +141,7 @@
       </Constructors>
       <Methods/>
     </Class>
-    <Class name="GuerreroHeroe" package="clash" visibility="public" xPosition="1820.0" yPosition="20.0">
+    <Class name="GuerreroHeroe" package="clash" visibility="public" xPosition="2529.0" yPosition="55.0">
       <Fields/>
       <Constructors>
         <Constructor visibility="public">
@@ -159,7 +159,7 @@
       </Constructors>
       <Methods/>
     </Class>
-    <Class name="GuerreroMedianoAlcance" package="clash" visibility="public" xPosition="2120.0" yPosition="20.0">
+    <Class name="GuerreroMedianoAlcance" package="clash" visibility="public" xPosition="3304.0" yPosition="55.0">
       <Fields/>
       <Constructors>
         <Constructor visibility="public">
@@ -177,7 +177,7 @@
       </Constructors>
       <Methods/>
     </Class>
-    <Class name="Juego" package="clash" visibility="public" xPosition="20.0" yPosition="420.0">
+    <Class name="Juego" package="clash" visibility="public" xPosition="1587.0" yPosition="709.0">
       <Fields>
         <Field name="refPantalla" type="PantallaPartida" visibility="public" isTransient="true"/>
         <Field name="nameJuego" type="String" visibility="public"/>
@@ -273,7 +273,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="main" package="clash" visibility="public" xPosition="320.0" yPosition="420.0">
+    <Class name="main" package="clash" visibility="public" xPosition="4553.0" yPosition="571.0">
       <Fields/>
       <Constructors/>
       <Methods>
@@ -282,7 +282,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="Personaje" package="clash" visibility="public" isAbstract="true" xPosition="620.0" yPosition="420.0">
+    <Class name="Personaje" package="clash" visibility="public" isAbstract="true" xPosition="3366.0" yPosition="698.0">
       <Fields>
         <Field name="juego" type="Juego" visibility="public"/>
         <Field name="refPantalla" type="PantallaPartida" visibility="public" isTransient="true"/>
@@ -399,7 +399,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="FileManager" package="filemanager" visibility="public" xPosition="920.0" yPosition="420.0">
+    <Class name="FileManager" package="filemanager" visibility="public" xPosition="4391.0" yPosition="307.0">
       <Fields/>
       <Constructors/>
       <Methods>
@@ -415,25 +415,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="MiObjeto" package="filemanager" visibility="public" xPosition="1220.0" yPosition="420.0">
-      <Fields>
-        <Field name="id" type="int" visibility="public"/>
-        <Field name="nombre" type="String" visibility="public"/>
-        <Field name="precio" type="double" visibility="public"/>
-        <Field name="isActive" type="boolean" visibility="public"/>
-        <Field name="arrayObjetos" type="ArrayList&lt;SecondaryObject&gt;" visibility="public"/>
-      </Fields>
-      <Constructors>
-        <Constructor visibility="public">
-          <Argument type="int" name="id"/>
-          <Argument type="String" name="nombre"/>
-        </Constructor>
-      </Constructors>
-      <Methods>
-        <Method name="toString" returnType="String" visibility="public"/>
-      </Methods>
-    </Class>
-    <Class name="Msin" package="filemanager" visibility="public" xPosition="1520.0" yPosition="420.0">
+    <Class name="Msin" package="filemanager" visibility="public" xPosition="4617.0" yPosition="859.0">
       <Fields/>
       <Constructors/>
       <Methods>
@@ -442,22 +424,7 @@
         </Method>
       </Methods>
     </Class>
-    <Class name="SecondaryObject" package="filemanager" visibility="public" xPosition="1820.0" yPosition="420.0">
-      <Fields>
-        <Field name="nombre" type="String" visibility="public"/>
-        <Field name="identificacion" type="int" visibility="public"/>
-      </Fields>
-      <Constructors>
-        <Constructor visibility="public">
-          <Argument type="String" name="nombre"/>
-          <Argument type="int" name="identificacion"/>
-        </Constructor>
-      </Constructors>
-      <Methods>
-        <Method name="toString" returnType="String" visibility="public"/>
-      </Methods>
-    </Class>
-    <Class name="PantallaAdd" package="GUI" visibility="public" xPosition="2120.0" yPosition="420.0">
+    <Class name="PantallaAdd" package="GUI" visibility="public" xPosition="3115.0" yPosition="1998.0">
       <Fields>
         <Field name="pantalla" type="PantallaMenu" visibility="package"/>
         <Field name="juego" type="Juego" visibility="package"/>
@@ -496,8 +463,7 @@
         <Method name="putPantalla" returnType="void" visibility="public">
           <Argument type="PantallaMenu" name="pantalla"/>
         </Method>
-        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
-void" visibility="private"/>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
         <Method name="txfTipoActionPerformed" returnType="void" visibility="private">
           <Argument type="java.awt.event.ActionEvent" name="evt"/>
         </Method>
@@ -518,7 +484,7 @@ void" visibility="private"/>
         </Method>
       </Methods>
     </Class>
-    <Class name="PantallaAdmin" package="GUI" visibility="public" xPosition="20.0" yPosition="820.0">
+    <Class name="PantallaAdmin" package="GUI" visibility="public" xPosition="-11.0" yPosition="946.0">
       <Fields>
         <Field name="pantalla" type="PantallaMenu" visibility="public"/>
         <Field name="pantalla2" type="PantallaAdd" visibility="public"/>
@@ -544,8 +510,7 @@ void" visibility="private"/>
         </Method>
         <Method name="devolverse" returnType="void" visibility="public"/>
         <Method name="avanzar" returnType="void" visibility="public"/>
-        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
-void" visibility="private"/>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
         <Method name="btnAceptarActionPerformed" returnType="void" visibility="private">
           <Argument type="java.awt.event.ActionEvent" name="evt"/>
         </Method>
@@ -557,7 +522,7 @@ void" visibility="private"/>
         </Method>
       </Methods>
     </Class>
-    <Class name="PantallaInicial" package="GUI" visibility="public" xPosition="320.0" yPosition="820.0">
+    <Class name="PantallaInicial" package="GUI" visibility="public" xPosition="789.0" yPosition="1346.0">
       <Fields>
         <Field name="btnContinuar" type="javax.swing.JButton" visibility="private"/>
         <Field name="btnNueva" type="javax.swing.JButton" visibility="private"/>
@@ -573,8 +538,7 @@ void" visibility="private"/>
         <Method name="setGuerreros" returnType="void" visibility="public">
           <Argument type="Juego" name="juego"/>
         </Method>
-        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
-void" visibility="private"/>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
         <Method name="btnNuevaActionPerformed" returnType="void" visibility="private">
           <Argument type="java.awt.event.ActionEvent" name="evt"/>
         </Method>
@@ -592,7 +556,7 @@ void" visibility="private"/>
         </Method>
       </Methods>
     </Class>
-    <Class name="PantallaMenu" package="GUI" visibility="public" xPosition="620.0" yPosition="820.0">
+    <Class name="PantallaMenu" package="GUI" visibility="public" xPosition="11.0" yPosition="1658.0">
       <Fields>
         <Field name="juego" type="Juego" visibility="package"/>
         <Field name="copia" type="Juego" visibility="package"/>
@@ -631,8 +595,7 @@ void" visibility="private"/>
         <Method name="showPropeties" returnType="void" visibility="private"/>
         <Method name="buscarNombre" returnType="void" visibility="private"/>
         <Method name="printGuerreros" returnType="void" visibility="private"/>
-        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
-void" visibility="private"/>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
         <Method name="btnConfiguracionActionPerformed" returnType="void" visibility="private">
           <Argument type="java.awt.event.ActionEvent" name="evt"/>
         </Method>
@@ -659,7 +622,7 @@ void" visibility="private"/>
         </Method>
       </Methods>
     </Class>
-    <Class name="PantallaPartida" package="GUI" visibility="public" xPosition="920.0" yPosition="820.0">
+    <Class name="PantallaPartida" package="GUI" visibility="public" xPosition="1742.0" yPosition="2277.0">
       <Fields>
         <Field name="juego" type="Juego" visibility="package"/>
         <Field name="copia" type="Juego" visibility="package"/>
@@ -700,8 +663,7 @@ void" visibility="private"/>
         <Method name="volverMenu" returnType="void" visibility="public"/>
         <Method name="gano" returnType="void" visibility="public"/>
         <Method name="perdio" returnType="void" visibility="public"/>
-        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
-void" visibility="private"/>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents void" visibility="private"/>
         <Method name="btnAvanzarActionPerformed" returnType="void" visibility="private">
           <Argument type="java.awt.event.ActionEvent" name="evt"/>
         </Method>
@@ -718,51 +680,50 @@ void" visibility="private"/>
     </Class>
   </ClassDiagramComponents>
   <ClassDiagramRelations>
-    <IsRelation name="is" source="clash.Defensa" target="clash.Personaje"/>
-    <HasRelation name="juego" source="GUI.PantallaPartida" target="clash.Juego" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="clash.Juego" target="clash.Personaje" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="refPantalla" source="clash.Personaje" target="GUI.PantallaPartida" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="GUI.PantallaAdd" target="clash.Juego" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="clash.Juego" target="clash.Guerrero" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="GUI.PantallaPartida" target="clash.Juego" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="clash.GuerreroHeroe" target="clash.Guerrero"/>
-    <IsRelation name="is" source="clash.GuerreroDeContacto" target="clash.Guerrero"/>
-    <UseRelation source="clash.Juego" target="clash.Defensa" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="GUI.PantallaPartida" target="clash.Guerrero" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="clash.Personaje" target="clash.Personaje" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="GUI.PantallaAdd" target="GUI.PantallaMenu" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="clash.GuerreroAereo" target="clash.Guerrero"/>
-    <HasRelation name="defensasDisponibles" source="clash.Juego" target="clash.Defensa" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Defensa&gt;"/>
-    <HasRelation name="enemigo" source="clash.Juego" target="clash.Guerrero" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Guerrero&gt;"/>
-    <HasRelation name="juego" source="clash.Personaje" target="clash.Juego" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="GUI.PantallaInicial" target="clash.Juego" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="ejercito" source="clash.Juego" target="clash.Guerrero" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Guerrero&gt;"/>
-    <HasRelation name="juego" source="GUI.PantallaMenu" target="clash.Juego" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <IsRelation name="is" source="clash.Guerrero" target="clash.Personaje"/>
-    <IsRelation name="is" source="clash.GuerreroBestia" target="clash.Guerrero"/>
     <HasRelation name="juego" source="GUI.PantallaAdmin" target="clash.Juego" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="juego" source="GUI.PantallaAdd" target="clash.Juego" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="clash.Personaje" target="clash.Guerrero" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="pantalla" source="GUI.PantallaAdmin" target="GUI.PantallaMenu" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="GUI.PantallaMenu" target="clash.Juego" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="guerrerosDisponibles" source="clash.Juego" target="clash.Guerrero" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Guerrero&gt;"/>
-    <HasRelation name="copia" source="GUI.PantallaPartida" target="clash.Juego" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="objetivo" source="clash.Personaje" target="clash.Guerrero" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="clash.Personaje" target="GUI.PantallaPartida" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="copia" source="GUI.PantallaMenu" target="clash.Juego" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="pantalla" source="GUI.PantallaMenu" target="GUI.PantallaAdmin" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="refPantalla" source="clash.Juego" target="GUI.PantallaPartida" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="arrayObjetos" source="filemanager.MiObjeto" target="filemanager.SecondaryObject" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;SecondaryObject&gt;"/>
-    <IsRelation name="is" source="clash.GuerreroMedianoAlcance" target="clash.Guerrero"/>
-    <HasRelation name="defensa" source="clash.Juego" target="clash.Defensa" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Defensa&gt;"/>
-    <HasRelation name="pantalla" source="GUI.PantallaAdd" target="GUI.PantallaMenu" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="GUI.PantallaPartida" target="clash.Personaje" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <HasRelation name="pantalla" source="GUI.PantallaPartida" target="GUI.PantallaMenu" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="GUI.PantallaPartida" target="GUI.PantallaMenu" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="pantalla2" source="GUI.PantallaAdmin" target="GUI.PantallaAdd" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
-    <UseRelation source="clash.Personaje" target="clash.Juego" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="ejercito" source="clash.Juego" target="clash.Guerrero" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Guerrero&gt;"/>
+    <UseRelation source="clash.Juego" target="clash.Defensa" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="clash.GuerreroBestia" target="clash.Guerrero"/>
+    <UseRelation source="GUI.PantallaPartida" target="clash.Guerrero" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation source="GUI.PantallaAdmin" target="clash.Juego" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="clash.Juego" target="clash.Personaje" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="copia" source="GUI.PantallaMenu" target="clash.Juego" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="juego" source="GUI.PantallaPartida" target="clash.Juego" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="refPantalla" source="clash.Personaje" target="GUI.PantallaPartida" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="copia" source="GUI.PantallaPartida" target="clash.Juego" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="refPantalla" source="clash.Juego" target="GUI.PantallaPartida" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="clash.Personaje" target="clash.Juego" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GUI.PantallaAdd" target="GUI.PantallaMenu" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="clash.Defensa" target="clash.Personaje"/>
+    <UseRelation source="clash.Personaje" target="clash.Guerrero" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="clash.Personaje" target="GUI.PantallaPartida" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="enemigo" source="clash.Juego" target="clash.Guerrero" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Guerrero&gt;"/>
+    <HasRelation name="juego" source="GUI.PantallaMenu" target="clash.Juego" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <HasRelation name="array" source="clash.Configuracion" target="clash.Guerrero" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Guerrero&gt;"/>
+    <HasRelation name="pantalla" source="GUI.PantallaAdmin" target="GUI.PantallaMenu" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GUI.PantallaInicial" target="clash.Juego" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="pantalla" source="GUI.PantallaMenu" target="GUI.PantallaAdmin" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="objetivo" source="clash.Personaje" target="clash.Guerrero" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="pantalla" source="GUI.PantallaPartida" target="GUI.PantallaMenu" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GUI.PantallaAdd" target="clash.Juego" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GUI.PantallaMenu" target="clash.Juego" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="defensasDisponibles" source="clash.Juego" target="clash.Defensa" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Defensa&gt;"/>
+    <HasRelation name="pantalla" source="GUI.PantallaAdd" target="GUI.PantallaMenu" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
     <UseRelation source="GUI.PantallaAdmin" target="GUI.PantallaMenu" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="clash.GuerreroDeContacto" target="clash.Guerrero"/>
+    <IsRelation name="is" source="clash.GuerreroAereo" target="clash.Guerrero"/>
+    <IsRelation name="is" source="clash.GuerreroMedianoAlcance" target="clash.Guerrero"/>
+    <UseRelation source="GUI.PantallaPartida" target="clash.Juego" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="clash.Juego" target="clash.Guerrero" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="defensa" source="clash.Juego" target="clash.Defensa" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Defensa&gt;"/>
+    <UseRelation source="GUI.PantallaPartida" target="GUI.PantallaMenu" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="juego" source="clash.Personaje" target="clash.Juego" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="juego" source="GUI.PantallaAdd" target="clash.Juego" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="guerrerosDisponibles" source="clash.Juego" target="clash.Guerrero" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Guerrero&gt;"/>
+    <IsRelation name="is" source="clash.GuerreroHeroe" target="clash.Guerrero"/>
+    <UseRelation source="clash.Personaje" target="clash.Personaje" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="GUI.PantallaPartida" target="clash.Personaje" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="clash.Guerrero" target="clash.Personaje"/>
   </ClassDiagramRelations>
 </ClassDiagram>
